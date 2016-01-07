@@ -4,16 +4,14 @@
 <link rel="import" href="packages/paper_elements/paper_input.html" />
 <link rel="import" href="literal.html" />
 
-<polymer-element name="write-outport" attributes="command">
+<polymer-element name="add-outport" attributes="command">
     <template >
         <link rel="stylesheet" href="../element_styles.css" />
         <style>
             :host {
-                border-width: 1px;
-                border-color: #FFFFFF;
-                border-style: none;
             }
-            #target {
+
+            #title-area {
                 margin-top: 2px;
                 margin-left: 2px;
                 margin-right: 2px;
@@ -28,17 +26,20 @@
                 border: 1px solid #B6B6B6;
                 border-radius: 0.3em;
             }
+
             paper-input {
-                margin-left : 10px;
-                margin-right: 10px;
+                margin-left : 20px;
+                margin-right: 20px;
             }
 
         </style>
-        <div id="target" horizontal layout center>
-            <div end>Write Data to Port (name = </div>
+        <div id="title-area" horizontal layout center>
+            <div end>Add Out Port (name = </div>
             <paper-input id="name-input" flex one value="{{port_name}}"></paper-input>
+            <div end>, type=</div>
+            <paper-input id="type-input" flex one value="{{port_type}}"></paper-input>
             <div end>)</div>
         </div>
     </template>
-    <script type="application/dart" src="write_outport.dart"></script>
+    <script type="application/dart" src="add_outport.dart"></script>
 </polymer-element>
