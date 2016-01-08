@@ -65,6 +65,30 @@ class Controller {
     return selectedElement;
   }
 
+  String getInPortName() {
+    int counter = 0;
+    String n = 'in$counter';
+
+    while (onInitializeApp.find(program.AddInPort, name:n).length != 0) {
+      counter++;
+      n = 'in$counter';
+    }
+
+    return n;
+  }
+
+  String getOutPortName() {
+    int counter = 0;
+    String n = 'out$counter';
+
+    while (onInitializeApp.find(program.AddOutPort, name: n).length != 0) {
+      counter++;
+      n = 'in$counter';
+    }
+
+    return n;
+  }
+
   void addElement(String command) {
     print('add ${command}');
     program.Application app;
@@ -132,7 +156,8 @@ class Controller {
     }
 
     if(command == 'add_inport') {
-      program.AddInPort v = new program.AddInPort('in', new program.DataType.TimedLong());
+      var n = getInPortName();
+      program.AddInPort v = new program.AddInPort(n, new program.DataType.TimedLong());
       program.Statement new_s = new program.Statement(v);
 
       if (selectedStatement() == null) {
@@ -141,7 +166,8 @@ class Controller {
     }
 
     if(command == 'add_outport') {
-      program.AddOutPort v = new program.AddOutPort('out', new program.DataType.TimedLong());
+      var n = getOutPortName();
+      program.AddOutPort v = new program.AddOutPort(n, new program.DataType.TimedLong());
       program.Statement new_s = new program.Statement(v);
 
       if (selectedStatement() == null) {
@@ -231,6 +257,23 @@ class Controller {
   }
 
   set editorPanel(EditorPanel p) => _editorPanel = p;
+
+
+  void refreshAllPanel({String except: ''}) {
+    if (except != 'onInitialize') {
+      _editorPanel.onInitializeEditor.refresh(onInitializeApp);
+    }
+    if (except != 'onActivated') {
+      _editorPanel.onActivatedEditor.refresh(onActivatedApp);
+    }
+    if (except != 'onDeactivated') {
+        _editorPanel.onDeactivatedEditor.refresh(onDeactivatedApp);
+    }
+    if (except != 'onExecute') {
+        _editorPanel.onExecuteEditor.refresh(onExecuteApp);
+    }
+  }
+
 
   void refreshPanel() {
     program.Application app;

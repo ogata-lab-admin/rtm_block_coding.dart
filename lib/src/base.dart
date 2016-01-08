@@ -8,6 +8,7 @@ import 'block.dart';
 import 'datatype.dart';
 import 'inport.dart';
 import 'outport.dart';
+import 'dart:mirrors';
 
 class Application {
 
@@ -70,17 +71,24 @@ class Application {
   }
 
 
-  Map<String, DataType> getOutPortMap() {
-    Map<String, DataType> portMap = {};
+  find(Type typename, {String name: null}) {
+    var ret = [];
+
     iterateBlock(
         (Block b) {
-          print (b);
-      if (b is AddOutPort) {
-        portMap[b.name] = b.dataType;
-      }
-    }
-    );
+          if (b.runtimeType == typename) {
+            if(name == null) {
+              ret.add(b);
+            }
+            else if(b.name == name) {
+              ret.add(b);
+            }
+          }
+    });
 
-    return portMap;
+    if(name == null && ret.length == 0) {
+      return null;
+    }
+    return ret;
   }
 }
