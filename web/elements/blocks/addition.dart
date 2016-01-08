@@ -10,37 +10,32 @@ class Addition extends PolymerElement {
 
   set model(program.Add m) {
     _model = m;
-    value_a = m.a;
-    value_b = m.b;
+    value_a = m.value_a;
+    value_b = m.value_b;
   }
 
   get model => _model;
 
-  @published program.Block value_a;
-  @published program.Block value_b;
+  @published int value_a = 1;
+  @published int value_b = 2;
   Addition.created() : super.created();
 
   void attached() {
-    $['value1-input'].onChange.listen(
-        (var e) {
-      _model.a = value_a;
+    $['value1-input'].onChange.listen((var e) {
+      _model.value_a = value_a;
 
-      globalController.refreshPanel();
-    }
-    );
-    $['value2-input'].onChange.listen(
-        (var e) {
-      _model.b = value_b;
+//      globalController.refreshPanel();
+    });
 
-      globalController.refreshPanel();
-    }
-    );
+    $['value2-input'].onChange.listen((var e) {
+      _model.value_b = value_b;
 
-    this.onClick.listen(
-        (var e) {
+//      globalController.refreshPanel();
+    });
+
+    this.onClick.listen((var e) {
       globalController.setSelectedElem(e, this);
-    }
-    );
+    });
   }
 
   void select() {
