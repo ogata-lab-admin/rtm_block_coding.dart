@@ -1,3 +1,4 @@
+library add_element_button;
 import 'package:polymer/polymer.dart';
 import '../controller/controller.dart';
 import 'package:paper_elements/paper_button.dart';

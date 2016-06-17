@@ -1,3 +1,4 @@
+library editor_panel;
 import 'package:polymer/polymer.dart';
 import '../controller/controller.dart';
 import 'block_editor.dart';

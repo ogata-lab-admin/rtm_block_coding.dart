@@ -1,3 +1,5 @@
+library result_panel;
+
 import 'package:polymer/polymer.dart';
 
 

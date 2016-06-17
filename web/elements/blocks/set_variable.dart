@@ -1,3 +1,5 @@
+library set_variable;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
@@ -11,19 +13,19 @@ class SetVariable extends PolymerElement {
 
   set model(program.SetVariable m) {
     _model = m;
-    name = _model.left.name;
+    varname = _model.left.name;
   }
 
   get model => _model;
 
-  @published String name = "defaultName";
+  @observable String varname = "defaultName";
 
   SetVariable.created() : super.created();
 
   void attached() {
     $['variable-name-input'].onChange.listen(
         (var e) {
-          _model.left.name = name;
+          _model.left.name = varname;
         }
     );
   }

@@ -1,3 +1,6 @@
+library controller;
+
+
 import '../elements/editor_panel.dart';
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:xml/xml.dart' as xml;
@@ -24,6 +27,7 @@ import '../elements/blocks/while_box.dart';
 import '../elements/state_panel.dart';
 import '../elements/python_panel.dart';
 import 'package:rtcprofile/rtcprofile.dart';
+import '../elements/blocks/box_base.dart';
 
 class Controller {
 
@@ -303,7 +307,7 @@ class Controller {
           app.statements.add(new_s);
         }
         else if (selectedStatement() is ReadInPortBox) {
-          selectedStatement().model.statements.add(new_s);
+          (selectedStatement() as ReadInPortBox).model.statements.add(new_s);
         } else if (selectedElement.parentElement is IfBox) {
           selectedElement.parentElement.model.statements.add(new_s);
         } else if (selectedElement.parentElement is WhileBox) {
@@ -349,42 +353,48 @@ class Controller {
       }
       else */
       if(selectedStatement() is AssignVariableBox) {
-        selectedStatement().model.right = v;
+        (selectedStatement() as AssignVariableBox) .model.right = v;
       }
       else if (selectedStatement() is OutPortBufferBox) {
         (selectedStatement() as OutPortBufferBox).model.right = v;
       }
       else {
-        PolymerElement elem = globalController.selectedElement;
+        BoxBase elem = globalController.selectedElement;
         if (elem.parentElement is AssignVariableBox) {
-          if (selectedElement.model == elem.parentElement.model.right) {
-            elem.parentElement.model.right = v;
+          AssignVariableBox avb = elem.parentElement as AssignVariableBox;
+          if (selectedElement.model == avb.model.right) {
+            avb.model.right = v;
           } else {
-            elem.parentElement.model.left = v;
+            avb.model.left = v;
           }
         } else if (elem.parentElement is AdditionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          AdditionBox ab = elem.parentElement as AdditionBox;
+
+          if (ab.model.a == elem.model) {
+            ab.model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            ab.model.b = v;
           }
         } else if (elem.parentElement is SubtractionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          SubtractionBox sb = elem.parentElement as SubtractionBox;
+          if (sb.model.a == elem.model) {
+            sb.model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            sb.model.b = v;
           }
         } else if (elem.parentElement is MultiplicationBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          MultiplicationBox mb = elem.parentElement as MultiplicationBox;
+          if (mb.model.a == elem.model) {
+            mb.model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            mb.model.b = v;
           }
         } else if (elem.parentElement is DivisionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          DivisionBox db = elem.parentElement as DivisionBox;
+          if (db.model.a == elem.model) {
+            db.model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            db.model.b = v;
           }
         }
       }
@@ -415,10 +425,10 @@ class Controller {
       }
       */
       else if (selectedStatement() is AssignVariableBox) {
-        selectedStatement().model.left = v;
+        (selectedStatement() as AssignVariableBox).model.left = v;
       }
       else if (selectedStatement() is ReadInPortBox) {
-        selectedStatement().model.statements.add(new_s);
+        (selectedStatement() as ReadInPortBox).model.statements.add(new_s);
       }
       else {
         if (selectedElement.parentElement is AssignVariableBox) {
@@ -444,7 +454,7 @@ class Controller {
       }
       else if (selectedStatement() is ReadInPortBox) {
 
-        selectedStatement().model.statements.add(new_s);
+        (selectedStatement() as ReadInPortBox).model.statements.add(new_s);
       }
     }
 
@@ -455,36 +465,37 @@ class Controller {
 
       if (selectedStatement() is AssignVariableBox) {
 //        if (selectedStatement() is SetVariable) {
-        selectedStatement().model.right = v;
+        (selectedStatement() as AssignVariableBox).model.right = v;
       }
       else {
-        PolymerElement elem = globalController.selectedElement;
+        BoxBase elem = globalController.selectedElement;
+        //PolymerElement parentElement = elem.parentElement;
         if (elem.parentElement is AssignVariableBox) {
 //          if (elem.parentElement is SetVariable) {
-           elem.parentElement.model.right = v;
+          (elem.parentElement as AssignVariableBox).model.right = v;
         } else if (elem.parentElement is AdditionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          if ((elem.parentElement as AdditionBox).model.a == elem.model) {
+            (elem.parentElement as AdditionBox).model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            (elem.parentElement as AdditionBox).model.b = v;
           }
         } else if (elem.parentElement is SubtractionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          if ((elem.parentElement as SubtractionBox).model.a == elem.model) {
+            (elem.parentElement as SubtractionBox).model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            (elem.parentElement as SubtractionBox).model.b = v;
           }
         } else if (elem.parentElement is MultiplicationBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          if ((elem.parentElement as MultiplicationBox).model.a == elem.model) {
+            (elem.parentElement as MultiplicationBox).model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            (elem.parentElement as MultiplicationBox).model.b = v;
           }
         } else if (elem.parentElement is DivisionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          if ((elem.parentElement as DivisionBox).model.a == elem.model) {
+            (elem.parentElement as DivisionBox).model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            (elem.parentElement as DivisionBox).model.b = v;
           }
         }
       }
@@ -495,35 +506,35 @@ class Controller {
       program.Statement new_s = new program.Statement(v);
 
       if (selectedStatement() is AssignVariableBox) {
-        selectedStatement().model.right = v;
+        (selectedStatement() as AssignVariableBox).model.right = v;
       }
       else {
-        PolymerElement elem = globalController.selectedElement;
+        BoxBase elem = globalController.selectedElement;
         if (elem.parentElement is AssignVariableBox) {
-          elem.parentElement.model.right = v;
+          (elem.parentElement as AssignVariableBox).model.right = v;
         } else if (elem.parentElement is AdditionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          if ((elem.parentElement as AdditionBox).model.a == elem.model) {
+            (elem.parentElement as AdditionBox).model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            (elem.parentElement as AdditionBox).model.b = v;
           }
         } else if (elem.parentElement is SubtractionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          if ((elem.parentElement as SubtractionBox).model.a == elem.model) {
+            (elem.parentElement as SubtractionBox).model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            (elem.parentElement as SubtractionBox).model.b = v;
           }
         } else if (elem.parentElement is MultiplicationBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          if ((elem.parentElement as MultiplicationBox).model.a == elem.model) {
+            (elem.parentElement as MultiplicationBox).model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            (elem.parentElement as MultiplicationBox).model.b = v;
           }
         } else if (elem.parentElement is DivisionBox) {
-          if (elem.parentElement.model.a == elem.model) {
-            elem.parentElement.model.a = v;
+          if ((elem.parentElement as DivisionBox).model.a == elem.model) {
+            (elem.parentElement as DivisionBox).model.a = v;
           } else {
-            elem.parentElement.model.b = v;
+            (elem.parentElement as DivisionBox).model.b = v;
           }
         }
       }
@@ -535,13 +546,13 @@ class Controller {
 
       if (selectedStatement() is AssignVariableBox) {
 //        if (selectedStatement() is SetVariable) {
-         selectedStatement().model.right = v;
+        (selectedStatement() as AssignVariableBox).model.right = v;
       }
       else {
-        PolymerElement elem = globalController.selectedElement;
+        BoxBase elem = globalController.selectedElement;
         if (elem.parentElement is AssignVariableBox) {
 //          if (elem.parentElement is SetVariable) {
-          elem.parentElement.model.right = v;
+          (elem.parentElement as AssignVariableBox).model.right = v;
         }
       }
     }
@@ -551,12 +562,12 @@ class Controller {
       program.Statement new_s = new program.Statement(v);
 
       if (selectedStatement() is AssignVariableBox) {
-        selectedStatement().model.right = v;
+        (selectedStatement() as AssignVariableBox).model.right = v;
       }
       else {
-        PolymerElement elem = globalController.selectedElement;
+        BoxBase elem = globalController.selectedElement;
         if (elem.parentElement is AssignVariableBox) {
-          elem.parentElement.model.right = v;
+          (elem.parentElement as AssignVariableBox).model.right = v;
         }
       }
     }
@@ -566,12 +577,12 @@ class Controller {
       program.Statement new_s = new program.Statement(v);
 
       if (selectedStatement() is AssignVariableBox) {
-        selectedStatement().model.right = v;
+        (selectedStatement() as AssignVariableBox).model.right = v;
       }
       else {
-        PolymerElement elem = globalController.selectedElement;
+        BoxBase elem = globalController.selectedElement;
         if (elem.parentElement is AssignVariableBox) {
-          elem.parentElement.model.right = v;
+          (elem.parentElement as AssignVariableBox).model.right = v;
         }
       }
     }
@@ -581,12 +592,12 @@ class Controller {
       program.Statement new_s = new program.Statement(v);
 
       if (selectedStatement() is AssignVariableBox) {
-        selectedStatement().model.right = v;
+        (selectedStatement() as AssignVariableBox).model.right = v;
       }
       else {
-        PolymerElement elem = globalController.selectedElement;
+        BoxBase elem = globalController.selectedElement;
         if (elem.parentElement is AssignVariableBox) {
-          elem.parentElement.model.right = v;
+          (elem.parentElement as AssignVariableBox).model.right = v;
         }
       }
     }
@@ -606,7 +617,7 @@ class Controller {
         if (selectedStatement() == null) {
           app.statements.add(new_s);
         } else if (selectedStatement() is ReadInPortBox) {
-          selectedStatement().model.statements.add(new_s);
+          (selectedStatement() as ReadInPortBox).model.statements.add(new_s);
         } else {
 
         }
@@ -661,13 +672,13 @@ class Controller {
       if(selectedStatement() == null) {
 
       } else if(selectedElement is IfBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as IfBox).model.condition = v;
       } else if(selectedElement.parentElement is IfBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as IfBox).model.condition = v;
       } else if(selectedElement is WhileBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as WhileBox).model.condition = v;
       } else if(selectedElement.parentElement is WhileBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as WhileBox).model.condition = v;
       }
     }
 
@@ -678,13 +689,13 @@ class Controller {
       if(selectedStatement() == null) {
 
       } else if(selectedElement is IfBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as IfBox).model.condition = v;
       } else if(selectedElement.parentElement is IfBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as IfBox).model.condition = v;
       } else if(selectedElement is WhileBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as WhileBox).model.condition = v;
       } else if(selectedElement.parentElement is WhileBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as WhileBox).model.condition = v;
       }
     }
 
@@ -695,13 +706,13 @@ class Controller {
       if(selectedStatement() == null) {
 
       } else if(selectedElement is IfBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as IfBox).model.condition = v;
       } else if(selectedElement.parentElement is IfBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as IfBox).model.condition = v;
       } else if(selectedElement is WhileBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as WhileBox).model.condition = v;
       } else if(selectedElement.parentElement is WhileBox) {
-        selectedStatement().parentElement.model.condition = v;
+        (( selectedStatement() as BoxBase).parentElement as WhileBox).model.condition = v;
       }
     }
 
@@ -712,13 +723,13 @@ class Controller {
       if(selectedStatement() == null) {
 
       } else if(selectedElement is IfBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as IfBox).model.condition = v;
       } else if(selectedElement.parentElement is IfBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as IfBox).model.condition = v;
       } else if(selectedElement is WhileBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as WhileBox).model.condition = v;
       } else if(selectedElement.parentElement is WhileBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as WhileBox).model.condition = v;
       }
     }
 
@@ -729,13 +740,13 @@ class Controller {
       if(selectedStatement() == null) {
 
       } else if(selectedElement is IfBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as IfBox).model.condition = v;
       } else if(selectedElement.parentElement is IfBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as IfBox).model.condition = v;
       } else if(selectedElement is WhileBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as WhileBox).model.condition = v;
       } else if(selectedElement.parentElement is WhileBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as WhileBox).model.condition = v;
       }
     }
 
@@ -746,13 +757,13 @@ class Controller {
       if(selectedStatement() == null) {
 
       } else if(selectedElement is IfBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as IfBox).model.condition = v;
       } else if(selectedElement.parentElement is IfBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as IfBox).model.condition = v;
       } else if(selectedElement is WhileBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as WhileBox).model.condition = v;
       } else if(selectedElement.parentElement is WhileBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as WhileBox).model.condition = v;
       }
     }
 
@@ -763,13 +774,13 @@ class Controller {
       if(selectedStatement() == null) {
 
       } else if(selectedElement is IfBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as IfBox).model.condition = v;
       } else if(selectedElement.parentElement is IfBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as IfBox).model.condition = v;
       } else if(selectedElement is WhileBox) {
-        selectedStatement().model.condition = v;
+        (selectedStatement() as WhileBox).model.condition = v;
       } else if(selectedElement.parentElement is WhileBox) {
-        selectedStatement().parentElement.model.condition = v;
+        ((selectedStatement() as BoxBase).parentElement as WhileBox).model.condition = v;
       }
     }
 

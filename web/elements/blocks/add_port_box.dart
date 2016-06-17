@@ -1,10 +1,12 @@
-import 'dart:html' as html;
+library add_port_box;
+
+//import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
 import '../../controller/controller.dart';
 import 'box_base.dart';
-import 'package:paper_elements/paper_item.dart';
-import 'package:paper_elements/paper_dropdown_menu.dart';
+//import 'package:paper_elements/paper_item.dart';
+//import 'package:paper_elements/paper_dropdown_menu.dart';
 
 @CustomTag('add-port-box')
 class AddPortBox extends BoxBase {

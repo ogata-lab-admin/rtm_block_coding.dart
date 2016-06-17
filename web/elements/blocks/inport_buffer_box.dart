@@ -1,3 +1,5 @@
+library inport_buffer_box;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
@@ -18,16 +20,16 @@ class InPortBufferBox extends PortBox {
 
   set model(program.InPortBuffer m) {
     _model = m;
-    name = m.name;
+    varname = m.name;
     access = m.accessSequence;
 
-    int counter = 1;
+  //  int counter = 1;
   }
 
   get model => _model;
 
-  @published String name = "name";
-  @published String access = "";
+  @observable String varname = "name";
+  @observable String access = "";
   @observable String indexInputValue = '0';
 
   InPortBufferBox.created() : super.created();
@@ -86,15 +88,15 @@ class InPortBufferBox extends PortBox {
 
   void selectAccess(String accessName) {
     accessName = accessName.trim();
-    name = accessName.trim();
+    varname = accessName.trim();
     if (accessName.endsWith(']')) {
-      name =
-          name.substring(
-              0, name.indexOf('['));
+      varname =
+          varname.substring(
+              0, varname.indexOf('['));
     }
-    print('selectAccess($name) called (_model:${model.name})');
+    print('selectAccess($varname) called (_model:${model.name})');
     print('accessSeq:' + model.accessSequence);
-    var types = program.DataType.access_alternatives(_model.dataType.typename);
+    // var types = program.DataType.access_alternatives(_model.dataType.typename);
     int selected = -1;
     int counter  = 0;
     $['menu-content'].children.forEach((PaperItem p) {
@@ -103,10 +105,10 @@ class InPortBufferBox extends PortBox {
           if (p.innerHtml.startsWith('.')) {
             target_name = p.innerHtml.substring(1).trim();
           }
-      if(name.trim() == target_name) {
+      if(varname.trim() == target_name) {
         selected = counter;
 
-        String accessTypeName = program.DataType.access_alternative_type(_model.dataType.typename, name);
+        String accessTypeName = program.DataType.access_alternative_type(_model.dataType.typename, varname);
         if (program.DataType.isSeqType(accessTypeName)) {
           $['index-left'].style.display = 'block';
           $['index-input'].style.display = 'block';

@@ -1,3 +1,5 @@
+library read_literal_box;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
@@ -15,17 +17,19 @@ class RealLiteralBox extends LiteralBox {
 
   set model(program.RealLiteral m) {
     _model = m;
-    value = m.value;
+    dvalue = m.value;
+    dvaluestr = dvalue.toString();
   }
 
   get model => _model;
 
-  @published double value = 1.0;
+  double dvalue = 1.0;
+  @observable String dvaluestr;
   RealLiteralBox.created() : super.created();
 
   void attached() {
     $['real-literal-input'].onChange.listen((var e) {
-      _model.value = value;
+      _model.value = dvalue;
     });
   }
 

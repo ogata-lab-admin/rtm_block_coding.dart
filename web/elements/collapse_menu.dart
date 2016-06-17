@@ -1,3 +1,5 @@
+library collapse_menu;
+
 import 'package:polymer/polymer.dart';
 import 'dart:html' as html;
 import 'package:core_elements/core_collapse.dart';

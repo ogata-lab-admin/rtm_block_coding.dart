@@ -1,8 +1,9 @@
-import 'dart:html' as html;
+library block_editor;
+//import 'dart:html' as html;
 import 'package:polymer/polymer.dart';
 import 'package:rtm_block_coding/application.dart' as program;
 import '../controller/controller.dart';
-import 'block_parser.dart';
+import 'block_parser_impl.dart';
 
 @CustomTag('block-editor')
 class BlockEditor extends PolymerElement {
@@ -68,7 +69,7 @@ class BlockEditor extends PolymerElement {
   void refresh(program.Application app) {
     container.children.clear();
     app.statements.forEach((s) {
-      BlockParser.parseStatement(container.children, s);
+      new BlockParserImpl().parseStatement(container.children, s);
     });
   }
 

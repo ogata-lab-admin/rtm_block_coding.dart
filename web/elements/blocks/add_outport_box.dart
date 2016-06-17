@@ -1,3 +1,5 @@
+library add_outport_box;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
@@ -18,6 +20,7 @@ class AddOutPortBox extends AddPortBox {
 
 
   void selectType(String name) {
+
     int selected = -1;
     int counter  = 0;
     $['menu-content'].children.forEach(

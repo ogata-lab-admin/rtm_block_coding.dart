@@ -1,3 +1,4 @@
+library state_panel;
 
 import 'package:polymer/polymer.dart';
 import 'dart:html' as html;
@@ -113,7 +114,7 @@ class StatePanel extends PolymerElement {
     int a_offset_x = 560;
     int a_offset_y = 40;
     int a_arc_radius = 40;
-    int a_arc_width = 20;
+    // int a_arc_width = 20;
 
     if (activatedFillColor == null) {
       activatedFillColor = defaultArrowColor;

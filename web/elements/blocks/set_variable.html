@@ -3,7 +3,7 @@
 <link rel="import" href="packages/core_elements/core_style.html" />
 <link rel="import" href="packages/paper_elements/paper_input.html" />
 
-<polymer-element name="set-variable" attributes="command">
+<polymer-element name="set-variable">
     <template >
         <style>
             :host {
@@ -50,7 +50,7 @@
         <!--Japanese ver.-->
         <div id="container">
             <div id="title-area" horizontal layout center on-tap="{{onClicked}}">
-                <paper-input id="variable-name-input" value="{{name}}"></paper-input>
+                <paper-input id="variable-name-input" value="{{varname}}"></paper-input>
                 <div self-center layout end>に</div>
                 <div id="target" horizontal layout center></div>
                 <div self-center layout end>を代入する</div>

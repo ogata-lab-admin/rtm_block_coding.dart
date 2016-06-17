@@ -1,3 +1,5 @@
+library declare_variable_box;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
@@ -18,14 +20,14 @@ class DeclareVariableBox extends VariableBox {
 
   set model(program.DeclareVariable m) {
     _model = m;
-    name = m.name;
-    type = m.dataType.typename;
+    varname = m.name;
+    vartype = m.dataType.typename;
   }
 
   get model => _model;
 
-  @published String name = "defaultName";
-  @published String type = "defaultType";
+  @observable String varname = "defaultName";
+  @observable String vartype = "defaultType";
 
   DeclareVariableBox.created() : super.created();
 
@@ -100,7 +102,7 @@ class DeclareVariableBox extends VariableBox {
   void attached() {
     $['name-input'].onChange.listen((var e) {
       // When name changed.
-      onNameChange(name);
+      onNameChange(varname);
     });
 
     var types = program.DataType.PrimitiveTypes;

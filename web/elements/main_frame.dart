@@ -1,13 +1,14 @@
+library main_frame;
 import 'dart:html' as html;
 import 'package:http/browser_client.dart' as browser_client;
-import 'package:core_elements/core_menu.dart';
-import 'package:core_elements/core_drawer_panel.dart';
-import 'package:core_elements/core_collapse.dart';
+//import 'package:core_elements/core_menu.dart';
+//import 'package:core_elements/core_drawer_panel.dart';
+//import 'package:core_elements/core_collapse.dart';
 import 'package:polymer/polymer.dart';
-import 'package:paper_elements/paper_button.dart' as paper_button;
+//import 'package:paper_elements/paper_button.dart' as paper_button;
 import 'collapse_menu.dart';
-import 'add_element_button.dart';
-import 'dart:async';
+//import 'add_element_button.dart';
+//import 'dart:async';
 import '../controller/controller.dart';
 import 'package:xml/xml.dart' as xml;
 
@@ -95,7 +96,7 @@ class MainFrame extends PolymerElement {
 
 
   void onLaunch(var e) {
-    var client = new browser_client.BrowserClient();
+    //var client = new browser_client.BrowserClient();
     wasanbon.WasanbonRPC rpc = new wasanbon.WasanbonRPC(
         url: Uri.base.queryParameters['wasanbon'] == null ? 'http://${Uri.base.host}:${Uri.base.port}/RPC' : 'http://${Uri.base.queryParameters['wasanbon']}/RPC',
         client: new browser_client.BrowserClient());
@@ -135,7 +136,7 @@ class MainFrame extends PolymerElement {
   void onExport(var e) {
     var xml = globalController.buildXML();
     var text = xml.toXmlString(pretty: true);
-    print(text);
+   // print(text);
 
     html.AnchorElement tl = new html.Element.tag('a');
     tl..attributes['href'] = 'data:text/plain;charset=utf-8,' + Uri.encodeComponent(text)
@@ -168,7 +169,7 @@ class MainFrame extends PolymerElement {
   /// ファイルインプットダイアログ変更時のハンドラ
   void onFileInput(var e) {
     html.InputElement ie = $['file_input'];
-    print(ie.value);
+   // print (ie.value);
     html.File file = ie.files[0];
     html.FileReader reader = new html.FileReader();
     reader.readAsText(file);

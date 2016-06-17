@@ -1,9 +1,11 @@
+library larger_than_box;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
-import '../block_editor.dart';
+//import '../block_editor.dart';
 import '../block_parser.dart';
-import '../../controller/controller.dart';
+//import '../../controller/controller.dart';
 import 'conditions_box.dart';
 
 @CustomTag('larger-than-box')

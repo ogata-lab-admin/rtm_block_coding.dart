@@ -1,9 +1,11 @@
+library multiplication_box;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
-import '../../controller/controller.dart';
+//import '../../controller/controller.dart';
 import 'calculation_box.dart';
-import '../block_editor.dart';
+//import '../block_editor.dart';
 import '../block_parser.dart';
 
 @CustomTag('multiplication-box')

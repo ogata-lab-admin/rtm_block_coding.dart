@@ -2,7 +2,7 @@
 <link rel="import" href="packages/paper_elements/paper_input.html" />
 <link rel="import" href="packages/paper_elements/paper_fab.html" />
 
-<polymer-element name="integer-literal-box" attributes="value">
+<polymer-element name="integer-literal-box">
     <template>
 
         <style type='text/css'>
@@ -40,7 +40,7 @@
         <!--Japanese ver.-->
         <div id="target" horizontal layout center on-tap="{{onClicked}}">
             <div>整数:</div>
-            <paper-input id="int-literal-input" value="{{value}}"></paper-input>
+            <paper-input id="int-literal-input" value="{{intvarstr}}"></paper-input>
         </div>
 
     </template>

@@ -1,3 +1,5 @@
+library write_outport_box;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
@@ -25,8 +27,8 @@ class WriteOutPortBox extends PolymerElement {
 
   get model => _model;
 
-  @published String port_name = "name";
-  @published String port_type = "type";
+  @observable String port_name = "name";
+  @observable String port_type = "type";
 
   WriteOutPortBox.created() : super.created();
 

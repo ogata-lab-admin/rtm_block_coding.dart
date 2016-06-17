@@ -1,3 +1,5 @@
+library integer_literal_box;
+
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
@@ -15,17 +17,20 @@ class IntegerLiteralBox extends LiteralBox {
 
   set model(program.IntegerLiteral m) {
     _model = m;
-    value = m.value;
+    intvalue = m.value;
+    intvarstr = intvalue.toString();
   }
 
   get model => _model;
 
-  @published int value = 1;
+  int intvalue = 1;
+  @observable String intvarstr;
+
   IntegerLiteralBox.created() : super.created();
 
   void attached() {
     $['int-literal-input'].onChange.listen((var e) {
-      _model.value = value;
+      _model.value = intvalue;
     });
   }
 

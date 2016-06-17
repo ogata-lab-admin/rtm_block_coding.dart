@@ -1,4 +1,5 @@
-import 'dart:html' as html;
+library python_panel;
+// import 'dart:html' as html;
 
 import 'package:polymer/polymer.dart';
 import '../controller/controller.dart';
@@ -74,10 +75,10 @@ class PythonPanel extends PolymerElement {
     String pattern = text;
     // モードごとの背景ハイライトの設定
 
-    RegExp reg = new RegExp(r'<div id="on-' + mode + '-block">', multiLine : true);
-    print(reg);
+    RegExp reg = new RegExp('<div id="on-' + mode + '-block">', multiLine : true);
+    /// print(reg);
 
-    return pattern.replaceAll(reg, '<div id=on-"' + mode + '-block" class="highlight">');
+    return pattern.replaceAll(reg, '<div id="on-' + mode + '-block" class="highlight">');
   }
 
 
