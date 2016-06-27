@@ -1,0 +1,603 @@
+<link rel="import" href="packages/polymer_elements/paper_drawer_panel.html" />
+<link rel="import" href="left_menu/left_menu.html" />
+<link rel="import" href="right_menu/right_menu.html" />
+<link rel="import" href="main_menu/main_menu.html" />
+<!--
+<link rel="import" href="packages/core_elements/core_scaffold.html" />
+<link rel="import" href="packages/core_elements/core_menu.html" />
+<link rel="import" href="packages/core_elements/core_icon_button.html" />
+<link rel="import" href="packages/core_elements/core_menu_button.html" />
+<link rel="import" href="packages/core_elements/core_toolbar.html" />
+<link rel="import" href="packages/core_elements/core_item.html" />
+<link rel="import" href="packages/paper_elements/paper_button.html" />
+<link rel="import" href="packages/core_elements/core_header_panel.html" />
+
+
+<link rel="import" href="blocks/add_inport_box.html" />
+<link rel="import" href="blocks/add_outport_box.html" />
+<link rel="import" href="blocks/declare_variable_box.html" />
+<link rel="import" href="blocks/set_variable.html" />
+<link rel="import" href="blocks/read_inport_box.html" />
+<link rel="import" href="blocks/write_outport_box.html" />
+<link rel="import" href="blocks/inport_buffer_box.html" />
+<link rel="import" href="blocks/outport_buffer_box.html" />
+<link rel="import" href="blocks/integer_literal_box.html" />
+<link rel="import" href="blocks/real_literal_box.html" />
+<link rel="import" href="blocks/addition_box.html" />
+<link rel="import" href="blocks/subtraction_box.html" />
+<link rel="import" href="blocks/multiplication_box.html" />
+<link rel="import" href="blocks/division_box.html" />
+<link rel="import" href="blocks/if_box.html" />
+<link rel="import" href="blocks/else_box.html" />
+<link rel="import" href="blocks/while_box.html" />
+<link rel="import" href="blocks/assign_variable_box.html" />
+<link rel="import" href="blocks/refer_variable_box.html" />
+<link rel="import" href="blocks/equals_box.html" />
+<link rel="import" href="blocks/notequals_box.html" />
+<link rel="import" href="blocks/larger_than_box.html" />
+<link rel="import" href="blocks/larger_than_or_equals_box.html" />
+<link rel="import" href="blocks/smaller_than_box.html" />
+<link rel="import" href="blocks/smaller_than_or_equals_box.html" />
+<link rel="import" href="blocks/logical_not_box.html" />
+
+
+
+<link rel="import" href="collapse_menu.html"/>
+<link rel="import" href="add_element_button.html" />
+<link rel="import" href="state_panel.html" />
+<link rel="import" href="editor_panel.html" />
+<link rel="import" href="result_panel.html" />
+<link rel="import" href="python_panel.html" />
+
+-->
+
+<dom-module id="main-frame">
+    <template >
+        <link rel="stylesheet" href="material_styles.css" />
+
+        <style type='text/css'>
+
+            :host {
+            }
+
+            /*
+                        :root {
+                --dark-primary-color:       #5D4037;
+                --default-primary-color:    #795548;
+                --light-primary-color:      #D7CCC8;
+                --text-primary-color:       #FFFFFF;
+                --accent-color:             #FFEB3B;
+                --primary-background-color: #D7CCC8;
+                --primary-text-color:       #212121;
+                --secondary-text-color:     #727272;
+                --disabled-text-color:      #BDBDBD;
+                --divider-color:            #B6B6B6;
+
+
+
+                --drawer-menu-color:           #ffffff;
+                --drawer-border-color:         1px solid #ccc;
+                --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+
+                --paper-menu-background-color: #fff;
+                --menu-link-color:             #111111;
+
+                --paper-input-container-color:       rgba(255, 255, 255, 0.64);
+                --paper-input-container-focus-color: rgba(255, 255, 255, 1);
+                --paper-input-container-input-color: #fff;
+            }
+            */
+
+            #left-collapse-menu {
+                border-right-style: solid;
+                border-width: 1px;
+                border-color: #B6B6B6;
+            }
+
+            #right-collapse-menu {
+                border-left-style: solid;
+                border-width: 1px;
+                border-color: #B6B6B6;
+                background-color: #FFFFFF;
+            }
+
+            #main-panel {
+                /*font-weight: 900;*/
+            }
+
+            .default-primary-color > collapse-menu {
+            }
+
+            #rtm1 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #F8BBD0;
+                /*background-color: #EDD8F2;*/
+            }
+            #rtm2 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #F8BBD0;
+            }
+
+            #var0 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #DCEDC8;
+                /*background-color: #ABD299;*/
+            }
+            #var1 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #DCEDC8;
+            }
+            #var2 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #DCEDC8;
+            }
+
+            #data1 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #FFE0B2;
+                /*background-color: #EDC08F;*/
+            }
+            #data2 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #FFE0B2;
+            }
+            #data3 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #FFE0B2;
+            }
+            #data4 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #FFE0B2;
+            }
+
+            #calc1 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2EBF2;
+                /*background-color: #BDE1F0;*/
+            }
+            #calc2 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2EBF2;
+            }
+            #calc3 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2EBF2;
+            }
+            #calc4 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2EBF2;
+            }
+            #calc5 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2EBF2;
+            }
+            #calc6 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2EBF2;
+            }
+
+
+            #loop1 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #D7CCC8;
+                /*background-color: #EDDE8F;*/
+            }
+            #loop2 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #D7CCC8;
+            }
+            #loop3 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #D7CCC8;
+            }
+
+            #cond1 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2DFDB;
+            }
+            #cond2 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2DFDB;
+            }
+            #cond3 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2DFDB;
+            }
+            #cond4 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2DFDB;
+            }
+            #cond5 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2DFDB;
+            }
+            #cond6 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2DFDB;
+            }
+            #cond7 {
+                margin: 2px;
+                color: #212121;
+                font-size: 12px;
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                background-color: #B2DFDB;
+            }
+
+/*           core-icon-button::shadow core-icon {
+                background: #A1CF6B;
+            }*/
+
+            /*
+            #send_button {
+                width: 110px;
+                background-color: rgba(255, 255, 255, .2);
+                border-radius: 2px;
+                color: #fff;
+                box-shadow: 0 3px 3px rgba(0, 0, 0, .2), inset 0 1px 1px rgba(255, 255, 255, .7);
+                text-shadow: 0px 1px 0px rgba(0, 0, 0, .4);
+            }
+            #send_button:hover {
+                background-color: rgba(255, 255, 255, .3);
+            }
+*/
+/*            .icon-button {
+                margin-right: 3px;
+                margin-left: 3px;
+            }*/
+
+            #launch_button {
+/*                margin-top: 1px;
+                margin-bottom: 4px;*/
+                margin-left: 1px;
+                margin-right: 1px;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                position: relative;
+/*                background-color: #c43157;
+                border-color: #a42949;*/
+                border-radius: 2px;
+                /*line-height: 24px;*/
+                /*height: 90%;*/
+                width: 100px;
+                -webkit-transition: none;
+                transition: none;
+
+                text-align: center;
+/*                box-shadow: 0 3px 0 #a42949;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, .3);*/
+            }
+            #launch_button:hover {
+                background-color: #d04468;
+                box-shadow: 0 3px 0 #a42949;
+            }
+
+            #save_button {
+                margin-left: 1px;
+                margin-right: 1px;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                position: relative;
+/*                background-color: #c43157;
+                border-color: #a42949;*/
+                border-radius: 2px;
+                width: 100px;
+                -webkit-transition: none;
+                transition: none;
+
+                text-align: center;
+/*                box-shadow: 0 3px 0 #a42949;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, .3);*/
+            }
+            #save_button:hover {
+                background-color: #d04468;
+                box-shadow: 0 3px 0 #a42949;
+            }
+
+            #import_button {
+                margin-left: 1px;
+                margin-right: 1px;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                position: relative;
+/*                background-color: #c43157;
+                border-color: #a42949;*/
+                border-radius: 2px;
+                width: 100px;
+                -webkit-transition: none;
+                transition: none;
+
+                text-align: center;
+/*                box-shadow: 0 3px 0 #a42949;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, .3);*/
+            }
+            #import_button:hover {
+                background-color: #d04468;
+                box-shadow: 0 3px 0 #a42949;
+            }
+
+            #export_button {
+                margin-left: 1px;
+                margin-right: 1px;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                position: relative;
+                /*                background-color: #c43157;
+                                border-color: #a42949;*/
+                border-radius: 2px;
+                width: 100px;
+                -webkit-transition: none;
+                transition: none;
+
+                text-align: center;
+                /*                box-shadow: 0 3px 0 #a42949;
+                                text-shadow: 0 1px 1px rgba(0, 0, 0, .3);*/
+            }
+            #export_button:hover {
+                background-color: #d04468;
+                box-shadow: 0 3px 0 #a42949;
+            }
+
+            #help_button {
+                margin-left: 1px;
+                margin-right: 1px;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                position: relative;
+/*                background-color: #c43157;
+                border-color: #a42949;*/
+                border-radius: 2px;
+                width: 100px;
+                -webkit-transition: none;
+                transition: none;
+
+                text-align: center;
+/*                box-shadow: 0 3px 0 #a42949;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, .3);*/
+            }
+            #help_button:hover {
+                background-color: #d04468;
+                box-shadow: 0 3px 0 #a42949;
+            }
+
+/*            #rtm_menu{
+                height: 50px;
+            }
+            #variables_menu{
+                height: 50px;
+            }
+            #port_data_menu{
+                height: 50px;
+            }
+            #calculate_menu{
+                height: 50px;
+            }
+            #if_switch_loop_menu{
+                height: 50px;
+            }
+            #condition_menu{
+                height: 50px;
+            }*/
+
+/*            core-toolbar#coreToolbar.default-primary-color.toolbar{
+                height: 50px;
+            }*/
+
+        </style>
+
+        <paper-drawer-panel responsiveWidth="700px">
+
+            <!--LEFT Japanese ver.-->
+            <div drawer id="left-collapse-menu" class="vertical layout">
+                <left-menu></left-menu>
+            </div>
+
+
+            <!--LEFT English ver.-->
+<!--
+            <core-header-panel id="left-collapse-menu" drawer layout vertical>
+                <core-toolbar class="dark-primary-color text-primary-color"></core-toolbar>
+
+                <collapse-menu id="rtm_menu" label="RT-middleware" state="closed">
+                    <add-element-button id="rtm1" label="Add InPort" command="add_inport"></add-element-button>
+                    <add-element-button id="rtm2" label="Add OutPort" command="add_outport"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="variables_menu" label="Variables" state="closed">
+                    <add-element-button id="var1" label="SetVariable" command="set_variable"></add-element-button>
+                    <add-element-button id="var2" label="GetVariable" command="get_variable"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="port_data_menu" label="Port / Data" state="closed">
+                    <add-element-button id="data1" label="Read InPort" command="read_inport"></add-element-button>
+                    <add-element-button id="data2" label="InPort Data Access" command="inport_data"></add-element-button>
+                    <add-element-button id="data3" label="Write OutPort" command="write_outport"></add-element-button>
+                    <add-element-button id="data4" label="Set OutPort Data" command="set_outport_data"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="calculate_menu" label="Calculate" state="closed">
+                    <add-element-button id="integer_input" label="Integer Input" command="int_input"></add-element-button>
+                    <add-element-button id="addition" label="Addition" command="addition"></add-element-button>
+                    <add-element-button id="subtraction" label="Subtraction" command="subtraction"></add-element-button>
+                    <add-element-button id="multiplication" label="Multiplication" command="multiplication"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="if_switch_loop_menu" label="If/Switch/Loop" state="closed">
+                    <add-element-button id="loop1" label="If" command="if"></add-element-button>
+                    <add-element-button id="loop2" label="While" command="while"></add-element-button>
+                </collapse-menu>
+
+                <div flex>Copyright: Yuki Suga, Yumi Nishimura, Tetsuya Ogata @Ogata Lab. Waseda Univ.</div>
+
+            </core-header-panel>
+-->
+            <!--MAIN-->
+            <div main>
+                <paper-drawer-panel id="inner-panel" right-drawer drawerWidth="500px" responsiveWidth="1200px">
+                    <div main id="main-menu-div">
+                        <main-menu class="fit"></main-menu>
+                    </div>
+
+                    <div drawer>
+                        <right-menu></right-menu>
+
+                    </div>
+                </paper-drawer-panel>
+            </div>
+        <!--
+            <core-header-panel main >
+                <core-drawer-panel rightDrawer drawerWidth="500px" responsiveWidth="1200px">
+
+                    <core-header-panel id="main-panel" main layout vertical on-tap="{{onMainPanelTap}}">
+                        <core-toolbar class="text-primary-color dark-primary-color">
+                            <div flex>RTM Spring Box</div>
+                        </core-toolbar>
+                        <state-panel></state-panel>
+                        <editor-panel id="code-editor-panel" flex></editor-panel >
+                    </core-header-panel>
+
+                    <core-header-panel id="right-collapse-menu" drawer layout vertical relative>
+                        <core-toolbar  class="text-primary-color dark-primary-color" >
+                            <core-icon-button class="icon-button" icon="send" id="launch_button" on-tap="{{onLaunch}}"> Launch </core-icon-button>
+                            <core-icon-button class="icon-button" icon="save" id="save_button" on-tap="{{onSave}}"> Save </core-icon-button>
+                            <core-icon-button class="icon-button" icon="file-download" id="export_button" on-tap="{{onExport}}"> Export </core-icon-button>
+                            <!--<core-icon-button icon="folder-open" id="load_button"> Load</core-icon-button>-->
+
+            <!--
+                            <core-icon-button class="icon-button" icon="file-upload" id="import_button" on-tap="{{onImport}}"> Import </core-icon-button>
+
+                            <input type="file" accept="*.xml" id="file_input" style="display:none;" on-change="{{onFileInput}}" />
+                            <core-icon-button class="icon-button" icon="help" id="help_button"> Help </core-icon-button>
+                        </core-toolbar>
+                        <result-panel></result-panel>
+                        <python-panel flex></python-panel>
+                    </core-header-panel>
+                </core-drawer-panel>
+            </core-header-panel>
+-->
+        </paper-drawer-panel>
+
+    </template>
+    <script type="application/dart" src="main_frame.dart"></script>
+</dom-module>

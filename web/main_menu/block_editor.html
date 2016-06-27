@@ -1,0 +1,70 @@
+
+<link rel="import" href="packages/polymer/polymer.html" />
+
+<link rel="import" href="boxes/add_inport_box.html" />
+<link rel="import" href="boxes/add_outport_box.html" />
+<!--
+<link rel="import" href="../elements/blocks/declare_variable_box.html" />
+<link rel="import" href="../elements/blocks/set_variable.html" />
+<link rel="import" href="../elements/blocks/read_inport_box.html" />
+<link rel="import" href="../elements/blocks/write_outport_box.html" />
+<link rel="import" href="../elements/blocks/inport_buffer_box.html" />
+<link rel="import" href="../elements/blocks/outport_buffer_box.html" />
+<link rel="import" href="../elements/blocks/integer_literal_box.html" />
+<link rel="import" href="../elements/blocks/real_literal_box.html" />
+<link rel="import" href="../elements/blocks/addition_box.html" />
+<link rel="import" href="../elements/blocks/subtraction_box.html" />
+<link rel="import" href="../elements/blocks/multiplication_box.html" />
+<link rel="import" href="../elements/blocks/division_box.html" />
+<link rel="import" href="../elements/blocks/if_box.html" />
+<link rel="import" href="../elements/blocks/else_box.html" />
+<link rel="import" href="../elements/blocks/while_box.html" />
+<link rel="import" href="../elements/blocks/assign_variable_box.html" />
+<link rel="import" href="../elements/blocks/refer_variable_box.html" />
+<link rel="import" href="../elements/blocks/equals_box.html" />
+<link rel="import" href="../elements/blocks/notequals_box.html" />
+<link rel="import" href="../elements/blocks/larger_than_box.html" />
+<link rel="import" href="../elements/blocks/larger_than_or_equals_box.html" />
+<link rel="import" href="../elements/blocks/smaller_than_box.html" />
+<link rel="import" href="../elements/blocks/smaller_than_or_equals_box.html" />
+<link rel="import" href="../elements/blocks/logical_not_box.html" />
+-->
+
+<dom-module id="block-editor" attributes="command">
+    <template >
+
+        <!-- Offset Positions of buttons are defined in block_editor.dart -->
+        <style type='text/css'>
+
+            #up {
+                position: absolute;
+                display: none;
+                color: #727272;
+                background-color: #A1CF6B;
+                /*background-color: #FFFF00;*/
+            }
+
+            #down {
+                position: absolute;
+                display: none;
+                color: #727272;
+                background-color: #A1CF6B;
+                /*background-color: #0083F3;*/
+            }
+
+            #delete {
+                position: absolute;
+                display: none;
+                color: #727272;
+                background-color: #A1CF6B;
+                /*background-color: #FF5722;*/
+            }
+
+        </style>
+
+        <div id="block-container" class="flex layout vertical" on-tap="onClicked">
+        </div>
+
+    </template>
+    <script type="application/dart" src="block_editor.dart"></script>
+</dom-module>

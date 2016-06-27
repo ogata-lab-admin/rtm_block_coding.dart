@@ -1,0 +1,19 @@
+<link rel="import" href="packages/polymer_elements/paper_button.html" />
+<link rel="import" href="packages/polymer_elements/iron_icons.html" />
+
+<dom-module id="add-element-button" attributes="label command">
+    <template >
+        <style type='text/css'>
+
+        </style>
+
+        <div class="layout horizontal">
+            <paper-button id="main-button" on-tap="onTap" class="flex layout">
+                <iron-icon id="addIcon" icon="add" self-start></iron-icon>
+                <div class="flex self-center horizontal center-justified layout" >{{label}}</div>
+            </paper-button>
+        </div>
+
+    </template>
+    <script type="application/dart" src="add_element_button.dart"></script>
+</dom-module>

@@ -1,0 +1,101 @@
+
+<link rel="import" href="packages/polymer/polymer.html" />
+<link rel="import" href="packages/polymer_elements/iron_pages.html" />
+<link rel="import" href="packages/polymer_elements/paper_styles.html" />
+<link rel="import" href="packages/polymer_elements/paper_tabs.html"/>
+<link rel="import" href="packages/polymer_elements/paper_tab.html"/>
+<link rel="import" href="packages/polymer_elements/paper_icon_button.html" />
+<link rel="import" href="block_editor.html" />
+<link rel="import" href="../material_style.html" />
+
+<dom-module id="editor-panel">
+    <template >
+        <style type='text/css'>
+
+            :host {
+                /*background-color: #868686;*/
+            }
+
+
+            .state-tab {
+                background-color: var(--light-primary-color);
+                color: var(--primary-text-color);
+                --paper-tab-ink: var(--accent-color);
+            }
+
+            .state-tab:hover {
+                background-color: var(--default-primary-color);
+                color: var(--text-primary-color);
+            }
+
+            :host paper-tab.iron-selected {
+                background-color: var(--dark-primary-color);
+                color: var(--text-primary-color);
+            }
+
+
+            paper-tabs.tabs::shadow #selectionBar {
+                height: 2px;
+            }
+
+
+
+            :host paper-tab:hover{
+            }
+
+
+            :host paper-tab.core-selected:hover {
+            }
+
+            :host > #editor-toolbar {
+                background-color: #E6E6E6;
+                height: 30px;
+            }
+
+            :host > #editor-toolbar > .editor-toolbar-button {
+                background-color: #cacaca;
+                height: 25px;
+                width: 27px;
+                padding-top: 2px;
+                padding-left: 3px;
+                padding-right: 1px;
+                padding-bottom: 0;
+                margin-top: 1px;
+                margin-right: 7px;
+                margin-bottom: 2px;
+
+                /*border: 1px solid #323232;*/
+                border-radius: 5px;
+            }
+
+            :host > #editor-toolbar > #up-button {
+                margin-left: 10px;
+            }
+
+            :host > #editor-toolbar > .editor-toolbar-button:hover {
+                /* background-color: #89c344; */
+            }
+
+
+        </style>
+        <!--<paper-tabs class="tabs dark-primary-color text-primary-color" selected="{{selected}}">-->
+        <paper-tabs id="menu-tabs" class="tabs editor-panel-color" selected="{{selectedLabel}}">
+            <paper-tab id="on_initialize_tab" class="state-tab" on-tap="onSelectInitialize" >onInitialize</paper-tab>
+            <paper-tab id="on_activated_tab" class="state-tab" on-tap="onSelectActivated">onActivated</paper-tab>
+            <paper-tab id="on_execute_tab" class="state-tab" on-tap="onSelectExecute">onExecute</paper-tab>
+            <paper-tab id="on_deactivated_tab" class="state-tab" on-tap="onSelectDeactivated">onDeactivated</paper-tab>
+        </paper-tabs>
+        <div id="editor-toolbar">
+            <paper-icon-button id="up-button" class="editor-toolbar-button" icon="arrow-drop-up" on-tap="onUp" ></paper-icon-button>
+            <paper-icon-button id="down-button" class="editor-toolbar-button" icon="arrow-drop-down" on-tap="onDown"></paper-icon-button>
+            <paper-icon-button id="remove-button" class="editor-toolbar-button" icon="remove" on-tap="onRemove" ></paper-icon-button>
+        </div>
+        <iron-pages selected="{{selectedLabel}}" class="flex horizontal layout">
+            <block-editor command="onInitialize"   id="on_initialize_editor" class="flex vertical layout"></block-editor>
+            <block-editor command="onActivated"    id="on_activated_editor" class="flex vertical layout"></block-editor>
+            <block-editor command="onExecute"      id="on_execute_editor" class="flex vertical layout"></block-editor>
+            <block-editor command="onDeactivated"  id="on_deactivated_editor" class="flex vertical layout"></block-editor>
+        </iron-pages>
+    </template>
+    <script type="application/dart" src="editor_panel.dart"></script>
+</dom-module>

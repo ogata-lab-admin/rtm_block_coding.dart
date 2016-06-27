@@ -9,7 +9,14 @@
       <excludeFolder url="file://$MODULE_DIR$/web/controller/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/elements/blocks/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/elements/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/left_menu/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/main_menu/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/right_menu/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/scripts/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/scripts/rpc/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/scripts/src/packages" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

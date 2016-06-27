@@ -5,7 +5,7 @@ import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
 // import '../../controller/controller.dart';
 import 'calculation_box.dart';
-import '../block_parser.dart';
+import '../../main_menu/block_parser.dart';
 
 @CustomTag('addition-box')
 class AdditionBox extends CalculationBox {

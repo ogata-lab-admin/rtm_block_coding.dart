@@ -1,0 +1,76 @@
+
+<link rel="import" href="packages/polymer_elements/paper_toolbar.html" />
+
+
+<link rel="import" href="collapse_menu.html"/>
+<link rel="import" href="add_element_button.html" />
+
+<link rel="import" href="../material_style.html">
+<dom-module id="left-menu">
+  <template>
+      <style>
+          #left-toolbar {
+              --paper-toolbar-background: var(--dark-primary-color);
+
+          }
+
+      </style>
+      <paper-toolbar id="left-toolbar" class=""></paper-toolbar>
+      <collapse-menu id="rtm_menu" class="default-primary-color" label="RTミドルウェア" state="closed">
+          <add-element-button id="rtm1" label="入力ポート追加" command="add_inport"></add-element-button>
+          <add-element-button id="rtm2" label="出力ポート追加" command="add_outport"></add-element-button>
+      </collapse-menu>
+
+      <!--
+                <core-toolbar class="dark-primary-color text-primary-color"></core-toolbar>
+
+                <collapse-menu id="rtm_menu" label="RTミドルウェア" state="closed">
+                    <add-element-button id="rtm1" label="入力ポート追加" command="add_inport"></add-element-button>
+                    <add-element-button id="rtm2" label="出力ポート追加" command="add_outport"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="variables_menu" label="変数" state="closed">
+                    <add-element-button id="var0" label="値の宣言" command="declare_variable"></add-element-button>
+                    <add-element-button id="var1" label="値の代入" command="assign_variable"></add-element-button>
+                    <add-element-button id="var2" label="値の参照" command="refer_variable"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="port_data_menu" label="ポート / データ" state="closed">
+                    <add-element-button id="data1" label="入力ポートから読み込み" command="read_inport"></add-element-button>
+                    <add-element-button id="data2" label="入力ポートのデータにアクセス" command="inport_data"></add-element-button>
+                    <add-element-button id="data3" label="出力ポートのデータにアクセス" command="outport_data"></add-element-button>
+                    <add-element-button id="data4" label="出力ポートに書き込み" command="write_outport"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="calculate_menu" label="計算" state="closed">
+                    <add-element-button id="calc1" label="整数の追加" command="int_literal"></add-element-button>
+                    <add-element-button id="calc2" label="小数の追加" command="real_literal"></add-element-button>
+                    <add-element-button id="calc3" label="足し算" command="addition"></add-element-button>
+                    <add-element-button id="calc4" label="引き算" command="subtraction"></add-element-button>
+                    <add-element-button id="calc5" label="掛け算" command="multiplication"></add-element-button>
+                    <add-element-button id="calc6" label="割り算" command="division"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="if_switch_loop_menu" label="くりかえし処理" state="closed">
+                    <add-element-button id="loop1" label="もし---なら" command="if"></add-element-button>
+                    <add-element-button id="loop2" label="そうでないなら" command="else"></add-element-button>
+                    <add-element-button id="loop3" label="---の間、ずっと" command="while"></add-element-button>
+                </collapse-menu>
+
+                <collapse-menu id="condition_menu" label="条件演算" state="closed">
+                    <add-element-button id="cond1" label="等しい" command="equals"></add-element-button>
+                    <add-element-button id="cond2" label="等しくない" command="not_equals"></add-element-button>
+                    <add-element-button id="cond3" label="より大きい" command="larger"></add-element-button>
+                    <add-element-button id="cond4" label="以上" command="larger_equals"></add-element-button>
+                    <add-element-button id="cond5" label="より小さい" command="smaller"></add-element-button>
+                    <add-element-button id="cond6" label="以下" command="smaller_equals"></add-element-button>
+                    <add-element-button id="cond7" label="ではない" command="logical_not"></add-element-button>
+                </collapse-menu>
+
+                <div flex>Copyright: Yuki Suga, Yumi Nishimura, Tetsuya Ogata @Ogata Lab. Waseda Univ.</div>
+
+-->
+  </template>
+    <script type="application/dart" src="left_menu.dart">
+    </script>
+</dom-module>

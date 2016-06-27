@@ -1,13 +1,13 @@
-name: rtm_block_coding
-version: 0.0.1
+name: rtcboxcoding
+version: 0.2.0
 description: Block Coder for RTM
 environment:
   sdk: '>=1.8.2 <2.0.0'
 dependencies:
   browser: any
-  polymer: '>=0.15.0 <1.0.0'
-  paper_elements: any
-  core_elements: any
+  polymer: '>=1.0.0-rc.2'
+  polymer_elements: any
+  reflectable: ^0.3.0
   http: any
   xml_rpc: any
   xml : any
@@ -18,17 +18,26 @@ dependencies:
     git : git://github.com/sugarsweetrobotics/rtcprofile.dart
   shape:
     git : git://github.com/sugarsweetrobotics/shape.dart
+  wasanbon_elements:
+    git : git://github.com/sugarsweetrobotics/wasanbon_elements.dart
 dev_dependencies:
   unittest: any
 transformers:
-
 #- web_components:
 #    entry_points:
 #    - web/index.html
-- polymer:
+#- polymer:
+#    entry_points:
+#    - web/index.html
+#- $dart2js:
+#    #$include: 'web/index.html_bootstrap.dart'
+#$include: 'web/index.html.polymer.bootstrap.dart'
+#    #$include: '**/*.bootstrap.initialize.dart'
+- web_components:
     entry_points:
     - web/index.html
+- reflectable:
+    entry_points:
+    - web/index.dart
 - $dart2js:
-    #$include: 'web/index.html_bootstrap.dart'
-    $include: 'web/index.html.polymer.bootstrap.dart'
-    #$include: '**/*.bootstrap.initialize.dart'
+    $include: '**/*.bootstrap.initialize.dart'

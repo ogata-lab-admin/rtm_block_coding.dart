@@ -1,0 +1,26 @@
+<link rel="import" href="packages/polymer/polymer.html" />
+<dom-module id="state-panel">
+    <template >
+        <style type='text/css'>
+            #panel {
+                height: 250px;
+                background-color: #ffffff;
+            }
+
+            :host #panel {
+                overflow : scroll;
+            }
+        </style>
+
+        <div id="panel">
+            <div id="interface-content">
+                <canvas id="interface-canvas"></canvas>
+            </div>
+            <div id="state-machine-content">
+                <canvas id="state-machine-canvas"></canvas>
+            </div>
+        </div>
+
+    </template>
+    <script type="application/dart" src="state_panel.dart"></script>
+</dom-module>

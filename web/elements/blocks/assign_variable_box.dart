@@ -5,7 +5,7 @@ import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
 import 'package:paper_elements/paper_item.dart';
 /// import '../block_editor.dart';
-import '../block_parser.dart';
+import '../../main_menu/block_parser.dart';
 import '../../controller/controller.dart';
 import 'variable_box.dart';
 

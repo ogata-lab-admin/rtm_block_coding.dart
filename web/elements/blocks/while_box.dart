@@ -3,7 +3,7 @@ library while_box;
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
-import '../block_parser.dart';
+import '../../main_menu/block_parser.dart';
 import 'conditions_box.dart';
 
 @CustomTag('while-box')

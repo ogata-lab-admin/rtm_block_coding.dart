@@ -1,0 +1,35 @@
+<link rel="import" href="packages/polymer_elements/iron_icons.html" />
+<link rel="import" href="packages/polymer_elements/iron_collapse.html" />
+<link rel="import" href="packages/polymer_elements/paper_menu.html" />
+<link rel="import" href="packages/polymer_elements/paper_toolbar.html" />
+
+<dom-module id="collapse-menu" attributes="state label toolbarOpenColor toolbarCloseColor toolbarOpenTextColor toolbarCloseTextColor toolbarDisabledColor toolbarDisabledTextColor">
+    <template >
+        <style type='text/css'>
+            #coreMenu {
+                padding: 0px;
+                margin-top: 1px;
+                margin-bottom: 1px;
+                margin-left: 3px;
+                margin-right: 3px;
+            }
+        </style>
+
+        <div layout vertical>
+            <paper-toolbar id="coreToolbar" class="default-primary-color toolbar" on-tap="toggleCollapse">
+                <!-- RTM, Variables, Port/Data, Calculate, ... -->
+                <span flex>{{label}}</span>
+                <iron-icon id="navIcon" icon="{{state == 'opened' ? 'expand-less' : 'expand-more'}}"></iron-icon>
+            </paper-toolbar>
+
+            <iron-collapse id="coreCollapse" class="divider-color">
+                <paper-menu id="coreMenu" layout vertical>
+                    <!-- Element1, Element2, SetVar, GetVar, ... -->
+                    <content id="content"></content>
+                </paper-menu>
+            </iron-collapse>
+
+        </div>
+    </template>
+    <script type="application/dart" src="collapse_menu.dart"></script>
+</dom-module>

@@ -1,12 +1,15 @@
 library controller;
 
-
-import '../elements/editor_panel.dart';
-import 'package:rtm_block_coding/application.dart' as program;
+import '../main_menu/editor_panel.dart';
+import '../scripts/application.dart' as program;
 import 'package:xml/xml.dart' as xml;
 import 'package:polymer/polymer.dart';
 import 'dart:html' as html;
 
+import 'package:rtcprofile/rtcprofile.dart';
+import '../main_menu/boxes/add_inport_box.dart';
+import '../main_menu/boxes/add_outport_box.dart';
+/*
 import '../elements/blocks/read_inport_box.dart';
 import '../elements/blocks/inport_buffer_box.dart';
 import '../elements/blocks/outport_buffer_box.dart';
@@ -24,10 +27,10 @@ import '../elements/blocks/real_literal_box.dart';
 import '../elements/blocks/if_box.dart';
 import '../elements/blocks/else_box.dart';
 import '../elements/blocks/while_box.dart';
-import '../elements/state_panel.dart';
+import '../main_menu/state_panel.dart';
 import '../elements/python_panel.dart';
-import 'package:rtcprofile/rtcprofile.dart';
 import '../elements/blocks/box_base.dart';
+*/
 
 class Controller {
 
@@ -35,6 +38,7 @@ class Controller {
   program.Application onActivatedApp = new program.Application();
   program.Application onExecuteApp = new program.Application();
   program.Application onDeactivatedApp = new program.Application();
+
   EditorPanel _editorPanel;
   PythonPanel _pythonPanel;
   StatePanel _statePanel;
@@ -48,14 +52,21 @@ class Controller {
   set statePanel(StatePanel p) => _statePanel = p;
 
   Controller() {
-
   }
 
   void setMode(String mode) {
-    _pythonPanel.setMode(mode);
+//    _pythonPanel.setMode(mode);
     _statePanel.setMode(mode);
   }
 
+  List<dynamic> findFromAllApp(Type t, String name) {
+    List<dynamic> ps = [];
+    ps.addAll(onExecuteApp.find(t, name: name));
+    ps.addAll(onActivatedApp.find(t, name: name));
+    ps.addAll(onDeactivatedApp.find(t, name: name));
+
+    return ps;
+  }
 
   String getSelectedEditorPanelName() {
     switch(_editorPanel.selected) {
@@ -101,7 +112,7 @@ class Controller {
     }
 
     _editorPanel.onUpdateSelection();
-    _pythonPanel.onUpdateSelection();
+    /// TODO: _pythonPanel.onUpdateSelection();
   }
 
   program.Statement selectedStatement() {
@@ -145,7 +156,7 @@ class Controller {
   }
 
   void addElement(String command) {
-    print('add ${command}');
+    print('controller.addElement($command) called');
     program.Application app;
     switch (_editorPanel.selected) {
       case 0:
@@ -180,6 +191,7 @@ class Controller {
       }
     }
 
+    /*
 //  variables_menu
     if (command == 'declare_variable') {
       var n = getVariableName();
@@ -189,54 +201,6 @@ class Controller {
         app.statements.add(new_s);
       }
     }
-    /*
-    if (command == 'set_variable') {
-      program.SetVariable v = new program.SetVariable(new program.Variable('name'), new program.IntegerLiteral(1));
-      program.Statement new_s = new program.Statement(v);
-
-      if (selectedStatement() == null) {
-        app.statements.add(new_s);
-      }
-      else if (selectedStatement() is ReadInPort) {
-        selectedStatement().model.statements.add(new_s);
-      } else {
-        if (selectedElement.parentElement is If) {
-          bool found = false;
-          for(program.Statement s in selectedElement.parentElement.model.yes) {
-            if ( s.block == selectedElement.model) {
-              found = true;
-            }
-          }
-          if (found) {
-            selectedElement.parentElement.model.yes.add(new_s);
-          }
-
-          found = false;
-          for(program.Statement s in selectedElement.parentElement.model.no) {
-            if ( s.block == selectedElement.model) {
-              found = true;
-            }
-          }
-          if (found) {
-            selectedElement.parentElement.model.no.add(new_s);
-          }
-        }
-
-        else if (selectedElement.parentElement is While) {
-          bool found = false;
-          for (program.Statement s in selectedElement.parentElement.model
-              .loop) {
-            if (s.block == selectedElement.model) {
-              found = true;
-            }
-          }
-          if (found) {
-            selectedElement.parentElement.model.yes.add(new_s);
-          }
-        }
-      }
-    }
-    */
 
     if (command == 'refer_variable') {
       var variableList = onInitializeApp.find(program.DeclareVariable);
@@ -783,7 +747,7 @@ class Controller {
         ((selectedStatement() as BoxBase).parentElement as WhileBox).model.condition = v;
       }
     }
-
+*/
     refreshPanel();
   }
 
@@ -803,7 +767,7 @@ class Controller {
         _editorPanel.onExecuteEditor.refresh(onExecuteApp);
     }
 
-    _pythonPanel.onUpdateSelection();
+    /// TODO: _pythonPanel.onUpdateSelection();
     _statePanel.showRTCImage(getRTCProfile());
   }
 
@@ -827,7 +791,7 @@ class Controller {
     }
     */
     _editorPanel.refresh();
-    _pythonPanel.onUpdateSelection();
+    /// TODO: _pythonPanel.onUpdateSelection();
     _statePanel.showRTCImage(getRTCProfile());
   }
 

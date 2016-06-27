@@ -1,0 +1,23 @@
+
+<link rel="import" href="packages/polymer_elements/paper_toolbar.html" />
+<link rel="import" href="state_panel.html" />
+<link rel="import" href="editor_panel.html" />
+<link rel="import" href="../material_style.html" />
+<dom-module id="main-menu">
+    <template>
+        <style>
+            #main-toolbar {
+                --paper-toolbar-background: var(--dark-primary-color);
+            }
+        </style>
+        <div id="container" class="fit vertical layout">
+            <paper-toolbar id="main-toolbar" class=""></paper-toolbar>
+
+            <state-panel></state-panel>
+            <editor-panel id="code-editor-panel" class="flex vertical layout"></editor-panel >
+        </div>
+
+    </template>
+    <script type="application/dart" src="main_menu.dart">
+    </script>
+</dom-module>
