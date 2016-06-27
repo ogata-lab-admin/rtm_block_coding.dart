@@ -55,7 +55,9 @@ class Controller {
   }
 
   void setMode(String mode) {
-//    _pythonPanel.setMode(mode);
+    if (_pythonPanel != null) {
+      _pythonPanel.setMode(mode);
+    }
     _statePanel.setMode(mode);
   }
 
@@ -112,7 +114,7 @@ class Controller {
     }
 
     _editorPanel.onUpdateSelection();
-    /// TODO: _pythonPanel.onUpdateSelection();
+    _pythonPanel.onUpdateSelection();
   }
 
   program.Statement selectedStatement() {
@@ -767,7 +769,7 @@ class Controller {
         _editorPanel.onExecuteEditor.refresh(onExecuteApp);
     }
 
-    /// TODO: _pythonPanel.onUpdateSelection();
+    _pythonPanel.onUpdateSelection();
     _statePanel.showRTCImage(getRTCProfile());
   }
 
@@ -791,7 +793,7 @@ class Controller {
     }
     */
     _editorPanel.refresh();
-    /// TODO: _pythonPanel.onUpdateSelection();
+    _pythonPanel.onUpdateSelection();
     _statePanel.showRTCImage(getRTCProfile());
   }
 

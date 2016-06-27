@@ -1,14 +1,19 @@
 library python_panel;
 // import 'dart:html' as html;
 
+@HtmlImport('python_panel.html')
+
+
+import 'dart:html' as html;
+import 'package:web_components/web_components.dart' show HtmlImport;
 import 'package:polymer/polymer.dart';
 import '../controller/controller.dart';
 
-@CustomTag('python-panel')
+@PolymerRegister('python-panel')
 class PythonPanel extends PolymerElement {
 
 
-  @published String command;
+  @property String command;
   String mode = "initialize";
 
   void setMode(var m) {mode = m;
@@ -81,8 +86,8 @@ class PythonPanel extends PolymerElement {
     return pattern.replaceAll(reg, '<div id="on-' + mode + '-block" class="highlight">');
   }
 
-
-  void onRefresh(var e) {
+  @reflectable
+  void onRefresh(var e, var d) {
     String text = globalController.pythonCode();
     /*
     String html = '';

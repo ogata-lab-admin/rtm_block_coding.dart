@@ -14,7 +14,12 @@ class EditorPanel extends PolymerElement {
 
   @property var selectedLabel;
 
-  get selected => int.parse(selectedLabel);
+  get selected {
+    if (selectedLabel is String) {
+      return int.parse(selectedLabel);
+    }
+    return selectedLabel;
+  }
 
   EditorPanel.created() : super.created();
 

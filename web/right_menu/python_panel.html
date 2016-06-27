@@ -1,0 +1,41 @@
+
+<link rel="import" href="packages/polymer_elements/paper_toolbar.html" />
+<link rel="import" href="packages/polymer_elements/paper_icon_button.html" />
+
+<dom-module id="python-panel" attributes="command">
+    <template >
+        <style type='text/css'>
+
+            :host {}
+
+
+            :host #target {
+                overflow: auto;
+            }
+            :host #text-area {
+                height: 100px;
+                white-space:pre;
+                font-family:monospace;
+                overflow-y: scroll;
+            }
+
+            :host .selected {
+                color: red;
+            }
+
+            :host .highlight {
+                background-color: #f5d7df;
+            }
+
+        </style>
+        <paper-toolbar  class="text-primary-color dark-primary-color" >
+            <p flex>Python Code</p>
+            <paper-icon-button icon="refresh" on-tap="onRefresh"></paper-icon-button>
+        </paper-toolbar>
+        <div id="target" class="secondary-text-color divider-color flex vertical layout">
+            <div id="text-area" class="flex layout">
+            </div>
+        </div>
+    </template>
+    <script type="application/dart" src="python_panel.dart"></script>
+</dom-module>

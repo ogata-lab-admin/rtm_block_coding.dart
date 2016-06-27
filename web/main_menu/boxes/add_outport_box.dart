@@ -64,7 +64,7 @@ class AddOutPortBox extends AddPortBox {
     String name_ = model.name;
 
     globalController.findFromAllApp(program.AccessOutPort, name_).forEach((program.AccessOutPort port) {
-      port.dataType = model.dataT
+      port.dataType = model.dataType;
     });
 
     globalController.findFromAllApp(program.WriteOutPort, name_).forEach((program.WriteOutPort port) {

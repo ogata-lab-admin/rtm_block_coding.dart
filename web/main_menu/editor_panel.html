@@ -76,6 +76,13 @@
                 /* background-color: #89c344; */
             }
 
+            #pages {
+                overflow: auto;
+            }
+
+            block-editor {
+                overflow: auto;
+            }
 
         </style>
         <!--<paper-tabs class="tabs dark-primary-color text-primary-color" selected="{{selected}}">-->
@@ -90,7 +97,7 @@
             <paper-icon-button id="down-button" class="editor-toolbar-button" icon="arrow-drop-down" on-tap="onDown"></paper-icon-button>
             <paper-icon-button id="remove-button" class="editor-toolbar-button" icon="remove" on-tap="onRemove" ></paper-icon-button>
         </div>
-        <iron-pages selected="{{selectedLabel}}" class="flex horizontal layout">
+        <iron-pages id="pages" selected="{{selectedLabel}}" class="flex horizontal layout">
             <block-editor command="onInitialize"   id="on_initialize_editor" class="flex vertical layout"></block-editor>
             <block-editor command="onActivated"    id="on_activated_editor" class="flex vertical layout"></block-editor>
             <block-editor command="onExecute"      id="on_execute_editor" class="flex vertical layout"></block-editor>

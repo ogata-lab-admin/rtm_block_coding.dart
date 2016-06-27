@@ -94,6 +94,15 @@
                 border-color: #B6B6B6;
             }
 
+            #right-drawer {
+                border-left-style: solid;
+
+                border-width: 1px;
+                border-color: #B6B6B6;
+                background-color: #FFFFFF;
+                width: 400px;
+            }
+
             #right-collapse-menu {
                 border-left-style: solid;
                 border-width: 1px;
@@ -504,6 +513,9 @@
                 height: 50px;
             }*/
 
+            #inner-panel > #drawer {
+                width: 500px;
+            }
         </style>
 
         <paper-drawer-panel responsiveWidth="700px">
@@ -554,13 +566,13 @@
 -->
             <!--MAIN-->
             <div main>
-                <paper-drawer-panel id="inner-panel" right-drawer drawerWidth="500px" responsiveWidth="1200px">
+                <paper-drawer-panel id="inner-panel" right-drawer>
                     <div main id="main-menu-div">
                         <main-menu class="fit"></main-menu>
                     </div>
 
-                    <div drawer>
-                        <right-menu></right-menu>
+                    <div drawer id="right-drawer">
+                        <right-menu class="fit"></right-menu>
 
                     </div>
                 </paper-drawer-panel>

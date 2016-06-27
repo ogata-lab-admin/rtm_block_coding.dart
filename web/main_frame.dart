@@ -36,6 +36,7 @@ class MainFrame extends PolymerElement {
     PaperDrawerPanel pp = $$('#inner-panel');
     pp.responsiveWidth = '1200px';
 
+    pp.drawerWidth = '400px';
     /*
     $['left-collapse-menu'].querySelectorAll('add-element-button').forEach(
         (var e) {e.controller = _controller;}

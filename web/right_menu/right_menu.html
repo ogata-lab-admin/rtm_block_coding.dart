@@ -1,25 +1,28 @@
 
 <link rel="import" href="packages/polymer_elements/paper_toolbar.html" />
 <link rel="import" href="packages/polymer_elements/paper_icon_button.html" />
-
+<link rel="import" href="python_panel.html" />
 <dom-module id="right-menu">
     <template>
         <style>
         </style>
-        <paper-toolbar class="dark-primary-color text-primary-color">
-            <paper-icon-button class="icon-button" icon="send" id="launch_button" on-tap="{{onLaunch}}"> Launch </paper-icon-button>
-            <paper-icon-button class="icon-button" icon="save" id="save_button" on-tap="{{onSave}}"> Save </paper-icon-button>
-            <paper-icon-button class="icon-button" icon="file-download" id="export_button" on-tap="{{onExport}}"> Export </paper-icon-button>
-            <!--<core-icon-button icon="folder-open" id="load_button"> Load</core-icon-button>-->
+        <div id="container" class="fit vertical layout">
+            <paper-toolbar class="dark-primary-color text-primary-color">
+                <paper-icon-button class="icon-button" icon="send" id="launch_button" on-tap="{{onLaunch}}"> Launch </paper-icon-button>
+                <paper-icon-button class="icon-button" icon="save" id="save_button" on-tap="{{onSave}}"> Save </paper-icon-button>
+                <paper-icon-button class="icon-button" icon="file-download" id="export_button" on-tap="{{onExport}}"> Export </paper-icon-button>
+                <!--<core-icon-button icon="folder-open" id="load_button"> Load</core-icon-button>-->
 
-            <!--
-                            <core-icon-button class="icon-button" icon="file-upload" id="import_button" on-tap="{{onImport}}"> Import </core-icon-button>
+                <!--
+                                <core-icon-button class="icon-button" icon="file-upload" id="import_button" on-tap="{{onImport}}"> Import </core-icon-button>
 
-                            <input type="file" accept="*.xml" id="file_input" style="display:none;" on-change="{{onFileInput}}" />
-                            <core-icon-button class="icon-button" icon="help" id="help_button"> Help </core-icon-button>
-                        </core-toolbar>-->
-        </paper-toolbar>
+                                <input type="file" accept="*.xml" id="file_input" style="display:none;" on-change="{{onFileInput}}" />
+                                <core-icon-button class="icon-button" icon="help" id="help_button"> Help </core-icon-button>
+                            </core-toolbar>-->
+            </paper-toolbar>
 
+        <python-panel class="flex vertical layout"></python-panel>
+        </div>
     </template>
     <script type="application/dart" src="right_menu.dart">
     </script>
