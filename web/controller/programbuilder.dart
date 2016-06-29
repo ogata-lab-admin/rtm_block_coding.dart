@@ -46,6 +46,10 @@ class ProgramBuilder {
       addToApp(new Statement(new ReadInPort.fromAppDefault(onInit)));
     }
 
+    if (command == 'If') {
+      addToApp(new Statement(new If.fromAppDefault(onInit)));
+    }
+
   }
 
 

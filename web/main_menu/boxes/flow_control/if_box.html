@@ -1,7 +1,5 @@
-<link rel="import" href="packages/polymer/polymer.html" />
-<link rel="import" href="packages/core_elements/core_style.html" />
 
-<polymer-element name="if-box">
+<dom-module id="if-box">
     <template>
 
         <style type='text/css'>
@@ -28,8 +26,8 @@
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" vertical layout on-tap="{{onClicked}}">
-            <div id="condition-block" horizontal layout center>
+        <div id="container" class="vertical layout" on-tap="onClicked">
+            <div id="condition-block" class="horizontal layout center">
                 <div end>もし</div>
                 <div id="condition-content"></div>
                 <div end>なら</div>
@@ -41,4 +39,4 @@
 
     </template>
     <script type="application/dart" src="if_box.dart"></script>
-</polymer-element>
+</dom-module>

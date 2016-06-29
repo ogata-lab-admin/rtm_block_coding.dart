@@ -2,9 +2,11 @@ library application.flow_control;
 
 import 'package:xml/xml.dart' as xml;
 import 'dart:core';
+import 'base.dart';
 import 'block.dart';
 import 'condition.dart';
 import 'statement.dart';
+import 'literal.dart';
 import 'block_loader.dart';
 
 class If extends Block {
@@ -58,6 +60,11 @@ class If extends Block {
   bool is_container() {
     return true;
   }
+
+  If.fromAppDefault(Application app) : super('') {
+    condition = new TrueLiteral();
+  }
+
 }
 
 class Else extends Block {

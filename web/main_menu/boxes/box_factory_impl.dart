@@ -13,7 +13,11 @@ import 'variables/refer_variable_box.dart';
 
 import 'integer_literal_box.dart';
 
+import 'true_literal_box.dart';
+
 import 'dataports/read_inport_box.dart';
+
+import 'flow_control/if_box.dart';
 
 import 'box_base.dart';
 
@@ -75,8 +79,12 @@ class BoxFactoryImpl {
       return ReferVariableBox.createBox(block);
     } else if (block is program.IntegerLiteral) {
       return IntegerLiteralBox.createBox(block);
+    } else if (block is program.TrueLiteral) {
+      return TrueLiteralBox.createBox(block);
     } else if (block is program.ReadInPort) {
       return ReadInPortBox.createBox(block);
+    } else if (block is program.If) {
+      return IfBox.createBox(block);
     }
 
     /*
