@@ -5,12 +5,11 @@ import 'package:polymer/polymer.dart';
 import '../scripts/application.dart' as program;
 import '../controller/controller.dart';
 
-import 'boxes/add_inport_box.dart';
-import 'boxes/add_outport_box.dart';
-import 'boxes/declare_variable_box.dart';
-import 'boxes/assign_box.dart';
-
-import 'boxes/refer_variable_box.dart';
+import 'boxes/rtm/add_inport_box.dart';
+import 'boxes/rtm/add_outport_box.dart';
+import 'boxes/variables/declare_variable_box.dart';
+import 'boxes/variables/assign_box.dart';
+import 'boxes/variables/refer_variable_box.dart';
 
 import 'boxes/integer_literal_box.dart';
 /*

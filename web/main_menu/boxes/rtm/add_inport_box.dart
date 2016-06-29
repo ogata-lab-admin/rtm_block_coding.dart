@@ -6,9 +6,9 @@ import 'package:polymer/polymer.dart';
 import 'package:web_components/web_components.dart' show HtmlImport;
 
 import 'dart:html' as html;
-import '../../scripts/application.dart' as program;
+import '../../../scripts/application.dart' as program;
 import 'add_port_box.dart';
-import '../../controller/controller.dart';
+import '../../../controller/controller.dart';
 import 'add_port_box.dart';
 
 @PolymerRegister('add-inport-box')

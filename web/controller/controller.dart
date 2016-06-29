@@ -7,8 +7,8 @@ import 'package:polymer/polymer.dart';
 import 'dart:html' as html;
 
 import 'package:rtcprofile/rtcprofile.dart';
-import '../main_menu/boxes/add_inport_box.dart';
-import '../main_menu/boxes/add_outport_box.dart';
+import '../main_menu/boxes/rtm/add_inport_box.dart';
+import '../main_menu/boxes/rtm/add_outport_box.dart';
 /*
 import '../elements/blocks/read_inport_box.dart';
 import '../elements/blocks/inport_buffer_box.dart';

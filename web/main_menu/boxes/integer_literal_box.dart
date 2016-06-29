@@ -15,7 +15,8 @@ class IntegerLiteralBox extends BoxBase {
     return new html.Element.tag('integer-literal-box') as IntegerLiteralBox
       ..model = m
       ..intvalue = m.value
-      ..intvarstr = m.value.toString();
+      ..set('intvarstr', m.value.toString());
+//      ..intvarstr = m.value.toString();
   }
 
   int intvalue = 1;

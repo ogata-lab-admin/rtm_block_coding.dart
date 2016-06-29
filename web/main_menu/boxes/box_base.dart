@@ -7,7 +7,6 @@ import 'package:polymer/polymer.dart';
 import 'package:web_components/web_components.dart' show HtmlImport;
 import 'package:polymer/polymer.dart';
 import '../../controller/controller.dart';
-
 import '../../scripts/application.dart';
 
 // @PolymerRegister('box-base')

@@ -6,12 +6,12 @@ import 'dart:async' as async;
 import 'package:polymer/polymer.dart';
 import 'package:web_components/web_components.dart' show HtmlImport;
 
-import '../../scripts/application.dart' as program;
+import '../../../scripts/application.dart' as program;
 import 'package:polymer_elements/paper_item.dart';
 import 'package:polymer_elements/paper_dropdown_menu.dart';
 import 'package:polymer_elements/iron_selector.dart';
-import '../../controller/controller.dart';
-import 'box_base.dart';
+import '../../../controller/controller.dart';
+import '../box_base.dart';
 
 @PolymerRegister('declare-variable-box')
 class DeclareVariableBox extends BoxBase {
@@ -20,8 +20,8 @@ class DeclareVariableBox extends BoxBase {
   static DeclareVariableBox createBox(program.DeclareVariable m) {
     return new html.Element.tag('declare-variable-box') as DeclareVariableBox
       ..model = m
-      ..varname = m.name
-      ..vartype = m.dataType.typename;
+      ..set('varname', m.name)
+      ..set('vartype', m.dataType.typename);
   }
 
   @property String varname = "defaultName";

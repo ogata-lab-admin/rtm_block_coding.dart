@@ -11,6 +11,8 @@
       <excludeFolder url="file://$MODULE_DIR$/web/elements/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/left_menu/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/rtm/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/variables/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/main_menu/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/right_menu/packages" />

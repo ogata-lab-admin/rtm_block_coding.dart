@@ -10,6 +10,13 @@ import '../scripts/application.dart' as program;
 import '../controller/controller.dart';
 import 'block_parser_impl.dart';
 
+import 'boxes/rtm/add_inport_box.dart';
+import 'boxes/rtm/add_outport_box.dart';
+import 'boxes/rtm/add_port_box.dart';
+import 'boxes/variables/assign_box.dart';
+import 'boxes/variables/declare_variable_box.dart';
+import 'boxes/variables/refer_variable_box.dart';
+
 @PolymerRegister('block-editor')
 class BlockEditor extends PolymerElement {
 
