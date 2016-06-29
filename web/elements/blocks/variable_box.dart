@@ -1,11 +1,16 @@
 library variable_box;
 
 import 'dart:html' as html;
+import 'dart:async' as async;
+import 'package:polymer/polymer.dart';
+import 'package:web_components/web_components.dart' show HtmlImport;
+
+import 'dart:html' as html;
 // import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
 import '../../controller/controller.dart';
 
-@CustomTag('variable-box')
+@PolymerRegister('variable-box')
 class VariableBox extends PolymerElement {
 
   PolymerElement parentElement;
@@ -13,7 +18,7 @@ class VariableBox extends PolymerElement {
   VariableBox.created() : super.created();
 
   void onClicked(var e) {
-    globalController.setSelectedElem(e, this);
+    globalController.setSelectedBox(e, this);
     e.stopPropagation();
   }
 

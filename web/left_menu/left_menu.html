@@ -17,8 +17,13 @@
       </style>
       <paper-toolbar id="left-toolbar" class=""></paper-toolbar>
       <collapse-menu id="rtm_menu" class="default-primary-color" label="RTミドルウェア" state="closed">
-          <add-element-button id="rtm1" label="入力ポート追加" command="add_inport"></add-element-button>
-          <add-element-button id="rtm2" label="出力ポート追加" command="add_outport"></add-element-button>
+          <add-element-button id="rtm1" label="入力ポート追加" command="AddInPort"></add-element-button>
+          <add-element-button id="rtm2" label="出力ポート追加" command="AddOutPort"></add-element-button>
+      </collapse-menu>
+      <collapse-menu id="variables_menu" label="変数" state="closed">
+          <add-element-button id="var0" label="値の宣言" command="DeclareVariable"></add-element-button>
+          <add-element-button id="var1" label="値の代入" command="Assign"></add-element-button>
+          <add-element-button id="var2" label="値の参照" command="ReferVariable"></add-element-button>
       </collapse-menu>
 
       <!--

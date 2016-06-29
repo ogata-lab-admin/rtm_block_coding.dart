@@ -93,7 +93,7 @@ class WriteOutPortBox extends PolymerElement {
   }
 
   void onClicked(var e) {
-    globalController.setSelectedElem(e, this);
+    globalController.setSelectedBox(e, this);
     e.stopPropagation();
   }
 

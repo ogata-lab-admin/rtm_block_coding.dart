@@ -15,15 +15,15 @@
             }
         </style>
 
-        <div layout vertical>
+        <div class="layout vertical">
             <paper-toolbar id="coreToolbar" class="default-primary-color toolbar" on-tap="toggleCollapse">
                 <!-- RTM, Variables, Port/Data, Calculate, ... -->
-                <span flex>{{label}}</span>
+                <span class="flex layout">{{label}}</span>
                 <iron-icon id="navIcon" icon="{{state == 'opened' ? 'expand-less' : 'expand-more'}}"></iron-icon>
             </paper-toolbar>
 
             <iron-collapse id="coreCollapse" class="divider-color">
-                <paper-menu id="coreMenu" layout vertical>
+                <paper-menu id="coreMenu" class="layout vertical">
                     <!-- Element1, Element2, SetVar, GetVar, ... -->
                     <content id="content"></content>
                 </paper-menu>

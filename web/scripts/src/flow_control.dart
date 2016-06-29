@@ -9,9 +9,9 @@ import 'block_loader.dart';
 
 class If extends Block {
   Condition condition;
-  StatementList statements = new StatementList([]);
 
-  If(this.condition, this.statements) : super('')  {
+  If(this.condition) : super('')  {
+    //statements = s;
   }
 
   String toPython(int indentLevel) {
@@ -20,6 +20,7 @@ class If extends Block {
     for (Statement s in statements) {
       sb += s.toPython(indentLevel + 1) + '\n';
     }
+    sb += Statement.indent * (indentLevel+1) + 'pass' + '\n';
     return sb;
   }
 
@@ -52,12 +53,17 @@ class If extends Block {
       statements.loadFromXML(e);
     });
   }
+
+  @override
+  bool is_container() {
+    return true;
+  }
 }
 
 class Else extends Block {
-  StatementList statements = new StatementList([]);
 
-  Else(this.statements) : super('')  {
+  Else() : super('')  {
+    //statements = s;
   }
 
   @override
@@ -74,6 +80,7 @@ class Else extends Block {
       for (Statement s in statements) {
         sb += s.toPython(indentLevel + 1) + '\n';
       }
+      sb += Statement.indent * (indentLevel+1) + 'pass' + '\n';
     }
     return sb;
   }
@@ -92,14 +99,19 @@ class Else extends Block {
       statements.loadFromXML(e);
     });
   }
+
+  @override
+  bool is_container() {
+    return true;
+  }
 }
 
 class While extends Block {
   Condition condition;
 
-  StatementList statements = new StatementList([]);
-
-  While(this.condition, this.statements) : super('')  {}
+  While(this.condition) : super('')  {
+    //statements = s;
+  }
 
   String toPython(int indentLevel) {
     String sb = "";
@@ -107,6 +119,8 @@ class While extends Block {
     for (Statement s in statements) {
       sb += s.toPython(indentLevel + 1) + '\n';
     }
+    sb += Statement.indent * (indentLevel+1) + 'pass' + '\n';
+
     return sb;
   }
 
@@ -141,6 +155,11 @@ class While extends Block {
     namedChildChildren(node, 'Loop', (xml.XmlElement e) {
       statements.loadFromXML(e);
     });
+  }
+
+  @override
+  bool is_container() {
+    return true;
   }
 }
 

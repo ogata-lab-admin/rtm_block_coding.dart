@@ -2,6 +2,7 @@ library application.outport;
 
 import 'package:xml/xml.dart' as xml;
 import 'dart:core';
+import 'base.dart';
 import 'block.dart';
 import 'statement.dart';
 import 'datatype.dart';
@@ -33,6 +34,9 @@ class AddOutPort extends AddPort {
   }
 
   AddOutPort.XML(xml.XmlElement node) : super.XML(node) {
+  }
+
+  AddOutPort.fromAppDefault(Application app) : super(app.getDefaultOutPortName(), new DataType.TimedLong()){
   }
 }
 

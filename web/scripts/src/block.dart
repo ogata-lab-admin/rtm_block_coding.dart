@@ -16,6 +16,10 @@ abstract class Block {
   /// ブロックはツリー状構造なので，上位のブロックもしくはステートメントを指す変数
   var parent;
 
+  StatementList statements = new StatementList([]);
+
+  bool is_container() {return false;}
+
   /// 基本コンストラクタ．何もしない
   Block(this.name) {}
 
@@ -86,6 +90,8 @@ abstract class Block {
   void typedChild(xml.XmlNode node, Type type, Function func) {
     child(node, func, type: type);
   }
+
+
 }
 
 

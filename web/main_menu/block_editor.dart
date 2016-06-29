@@ -32,7 +32,7 @@ class BlockEditor extends PolymerElement {
   @reflectable
   void onClicked(var e, var d) {
     print('BlockEditor.onClicked()');
-    globalController.setSelectedElem(e, null);
+    globalController.setSelectedBox(null);
     //globalController.setSelectedElem(e, globalController.selectedElement);
     //e.stopPropagation();
   }
@@ -59,7 +59,7 @@ class BlockEditor extends PolymerElement {
   }
 
   void onUp(var e) {
-    var selected = globalController.selectedElement;
+    var selected = globalController.selectedBox;
     if (selected == null) return;
 
     program.Statement s = selected.model.parent;
@@ -72,7 +72,7 @@ class BlockEditor extends PolymerElement {
           sl.remove(s);
           sl.insert(index, s);
 
-          globalController.setSelectedElem(globalController.previousMouseEvent, selected);
+          globalController.setSelectedBox(selected);
           globalController.refreshPanel();
           //updateClick();
         }
@@ -81,7 +81,7 @@ class BlockEditor extends PolymerElement {
   }
 
   void onDown(var e) {
-    var selected = globalController.selectedElement;
+    var selected = globalController.selectedBox;
     if (selected == null) return;
 
     program.Statement s = selected.model.parent;
@@ -94,7 +94,7 @@ class BlockEditor extends PolymerElement {
           sl.remove(s);
           sl.insert(index, s);
 
-          globalController.setSelectedElem(globalController.previousMouseEvent, selected);
+          globalController.setSelectedBox(selected);
           globalController.refreshPanel();
           //updateClick();
         }
@@ -103,14 +103,13 @@ class BlockEditor extends PolymerElement {
   }
 
   void onRemove(var e) {
-    var selected = globalController.selectedElement;
+    var selected = globalController.selectedBox;
     if (selected == null) return;
 
     if (selected.parent == container) {
-      var app = globalController.getSelectedEditorApplication();
-      delete(app.statements, selected);
+      delete(globalController.selectedApp.statements, selected);
     }
-    globalController.setSelectedElem(globalController.previousMouseEvent, null);
+    globalController.setSelectedBox(null);
     globalController.refreshPanel();
 
     //updateClick();

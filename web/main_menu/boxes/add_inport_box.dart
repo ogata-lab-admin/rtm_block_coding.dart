@@ -38,7 +38,7 @@ class AddInPortBox extends AddPortBox {
   void onIronSelect(var e) {
     print('AddInPort.onIronSelect($e, ${e.detail})');
     if (e.detail != null) {
-      onTypeChange(model.dataType.typename);
+      onTypeChange((model as program.AddInPort).dataType.typename);
     }
   }
 
@@ -63,12 +63,12 @@ class AddInPortBox extends AddPortBox {
 
     String name_ = model.name;
     globalController.findFromAllApp(program.AccessInPort, name_).forEach((program.AccessInPort port) {
-      port.dataType = model.dataType;
+      port.dataType = (model as program.AddInPort).dataType;
       port.accessSequence = '';
     });
 
     globalController.findFromAllApp(program.ReadInPort, name_).forEach((program.ReadInPort port) {
-      port.dataType = model.dataType;
+      port.dataType = (model as program.AddInPort).dataType;
       //port.accessSequence = '';
     });
   }

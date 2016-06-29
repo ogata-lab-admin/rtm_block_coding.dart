@@ -5,6 +5,8 @@ import 'dart:core';
 import 'block.dart';
 import 'block_loader.dart';
 import 'variable.dart';
+import 'base.dart';
+import 'literal.dart';
 
 
 /// 変数にデータを代入する処理
@@ -98,6 +100,10 @@ class Assign extends BasicOperator {
 
   Assign.XML(xml.XmlElement node) : super(null, null, '=') {
     loadXML(node);
+  }
+
+  // TODO:
+  Assign.fromAppDefault(Application app) : super(app.findFirstForLeftHand(), new IntegerLiteral(0), '=') {
   }
 }
 

@@ -13,7 +13,7 @@ class ConditionsBox extends PolymerElement {
   void attached() {
     this.onClick.listen(
         (var e) {
-      globalController.setSelectedElem(e, this);
+      globalController.setSelectedBox(e, this);
       e.stopPropagation();
     }
     );
@@ -38,7 +38,7 @@ class ConditionsBox extends PolymerElement {
   }
 
   void onClicked(var e) {
-    globalController.setSelectedElem(e, this);
+    globalController.setSelectedBox(e, this);
     e.stopPropagation();
   }
 

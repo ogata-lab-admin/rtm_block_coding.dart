@@ -109,7 +109,6 @@ class DataTypeDropDown extends PolymerElement {
 // @PolymerRegister('add-port-box')
 class AddPortBox extends BoxBase {
 
-
   set model(program.AddPort m) {
     super.model = m;
     set('port_name', m.name);
@@ -120,22 +119,6 @@ class AddPortBox extends BoxBase {
   @property String port_type = "defaultType";
 
   AddPortBox.created() : super.created();
-
-  @reflectable
-  void onClicked(var e, var d) {
-    print('AddPortBox.onClicked($e, $d)');
-    globalController.setSelectedElem(e, this);
-    e.stopPropagation();
-  }
-
-  void select() {
-    $['container'].style.border = 'ridge';
-    $['container'].style.borderColor = '#FF9F1C';
-  }
-
-  void deselect() {
-    $['container'].style.border = '1px solid #B6B6B6';
-  }
 
   bool is_container() {
     return false;

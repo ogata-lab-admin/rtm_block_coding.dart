@@ -3,6 +3,7 @@ library application.inport;
 import 'package:xml/xml.dart' as xml;
 import 'dart:core';
 import 'block.dart';
+import 'base.dart';
 import 'statement.dart';
 import 'datatype.dart';
 import 'block_loader.dart';
@@ -33,6 +34,9 @@ class AddInPort extends AddPort {
   }
 
   AddInPort.XML(xml.XmlElement node) : super.XML(node){
+  }
+
+  AddInPort.fromAppDefault(Application app) : super(app.getDefaultInPortName(), new DataType.TimedLong()){
   }
 }
 
@@ -107,12 +111,19 @@ class InPortBuffer extends Block {
   }
 }
 
-  class ReadInPort extends Block {
+
+class ReadInPort extends Block {
   DataType dataType;
 
-  StatementList statements = new StatementList([]);
+  //StatementList statements = new StatementList([]);
 
   ReadInPort(String name, this.dataType) : super(name)  {
+  }
+
+
+  @override
+  bool is_container() {
+    return true;
   }
 
   String toPython(int indentLevel) {
@@ -122,6 +133,7 @@ class InPortBuffer extends Block {
     for (Statement s in statements) {
       sb += s.toPython(indentLevel + 1) + '\n';
     }
+    sb += Statement.indent * (indentLevel + 1) + 'pass' + '\n';
     return sb;
   }
 

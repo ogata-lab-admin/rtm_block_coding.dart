@@ -1,83 +1,41 @@
-library assign_variable_box;
+library assign_box;
 
+@HtmlImport('assign_box.html')
 import 'dart:html' as html;
-import 'package:rtm_block_coding/application.dart' as program;
+import 'dart:async' as async;
 import 'package:polymer/polymer.dart';
-import 'package:paper_elements/paper_item.dart';
+import 'package:web_components/web_components.dart' show HtmlImport;
+
+import '../../scripts/application.dart' as program;
+import 'package:polymer/polymer.dart';
+import 'package:polymer_elements/paper_item.dart';
 /// import '../block_editor.dart';
 import '../../main_menu/block_parser.dart';
 import '../../controller/controller.dart';
-import 'variable_box.dart';
+import 'box_base.dart';
 
-@CustomTag('assign-variable-box')
-class AssignVariableBox extends VariableBox {
+@PolymerRegister('assign-box')
+class AssignBox extends BoxBase {
 
-  program.Assign _model;
 
-  static AssignVariableBox createBox(program.Assign m) {
-    return new html.Element.tag('assign-variable-box') as AssignVariableBox
-      ..model = m
+  static AssignBox createBox(program.Assign m) {
+    return new html.Element.tag('assign-box') as AssignBox
+      ..model = m;
+      /*
       ..attachLeftTarget(BlockParser.parseBlock(m.left))
       ..attachRightTarget(BlockParser.parseBlock(m.right));
+      */
   }
 
-  set model(program.Assign m) {
-    _model = m;
-    name = _model.left.name;
-  }
+  @property String varname = "defaultName";
 
-  get model => _model;
-
-  @published String name = "defaultName";
-
-  AssignVariableBox.created() : super.created();
-
-  void updateNameList() {
-    $['name-menu-content'].children.clear();
-    int counter = 0;
-    var ports = globalController.onInitializeApp.find(program.AddOutPort);
-    if(ports == null) ports = [];
-    ports.forEach((program.AddOutPort p) {
-      $['name-menu-content'].children.add(new html.Element.tag('paper-item')
-        ..innerHtml = p.name
-        ..setAttribute('value', counter.toString())
-      );
-      counter++;
-    });
-    var variables = globalController.onInitializeApp.find(program.DeclareVariable);
-    if(variables == null)variables = [];
-    variables.forEach((program.DeclareVariable p) {
-      $['name-menu-content'].children.add(new html.Element.tag('paper-item')
-        ..innerHtml = p.name
-        ..setAttribute('value', counter.toString())
-      );
-      counter++;
-    });
-  }
-
-  void selectName(String name) {
-    print('selectName($name) called (_model:$model)');
-    int selected = -1;
-    int counter  = 0;
-    $['name-menu-content'].children.forEach((PaperItem p) {
-      if (name == p.innerHtml) {
-        selected = counter;
-      }
-      counter++;
-    });
-
-    if(selected < 0) {
-      print('Invalid Name is selected in assing_block');
-      selected = 0;
-    }
-
-    $['name-menu-content'].setAttribute('selected', selected.toString());
-
-    updateAccessAlternatives();
-  }
+  AssignBox.created() : super.created();
 
 
   void attached() {
+
+    attachLeftTarget(BlockParser.parseBlock((model as program.Assign).left));
+    attachRightTarget(BlockParser.parseBlock((model as program.Assign).right));
     /*
     updateNameList();
     selectName(_model.left.name);
@@ -127,6 +85,53 @@ class AssignVariableBox extends VariableBox {
 
   }
 
+  /*
+  void updateNameList() {
+    $['name-menu-content'].children.clear();
+    int counter = 0;
+    var ports = globalController.onInitializeApp.find(program.AddOutPort);
+    if(ports == null) ports = [];
+    ports.forEach((program.AddOutPort p) {
+      $['name-menu-content'].children.add(new html.Element.tag('paper-item')
+        ..innerHtml = p.name
+        ..setAttribute('value', counter.toString())
+      );
+      counter++;
+    });
+    var variables = globalController.onInitializeApp.find(program.DeclareVariable);
+    if(variables == null)variables = [];
+    variables.forEach((program.DeclareVariable p) {
+      $['name-menu-content'].children.add(new html.Element.tag('paper-item')
+        ..innerHtml = p.name
+        ..setAttribute('value', counter.toString())
+      );
+      counter++;
+    });
+  }
+
+  void selectName(String name) {
+    print('selectName($name) called (_model:$model)');
+    int selected = -1;
+    int counter  = 0;
+    $['name-menu-content'].children.forEach((PaperItem p) {
+      if (name == p.innerHtml) {
+        selected = counter;
+      }
+      counter++;
+    });
+
+    if(selected < 0) {
+      print('Invalid Name is selected in assing_block');
+      selected = 0;
+    }
+
+    $['name-menu-content'].setAttribute('selected', selected.toString());
+
+    updateAccessAlternatives();
+  }
+
+
+
   void updateAccessAlternatives() {
     print('updateAccessAlternatives called (_model:$model)');
     $['menu-content'].children.clear();
@@ -169,16 +174,17 @@ class AssignVariableBox extends VariableBox {
 
     $['menu-content'].setAttribute('selected', selected.toString());
   }
+  */
 
   void attachRightTarget(var element) {
-    $['right-content'].children.clear();
-    $['right-content'].children.add(element);
+    $$('#right-content').children.clear();
+    $$('#right-content').children.add(element);
     element.parentElement = this;
   }
 
   void attachLeftTarget(var element) {
-    $['left-content'].children.clear();
-    $['left-content'].children.add(element);
+    $$('#left-content').children.clear();
+    $$('#left-content').children.add(element);
     element.parentElement = this;
   }
 

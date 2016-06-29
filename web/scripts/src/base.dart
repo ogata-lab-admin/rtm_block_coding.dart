@@ -12,7 +12,9 @@ import 'block.dart';
 import 'datatype.dart';
 import 'inport.dart';
 import 'outport.dart';
+import 'variable.dart';
 import 'dart:mirrors';
+
 
 
 /// ブロックコーディングの大元の要素
@@ -131,4 +133,58 @@ class Application {
     });
   }
 
+  /// デフォルトの変数名を作成する
+  String getDefaultInPortName() {
+    int counter = 0;
+    String n = 'in$counter';
+
+    while (find(AddInPort, name:n).length != 0) {
+      counter++;
+      n = 'in$counter';
+    }
+
+    return n;
+  }
+
+  String getDefaultOutPortName() {
+    int counter = 0;
+    String n = 'out$counter';
+
+    while (find(AddOutPort, name: n).length != 0) {
+      counter++;
+      n = 'out$counter';
+    }
+
+    return n;
+  }
+
+  String getDefaultVariableName() {
+    int counter = 0;
+    String n = 'variable$counter';
+
+    while (find(DeclareVariable, name: n).length != 0) {
+      counter++;
+      n = 'variable$counter';
+    }
+
+    return n;
+  }
+
+
+  findFirstForLeftHand() {
+    var outPortList = find(AddOutPort);
+    if (outPortList == null) {outPortList = [];}
+    var variableList = find(DeclareVariable);
+    if (variableList == null) {variableList = [];}
+    if (outPortList.length + variableList.length  == 0) {
+      return null;
+    }
+
+    var firstAlternative = null;
+    if (variableList.length > 0) {
+      return new ReferVariable(variableList[0].name, variableList[0].dataType);
+    } else {
+      return new OutPortBuffer(outPortList[0].name, outPortList[0].dataType, '');
+    }
+  }
 }

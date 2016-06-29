@@ -93,7 +93,7 @@ class EditorPanel extends PolymerElement {
   }
 
   void onUpdateSelection() {
-    if (globalController.selectedElement == null) {
+    if (globalController.selectedBox == null) {
       ($$('#up-button') as html.HtmlElement).style.backgroundColor = '#CACACA';
       ($$('#down-button') as html.HtmlElement).style.backgroundColor = '#CACACA';
       ($$('#remove-button') as html.HtmlElement).style.backgroundColor = '#CACACA';

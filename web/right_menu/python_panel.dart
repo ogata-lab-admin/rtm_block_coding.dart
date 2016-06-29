@@ -29,13 +29,13 @@ class PythonPanel extends PolymerElement {
     String innerHtml = "";
 
     // 選択要素がある場合
-    if (globalController.selectedElement != null) {
+    if (globalController.selectedBox != null) {
 
-      var pattern = globalController.selectedElement.model.toPython(0);
+      var pattern = globalController.selectedBox.model.toPython(0);
       String html = globalController.pythonCode();
 
       if (pattern.length == 0) { // onAct, onDeact, onExeには該当コードがない
-        pattern = globalController.selectedElement.model.toDeclarePython(0);
+        pattern = globalController.selectedBox.model.toDeclarePython(0);
         if (pattern.length > 0) {
           RegExp reg = new RegExp(r'\r\n|\r|\n', multiLine : true);
           pattern.split(reg).forEach((String p) {
@@ -46,7 +46,7 @@ class PythonPanel extends PolymerElement {
           });
 
         }
-        pattern = globalController.selectedElement.model.toBindPython(0);
+        pattern = globalController.selectedBox.model.toBindPython(0);
         if (pattern.length > 0) {
           html = html.replaceAll(
               pattern, '<span class="selected">' + pattern + '</span>');

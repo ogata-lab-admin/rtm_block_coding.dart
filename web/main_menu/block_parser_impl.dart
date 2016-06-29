@@ -5,17 +5,20 @@ import 'package:polymer/polymer.dart';
 import '../scripts/application.dart' as program;
 import '../controller/controller.dart';
 
-import '../main_menu/boxes/add_inport_box.dart';
-import '../main_menu/boxes/add_outport_box.dart';
+import 'boxes/add_inport_box.dart';
+import 'boxes/add_outport_box.dart';
+import 'boxes/declare_variable_box.dart';
+import 'boxes/assign_box.dart';
+
+import 'boxes/refer_variable_box.dart';
+
+import 'boxes/integer_literal_box.dart';
 /*
-import 'blocks/declare_variable_box.dart';
 import 'blocks/assign_variable_box.dart';
-import 'blocks/refer_variable_box.dart';
 import 'blocks/read_inport_box.dart';
 import 'blocks/inport_buffer_box.dart';
 import 'blocks/outport_buffer_box.dart';
 import 'blocks/write_outport_box.dart';
-import 'blocks/integer_literal_box.dart';
 import 'blocks/real_literal_box.dart';
 import 'blocks/addition_box.dart';
 import 'blocks/subtraction_box.dart';
@@ -35,30 +38,50 @@ import 'blocks/logical_not_box.dart';
 
 import 'block_parser.dart';
 
+import 'dart:mirrors';
 
 // @CustomTag('block-parser')
 class BlockParserImpl {// extends PolymerElement {
 
-  BlockParserImpl() {}
+  Map<Type, dynamic> creatorMap = {};
+  BlockParserImpl() {
+    creatorMap = {
+      program.AddInPort : AddInPortBox.createBox,
+      program.AddOutPort : AddOutPortBox.createBox,
+      program.DeclareVariable : DeclareVariableBox.createBox,
+    };
+  }
 
   //BlockParserImpl.created() : super.created();
 
+
   parseBlock(program.Block block) {
+    /*
+    creatorMap.forEach((Type t, var func) {
+      if (block is reflectClass(t)) {
+        reflectClass(t);
+      }
+    });
+    */
     //  rtm_menu
     if (block is program.AddInPort) {
       return AddInPortBox.createBox(block);
     } else if (block is program.AddOutPort) {
       return AddOutPortBox.createBox(block);
+    } else if (block is program.DeclareVariable) {
+      return DeclareVariableBox.createBox(block);
+    } else if (block is program.Assign) {
+      return AssignBox.createBox(block);
+    } else if (block is program.ReferVariable) {
+      return ReferVariableBox.createBox(block);
+    } else if (block is program.IntegerLiteral) {
+      return IntegerLiteralBox.createBox(block);
     }
 
     /*
     //  variables_menu
-    else if (block is program.DeclareVariable) {
-      return DeclareVariableBox.createBox(block);
-    } else if (block is program.Assign) {
+     else if (block is program.Assign) {
       return AssignVariableBox.createBox(block);
-    } else if (block is program.ReferVariable) {
-      return ReferVariableBox.createBox(block);
     }
     /*    else if (block is program.SetVariable) {
       return new html.Element.tag('set-variable')
@@ -83,9 +106,7 @@ class BlockParserImpl {// extends PolymerElement {
     }
 
     //  calculate_menu
-    else if (block is program.IntegerLiteral) {
-      return IntegerLiteralBox.createBox(block);
-    } else if (block is program.RealLiteral) {
+     else if (block is program.RealLiteral) {
       return RealLiteralBox.createBox(block);
     } else if (block is program.Add) {
       return AdditionBox.createBox(block);
@@ -139,10 +160,9 @@ class BlockParserImpl {// extends PolymerElement {
 
   parseStatement(var children, program.Statement s) {
     var elem = parseBlock(s.block);
-    if (globalController.selectedElement != null) {
-      if (globalController.selectedElement.model == s.block) {
-        globalController.setSelectedElem(
-            globalController.previousMouseEvent, elem);
+    if (globalController.selectedBox != null) {
+      if (globalController.selectedBox.model == s.block) {
+        globalController.setSelectedBox(elem);
       }
     }
     children.add(elem);

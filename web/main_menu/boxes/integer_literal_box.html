@@ -1,14 +1,13 @@
-<link rel="import" href="packages/polymer/polymer.html" />
-<link rel="import" href="packages/paper_elements/paper_input.html" />
-<link rel="import" href="packages/paper_elements/paper_fab.html" />
 
-<polymer-element name="integer-literal-box">
+<link rel="import" href="packages/polymer_elements/paper_input.html" />
+
+<dom-module id="integer-literal-box">
     <template>
 
         <style type='text/css'>
             :host {
             }
-            :host > #target {
+            :host > #container {
                 margin-top: 2px;
                 margin-left: 7px;
                 margin-right: 7px;
@@ -38,11 +37,11 @@
         </style>
 
         <!--Japanese ver.-->
-        <div id="target" horizontal layout center on-tap="{{onClicked}}">
+        <div id="container" class="horizontal layout center" on-tap="onClicked">
             <div>整数:</div>
-            <paper-input id="int-literal-input" value="{{intvarstr}}"></paper-input>
+            <paper-input id="int-literal-input" value="{{intvarstr}}" on-input="onInputValue"></paper-input>
         </div>
 
     </template>
     <script type="application/dart" src="integer_literal_box.dart"></script>
-</polymer-element>
+</dom-module>

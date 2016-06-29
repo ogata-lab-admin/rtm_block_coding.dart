@@ -39,7 +39,7 @@ class AddOutPortBox extends AddPortBox {
   void onIronSelect(var e) {
     print('AddOutPort.onIronSelect($e, ${e.detail})');
     if (e.detail != null) {
-      onTypeChange(model.dataType.typename);
+      onTypeChange((model as program.AddOutPort).dataType.typename);
     }
   }
 
@@ -59,16 +59,16 @@ class AddOutPortBox extends AddPortBox {
   }
 
   void onTypeChange(String typename) {
-    model.dataType = new program.DataType.fromTypeName(typename);
+    (model as program.AddOutPort).dataType = new program.DataType.fromTypeName(typename);
 
     String name_ = model.name;
 
     globalController.findFromAllApp(program.AccessOutPort, name_).forEach((program.AccessOutPort port) {
-      port.dataType = model.dataType;
+      port.dataType = (model as program.AddOutPort).dataType;
     });
 
     globalController.findFromAllApp(program.WriteOutPort, name_).forEach((program.WriteOutPort port) {
-      port.dataType = model.dataType;
+      port.dataType = (model as program.AddOutPort).dataType;
       //port.accessSequence = '';
     });
   }

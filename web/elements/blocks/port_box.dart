@@ -16,7 +16,7 @@ class PortBox extends PolymerElement {
   PortBox.created() : super.created();
 
   void onClicked(var e) {
-    globalController.setSelectedElem(e, this);
+    globalController.setSelectedBox(e, this);
     e.stopPropagation();
   }
 

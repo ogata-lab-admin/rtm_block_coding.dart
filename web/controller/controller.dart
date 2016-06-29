@@ -15,8 +15,7 @@ import '../elements/blocks/inport_buffer_box.dart';
 import '../elements/blocks/outport_buffer_box.dart';
 import '../elements/blocks/write_outport_box.dart';
 import '../elements/blocks/set_variable.dart';
-import '../elements/blocks/declare_variable_box.dart';
-import '../elements/blocks/assign_variable_box.dart';
+import '../elements/blocks/assign_box.dart';
 import '../elements/blocks/refer_variable_box.dart';
 import '../elements/blocks/addition_box.dart';
 import '../elements/blocks/subtraction_box.dart';
@@ -31,9 +30,17 @@ import '../main_menu/state_panel.dart';
 import '../elements/python_panel.dart';
 import '../elements/blocks/box_base.dart';
 */
+import '../main_menu/boxes/box_base.dart';
+import '../main_menu/state_panel.dart';
+import '../right_menu/python_panel.dart';
+
+
+import 'programbuilder.dart';
 
 class Controller {
 
+  ProgramBuilder programBuilder = new ProgramBuilder();
+  /// アプリケーション
   program.Application onInitializeApp = new program.Application();
   program.Application onActivatedApp = new program.Application();
   program.Application onExecuteApp = new program.Application();
@@ -43,13 +50,17 @@ class Controller {
   PythonPanel _pythonPanel;
   StatePanel _statePanel;
 
-  String _mode = "on_initialize";
+  /// String _mode = "on_initialize";
 
   set editorPanel(EditorPanel p) => _editorPanel = p;
 
   set pythonPanel(PythonPanel p) => _pythonPanel = p;
 
   set statePanel(StatePanel p) => _statePanel = p;
+
+  BoxBase _selectedBox = null;
+
+  BoxBase get selectedBox => _selectedBox;
 
   Controller() {
   }
@@ -66,7 +77,6 @@ class Controller {
     ps.addAll(onExecuteApp.find(t, name: name));
     ps.addAll(onActivatedApp.find(t, name: name));
     ps.addAll(onDeactivatedApp.find(t, name: name));
-
     return ps;
   }
 
@@ -85,7 +95,7 @@ class Controller {
     }
   }
 
-  program.Application getSelectedEditorApplication() {
+  get selectedApp {
     switch(_editorPanel.selected) {
       case 0:
         return onInitializeApp;
@@ -100,99 +110,43 @@ class Controller {
     }
   }
 
-  var selectedElement = null;
-  var previousMouseEvent = null;
-
-  void setSelectedElem(var event, var elem) {
-    previousMouseEvent = event;
-    if (selectedElement != null) {
-      selectedElement.deselect();
+  /*
+  program.Application getSelectedEditorApplication() {
+    switch(_editorPanel.selected) {
+      case 0:
+        return onInitializeApp;
+      case 1:
+        return onActivatedApp;
+      case 2:
+        return onExecuteApp;
+      case 3:
+        return onDeactivatedApp;
+      default:
+        return null;
     }
-    selectedElement = elem;
-    if (selectedElement != null) {
-      selectedElement.select();
+  }*/
+
+  void setSelectedBox(BoxBase box) {
+    //previousMouseEvent = event;
+    if (_selectedBox != null) {
+      _selectedBox.deselect();
+    }
+    _selectedBox = box;
+    if (_selectedBox != null) {
+      _selectedBox.select();
     }
 
     _editorPanel.onUpdateSelection();
     _pythonPanel.onUpdateSelection();
   }
 
-  program.Statement selectedStatement() {
-    return selectedElement;
-  }
 
-  String getInPortName() {
-    int counter = 0;
-    String n = 'in$counter';
 
-    while (onInitializeApp.find(program.AddInPort, name:n).length != 0) {
-      counter++;
-      n = 'in$counter';
-    }
 
-    return n;
-  }
-
-  String getOutPortName() {
-    int counter = 0;
-    String n = 'out$counter';
-
-    while (onInitializeApp.find(program.AddOutPort, name: n).length != 0) {
-      counter++;
-      n = 'out$counter';
-    }
-
-    return n;
-  }
-
-  String getVariableName() {
-    int counter = 0;
-    String n = 'variable$counter';
-
-    while (onInitializeApp.find(program.DeclareVariable, name: n).length != 0) {
-      counter++;
-      n = 'variable$counter';
-    }
-
-    return n;
-  }
 
   void addElement(String command) {
     print('controller.addElement($command) called');
-    program.Application app;
-    switch (_editorPanel.selected) {
-      case 0:
-        app = onInitializeApp;
-        break;
-      case 1:
-        app = onActivatedApp;
-        break;
-      case 2:
-        app = onExecuteApp;
-        break;
-      case 3:
-        app = onDeactivatedApp;
-        break;
-    }
-
-//  rtm_menu
-    if(command == 'add_inport') {
-      var n = getInPortName();
-      program.AddInPort v = new program.AddInPort(n, new program.DataType.TimedLong());
-      program.Statement new_s = new program.Statement(v);
-      if (selectedStatement() == null) {
-        app.statements.add(new_s);
-      }
-    }
-    if(command == 'add_outport') {
-      var n = getOutPortName();
-      program.AddOutPort v = new program.AddOutPort(n, new program.DataType.TimedLong());
-      program.Statement new_s = new program.Statement(v);
-      if (selectedStatement() == null) {
-        app.statements.add(new_s);
-      }
-    }
-
+    programBuilder.build(command);
     /*
 //  variables_menu
     if (command == 'declare_variable') {

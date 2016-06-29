@@ -6,7 +6,7 @@ import 'dart:core';
 import 'package:xml/xml.dart' as xml;
 import 'dart:collection';
 import 'statement.dart';
-
+import 'base.dart';
 import 'datatype.dart';
 import 'block.dart';
 import 'block_loader.dart';
@@ -32,7 +32,7 @@ class ReferVariable extends Block {
   ReferVariable(String name, this._dataType) : super(name) {}
 
   toPython(int indentLevel) {
-    return name;
+    return 'self._$name';
   }
 
   void buildXML(xml.XmlBuilder builder) {
@@ -93,5 +93,9 @@ class  DeclareVariable extends Block {
   DeclareVariable.XML(xml.XmlElement node)  : super('') {
     name = node.getAttribute('name');
     _dataType = new DataType.fromTypeName(node.getAttribute('dataType'));
+  }
+
+  DeclareVariable.fromAppDefault(Application app) : super(app.getDefaultVariableName()) {
+    this._dataType = new DataType.fromTypeName('long');
   }
 }
