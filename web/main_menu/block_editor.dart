@@ -8,7 +8,7 @@ import 'package:web_components/web_components.dart' show HtmlImport;
 import 'package:polymer/polymer.dart';
 import '../scripts/application.dart' as program;
 import '../controller/controller.dart';
-import 'block_parser_impl.dart';
+import 'boxes/box_factory_impl.dart';
 
 import 'boxes/rtm/add_inport_box.dart';
 import 'boxes/rtm/add_outport_box.dart';
@@ -47,7 +47,7 @@ class BlockEditor extends PolymerElement {
   void refresh(program.Application app) {
     container.children.clear();
     app.statements.forEach((s) {
-      new BlockParserImpl().parseStatement(container.children, s);
+      new BoxFactoryImpl().parseStatement(container.children, s);
     });
   }
 

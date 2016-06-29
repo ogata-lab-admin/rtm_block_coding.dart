@@ -1,8 +1,6 @@
-<link rel="import" href="packages/polymer/polymer.html" />
-<link rel="import" href="packages/core_elements/core_style.html" />
-<link rel="import" href="packages/paper_elements/paper_input.html" />
-
-<polymer-element name="read-inport-box">
+<link rel="import" href="packages/polymer_elements/paper_input.html" />
+<link rel="import" href="packages/polymer_elements/iron_selector.html" />
+<dom-module id="read-inport-box">
     <template>
 
         <style>
@@ -50,21 +48,14 @@
         </style>
 
         <!--Japanese ver.-->
-        <div id="title-area" horizontal layout center on-tap="{{onClicked}}">
+        <div id="container" class="horizontal layout center" on-tap="onClicked">
             <div end>入力ポート (</div>
-            <!-- <paper-input id="name-input" flex one value="{{port_name}}"></paper-input> -->
             <paper-dropdown-menu id="dropdown-menu" label="Your favorite pastry">
-                <paper-dropdown id="dropdown" class="dropdown">
-                    <core-menu class="menu" id="menu-content"></core-menu>
-                </paper-dropdown>
+                <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
+                </iron-selector>
             </paper-dropdown-menu>
             <div end>) のデータを読み込む</div>
         </div>
-        <div id="body-area">
-            <div id="target">
-            </div>
-        </div>
-
     </template>
     <script type="application/dart" src="read_inport_box.dart"></script>
-</polymer-element>
+</dom-module>

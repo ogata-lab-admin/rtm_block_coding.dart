@@ -33,8 +33,8 @@ class BlockLoader {
     DataType,
     If, While, Break, Pass, Continue, 
     Print,
-    AccessInPort, AddInPort, ReadInPort,
-    AccessOutPort, AddOutPort, WriteOutPort,
+    IsNewInPort, InPortBuffer, AddInPort, ReadInPort,
+    OutPortBuffer, AddOutPort, WriteOutPort,
   ];
 
   /// ブロックがtypeで定義されるクラスと対応しているか判断するメソッド

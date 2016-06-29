@@ -10,7 +10,6 @@ import 'package:rtcprofile/rtcprofile.dart';
 import '../main_menu/boxes/rtm/add_inport_box.dart';
 import '../main_menu/boxes/rtm/add_outport_box.dart';
 /*
-import '../elements/blocks/read_inport_box.dart';
 import '../elements/blocks/inport_buffer_box.dart';
 import '../elements/blocks/outport_buffer_box.dart';
 import '../elements/blocks/write_outport_box.dart';

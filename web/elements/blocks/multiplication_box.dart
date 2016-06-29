@@ -6,7 +6,7 @@ import 'package:polymer/polymer.dart';
 //import '../../controller/controller.dart';
 import 'calculation_box.dart';
 //import '../block_editor.dart';
-import '../../main_menu/block_parser.dart';
+import '../../main_menu/boxes/box_factory.dart';
 
 @CustomTag('multiplication-box')
 class MultiplicationBox extends CalculationBox {
@@ -14,8 +14,8 @@ class MultiplicationBox extends CalculationBox {
   static MultiplicationBox createBox(program.Multiply multiplyBlock) {
     return (new html.Element.tag('multiplication-box') as MultiplicationBox)
       ..model = multiplyBlock
-      ..attachLeft(BlockParser.parseBlock(multiplyBlock.a))
-      ..attachRight(BlockParser.parseBlock(multiplyBlock.b));
+      ..attachLeft(BoxFactory.parseBlock(multiplyBlock.a))
+      ..attachRight(BoxFactory.parseBlock(multiplyBlock.b));
   }
 
   program.Multiply _model;

@@ -41,11 +41,11 @@ class AddInPort extends AddPort {
 }
 
 
-class AccessInPort extends Block {
+class InPortBuffer extends Block {
   DataType dataType;
   String accessSequence;
 
-  AccessInPort(String name, this.dataType, this.accessSequence) : super(name) {
+  InPortBuffer(String name, this.dataType, this.accessSequence) : super(name) {
   }
 /*  AccessInPort(String inName_, DataType dataType_, String accessSequence_) : super(inName_, dataType_, accessSequence_) {
   }*/
@@ -58,17 +58,15 @@ class AccessInPort extends Block {
   }
 
   void buildXML(xml.XmlBuilder builder) {
-    super.element(builder,
-        attributes: {
-          'name' : name,
-          'accessSequence' : accessSequence,
-        },
-        nest: () {
-          dataType.buildXML(builder);
-        });
+    super.element(builder, attributes: {
+      'name' : name,
+      'accessSequence' : accessSequence,
+    }, nest: () {
+      dataType.buildXML(builder);
+    });
   }
 
-  AccessInPort.XML(xml.XmlElement node) : super('') {
+  InPortBuffer.XML(xml.XmlElement node) : super('') {
     name = node.getAttribute('name');
     accessSequence = node.getAttribute('accessSequence');
     child(node, (xml.XmlElement e) {
@@ -77,6 +75,7 @@ class AccessInPort extends Block {
   }
 }
 
+/*
 class InPortBuffer extends Block {
   DataType dataType;
   String accessSequence;
@@ -111,7 +110,79 @@ class InPortBuffer extends Block {
   }
 }
 
+*/
 
+class IsNewInPort extends Block {
+  DataType dataType;
+
+  //StatementList statements = new StatementList([]);
+
+  IsNewInPort(String name, this.dataType) : super(name)  {
+  }
+
+  String toPython(int indentLevel) {
+    String sb = "";
+    sb = "self._${name}In.isNew()";
+    return sb;
+  }
+
+  void buildXML(xml.XmlBuilder builder) {
+    super.element(builder,
+        attributes: {
+          'name' : name
+        },
+        nest: () {
+          dataType.buildXML(builder);
+        });
+  }
+
+  IsNewInPort.XML(xml.XmlElement node) : super('') {
+    name = node.getAttribute('name');
+    typedChild(node, DataType, (xml.XmlElement e) {
+      dataType = new DataType.XML(e);
+    });
+  }
+}
+
+///
+class ReadInPort extends Block {
+  DataType dataType;
+
+  ReadInPort(String name, this.dataType) : super(name)  {
+  }
+
+
+  String toPython(int indentLevel) {
+    String sb = "";
+    sb += 'self._d_${name} = self._${name}In.read()';
+    return sb;
+  }
+
+
+  void buildXML(xml.XmlBuilder builder) {
+    super.element(builder,
+        attributes: {
+          'name' : name
+        },
+        nest: () {
+          dataType.buildXML(builder);
+        });
+  }
+
+  ReadInPort.XML(xml.XmlElement node) : super('') {
+    name = node.getAttribute('name');
+    typedChild(node, DataType, (xml.XmlElement e) {
+      dataType = new DataType.XML(e);
+    });
+  }
+
+  ReadInPort.fromAppDefault(Application app) : super(app.find(AddInPort)[0].name) {
+    dataType = app.find(AddInPort)[0].dataType;
+  }
+
+}
+
+/*
 class ReadInPort extends Block {
   DataType dataType;
 
@@ -165,3 +236,4 @@ class ReadInPort extends Block {
     });
   }
 }
+*/

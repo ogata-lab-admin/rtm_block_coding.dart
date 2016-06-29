@@ -6,7 +6,7 @@ import 'package:polymer/polymer.dart';
 //import '../../controller/controller.dart';
 import 'calculation_box.dart';
 //import '../block_editor.dart';
-import '../../main_menu/block_parser.dart';
+import '../../main_menu/boxes/box_factory.dart';
 
 @CustomTag('division-box')
 class DivisionBox extends CalculationBox {
@@ -14,8 +14,8 @@ class DivisionBox extends CalculationBox {
   static DivisionBox createBox(program.Divide divideBlock) {
     return (new html.Element.tag('division-box') as DivisionBox)
       ..model = divideBlock
-      ..attachLeft(BlockParser.parseBlock(divideBlock.a))
-      ..attachRight(BlockParser.parseBlock(divideBlock.b));
+      ..attachLeft(BoxFactory.parseBlock(divideBlock.a))
+      ..attachRight(BoxFactory.parseBlock(divideBlock.b));
   }
 
   program.Divide _model;

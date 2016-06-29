@@ -46,7 +46,7 @@ class AddInPortBox extends AddPortBox {
     print('AddInPortBox.onNameChange($new_name)');
     String old_name = model.name;
 
-    globalController.findFromAllApp(program.AccessInPort, old_name).forEach((program.AccessInPort port) {
+    globalController.findFromAllApp(program.InPortBuffer, old_name).forEach((program.InPortBuffer port) {
       port.name = new_name;
     });
 
@@ -62,7 +62,7 @@ class AddInPortBox extends AddPortBox {
     print('AddInPort.onTypeChange($typename)');
 
     String name_ = model.name;
-    globalController.findFromAllApp(program.AccessInPort, name_).forEach((program.AccessInPort port) {
+    globalController.findFromAllApp(program.InPortBuffer, name_).forEach((program.InPortBuffer port) {
       port.dataType = (model as program.AddInPort).dataType;
       port.accessSequence = '';
     });

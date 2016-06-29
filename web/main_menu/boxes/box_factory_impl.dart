@@ -2,16 +2,21 @@ library block_parser_impl;
 
 import 'dart:html' as html;
 import 'package:polymer/polymer.dart';
-import '../scripts/application.dart' as program;
-import '../controller/controller.dart';
+import '../../scripts/application.dart' as program;
+import '../../controller/controller.dart';
 
-import 'boxes/rtm/add_inport_box.dart';
-import 'boxes/rtm/add_outport_box.dart';
-import 'boxes/variables/declare_variable_box.dart';
-import 'boxes/variables/assign_box.dart';
-import 'boxes/variables/refer_variable_box.dart';
+import 'rtm/add_inport_box.dart';
+import 'rtm/add_outport_box.dart';
+import 'variables/declare_variable_box.dart';
+import 'variables/assign_box.dart';
+import 'variables/refer_variable_box.dart';
 
-import 'boxes/integer_literal_box.dart';
+import 'integer_literal_box.dart';
+
+import 'dataports/read_inport_box.dart';
+
+import 'box_base.dart';
+
 /*
 import 'blocks/assign_variable_box.dart';
 import 'blocks/read_inport_box.dart';
@@ -35,15 +40,13 @@ import 'blocks/smaller_than_or_equals_box.dart';
 import 'blocks/logical_not_box.dart';
 */
 
-import 'block_parser.dart';
-
+import 'box_factory.dart';
 import 'dart:mirrors';
 
-// @CustomTag('block-parser')
-class BlockParserImpl {// extends PolymerElement {
+class BoxFactoryImpl {
 
   Map<Type, dynamic> creatorMap = {};
-  BlockParserImpl() {
+  BoxFactoryImpl() {
     creatorMap = {
       program.AddInPort : AddInPortBox.createBox,
       program.AddOutPort : AddOutPortBox.createBox,
@@ -51,10 +54,7 @@ class BlockParserImpl {// extends PolymerElement {
     };
   }
 
-  //BlockParserImpl.created() : super.created();
-
-
-  parseBlock(program.Block block) {
+  BoxBase parseBlock(program.Block block) {
     /*
     creatorMap.forEach((Type t, var func) {
       if (block is reflectClass(t)) {
@@ -75,6 +75,8 @@ class BlockParserImpl {// extends PolymerElement {
       return ReferVariableBox.createBox(block);
     } else if (block is program.IntegerLiteral) {
       return IntegerLiteralBox.createBox(block);
+    } else if (block is program.ReadInPort) {
+      return ReadInPortBox.createBox(block);
     }
 
     /*
@@ -155,10 +157,11 @@ class BlockParserImpl {// extends PolymerElement {
       return LogicalNotBox.createBox(block);
     }
     */
+    return null;
   }
 
-  parseStatement(var children, program.Statement s) {
-    var elem = parseBlock(s.block);
+  BoxBase parseStatement(var children, program.Statement s) {
+    BoxBase elem = parseBlock(s.block);
     if (globalController.selectedBox != null) {
       if (globalController.selectedBox.model == s.block) {
         globalController.setSelectedBox(elem);

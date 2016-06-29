@@ -25,6 +25,13 @@
           <add-element-button id="var1" label="値の代入" command="Assign"></add-element-button>
           <add-element-button id="var2" label="値の参照" command="ReferVariable"></add-element-button>
       </collapse-menu>
+      <collapse-menu id="port_data_menu" label="ポート / データ" state="closed">
+          <add-element-button id="data0" label="入力ポートの受信確認" command="IsNewInPort"></add-element-button>
+          <add-element-button id="data1" label="入力ポートから読み込み" command="ReadInPort"></add-element-button>
+          <add-element-button id="data2" label="入力ポートのデータ" command="InPortBuffer"></add-element-button>
+          <add-element-button id="data3" label="出力ポートのデータ" command="OutPortBuffer"></add-element-button>
+          <add-element-button id="data4" label="出力ポートに書き込み" command="WriteOutPort"></add-element-button>
+      </collapse-menu>
 
       <!--
                 <core-toolbar class="dark-primary-color text-primary-color"></core-toolbar>

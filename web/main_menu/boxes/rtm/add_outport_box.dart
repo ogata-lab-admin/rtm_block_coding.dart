@@ -46,7 +46,7 @@ class AddOutPortBox extends AddPortBox {
   void onNameChange(String new_name) {
     String old_name = model.name;
 
-    globalController.findFromAllApp(program.AccessOutPort, old_name).forEach((program.AccessOutPort port) {
+    globalController.findFromAllApp(program.OutPortBuffer, old_name).forEach((program.OutPortBuffer port) {
       port.name = new_name;
     });
 
@@ -63,7 +63,7 @@ class AddOutPortBox extends AddPortBox {
 
     String name_ = model.name;
 
-    globalController.findFromAllApp(program.AccessOutPort, name_).forEach((program.AccessOutPort port) {
+    globalController.findFromAllApp(program.OutPortBuffer, name_).forEach((program.OutPortBuffer port) {
       port.dataType = (model as program.AddOutPort).dataType;
     });
 

@@ -9,7 +9,7 @@ import 'package:web_components/web_components.dart' show HtmlImport;
 import '../../../scripts/application.dart' as program;
 import 'package:polymer/polymer.dart';
 import 'package:polymer_elements/paper_item.dart';
-import '../../../main_menu/block_parser.dart';
+import '../box_factory.dart';
 import '../../../controller/controller.dart';
 import '../box_base.dart';
 
@@ -27,8 +27,8 @@ class AssignBox extends BoxBase {
   AssignBox.created() : super.created();
 
   void attached() {
-    attachLeftTarget(BlockParser.parseBlock((model as program.Assign).left));
-    attachRightTarget(BlockParser.parseBlock((model as program.Assign).right));
+    attachLeftTarget(BoxFactory.parseBlock((model as program.Assign).left));
+    attachRightTarget(BoxFactory.parseBlock((model as program.Assign).right));
   }
 
   void attachRightTarget(var element) {

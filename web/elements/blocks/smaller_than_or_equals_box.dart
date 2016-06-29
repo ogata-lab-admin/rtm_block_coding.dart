@@ -3,7 +3,7 @@ import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
 import '../../main_menu/block_editor.dart';
-import '../../main_menu/block_parser.dart';
+import '../../main_menu/boxes/box_factory.dart';
 import '../../controller/controller.dart';
 import 'conditions_box.dart';
 
@@ -18,8 +18,8 @@ class SmallerThanOrEqualsBox extends ConditionsBox {
   static SmallerThanOrEqualsBox createBox(program.SmallerThanOrEquals m) {
     return new html.Element.tag('smaller-than-or-equals-box') as SmallerThanOrEqualsBox
       ..model = m
-      ..attachLeft(BlockParser.parseBlock(m.left))
-      ..attachRight(BlockParser.parseBlock(m.right));
+      ..attachLeft(BoxFactory.parseBlock(m.left))
+      ..attachRight(BoxFactory.parseBlock(m.right));
   }
 
   set model(program.SmallerThanOrEquals m) {

@@ -4,7 +4,7 @@ import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
 //import '../block_editor.dart';
-import '../../main_menu/block_parser.dart';
+import '../../main_menu/boxes/box_factory.dart';
 //import '../../controller/controller.dart';
 import 'conditions_box.dart';
 
@@ -19,8 +19,8 @@ class LargerThanBox extends ConditionsBox {
   static LargerThanBox createBox(program.LargerThan m) {
     return new html.Element.tag('larger-than-box') as LargerThanBox
       ..model = m
-      ..attachLeft(BlockParser.parseBlock(m.left))
-      ..attachRight(BlockParser.parseBlock(m.right));
+      ..attachLeft(BoxFactory.parseBlock(m.left))
+      ..attachRight(BoxFactory.parseBlock(m.right));
   }
 
   set model(program.LargerThan m) {
