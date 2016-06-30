@@ -44,7 +44,13 @@ abstract class Block {
   void iterateBlock(var func) {}
 
   /// XMLファイルを生成するために使う関数．各クラスで定義すること
-  void buildXML(xml.XmlBuilder builder) {}
+  void buildXML(xml.XmlBuilder builder) {
+    element(builder,
+        attributes: {
+        },
+        nest: () {
+        });
+  }
 
   /// XMLファイルを生成するために使うユーティリティ関数．
   /// buildXMLの中ではほぼこの関数が呼ばれる．

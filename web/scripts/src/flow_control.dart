@@ -9,11 +9,71 @@ import 'statement.dart';
 import 'literal.dart';
 import 'block_loader.dart';
 
-class If extends Block {
-  Condition condition;
 
-  If(this.condition) : super('')  {
-    //statements = s;
+class ConditionalFlowControl extends Block {
+  Condition _condition;
+
+  get condition => _condition;
+
+  set condition(Condition cond) {
+    _condition = cond;
+    condition.parent = this;
+  }
+
+  ConditionalFlowControl(this._condition) : super('') {
+    this._condition.parent = this;
+  }
+
+  @override
+  String toPython(int indentLevel) {
+    return '';
+  }
+
+  @override
+  void iterateBlock(var func) {
+    for (var s in statements) {
+      s.iterateBlock(func);
+    }
+  }
+
+
+  void buildXML(xml.XmlBuilder builder) {
+    super.element(builder, attributes: {},
+        nest: () {
+          builder.element('Condition',
+              nest : () {
+                condition.buildXML(builder);
+              });
+          statements.buildXML(builder);
+        });
+  }
+
+    @override
+  bool is_container() {
+    return true;
+  }
+
+
+  ConditionalFlowControl.XML(xml.XmlElement node) : super('')  {
+    namedChildChildren(node, 'Condition', (xml.XmlElement e) {
+      condition = BlockLoader.parseBlock(e);
+    });
+    typedChild(node, StatementList, (xml.XmlElement e) {
+      statements.loadFromXML(e);
+    });
+  }
+
+  ConditionalFlowControl.fromAppDefault(Application app) : super('') {
+    condition = new TrueLiteral();
+  }
+}
+
+
+class If extends ConditionalFlowControl {
+
+
+
+  If(Condition cond) : super(cond) {
   }
 
   String toPython(int indentLevel) {
@@ -26,43 +86,12 @@ class If extends Block {
     return sb;
   }
 
-  @override
-  void iterateBlock(var func) {
-    for (var s in statements) {
-      s.iterateBlock(func);
-    }
+
+  If.XML(xml.XmlElement node) : super.XML(node) {
   }
 
-  void buildXML(xml.XmlBuilder builder) {
-    super.element(builder,
-        attributes: {
-        },
-        nest: () {
-          builder.element('Condition',
-            nest : () {
-              condition.buildXML(builder);
-            });
-          statements.buildXML(builder);
-        });
-  }
+  If.fromAppDefault(Application app) : super.fromAppDefault(app) {
 
-
-  If.XML(xml.XmlElement node) : super('')  {
-    namedChildChildren(node, 'Condition', (xml.XmlElement e) {
-      condition = BlockLoader.parseBlock(e);
-    });
-    typedChild(node, StatementList, (xml.XmlElement e) {
-      statements.loadFromXML(e);
-    });
-  }
-
-  @override
-  bool is_container() {
-    return true;
-  }
-
-  If.fromAppDefault(Application app) : super('') {
-    condition = new TrueLiteral();
   }
 
 }
@@ -70,7 +99,6 @@ class If extends Block {
 class Else extends Block {
 
   Else() : super('')  {
-    //statements = s;
   }
 
   @override
@@ -113,11 +141,10 @@ class Else extends Block {
   }
 }
 
-class While extends Block {
-  Condition condition;
+class While extends ConditionalFlowControl {
 
-  While(this.condition) : super('')  {
-    //statements = s;
+
+  While(Condition cond) : super(cond)  {
   }
 
   String toPython(int indentLevel) {
@@ -131,43 +158,10 @@ class While extends Block {
     return sb;
   }
 
-  @override
-  void iterateBlock(var func) {
-    for (var s in statements) {
-      s.iterateBlock(func);
-    }
+  While.XML(xml.XmlElement node) : super.XML(node) {
   }
 
-  void buildXML(xml.XmlBuilder builder) {
-    super.element(builder,
-        attributes: {
-        },
-        nest: () {
-          builder.element('Condition',
-              nest : () {
-                condition.buildXML(builder);
-              });
-
-          builder.element('Loop',
-              nest : () {
-                statements.buildXML(builder);
-              });
-        });
-  }
-
-  While.XML(xml.XmlElement node) : super('')  {
-    namedChildChildren(node, 'Condition', (xml.XmlElement e) {
-      condition = BlockLoader.parseBlock(e);
-    });
-    namedChildChildren(node, 'Loop', (xml.XmlElement e) {
-      statements.loadFromXML(e);
-    });
-  }
-
-  @override
-  bool is_container() {
-    return true;
-  }
+  While.fromAppDefault(Application app) : super.fromAppDefault(app) {}
 }
 
 class Break extends Block {
@@ -178,17 +172,7 @@ class Break extends Block {
     return 'break';
   }
 
-  void buildXML(xml.XmlBuilder builder) {
-    super.element(builder,
-        attributes: {
-        },
-        nest: () {
-
-        });
-  }
-
   Break.XML(xml.XmlElement node) : super('')  {
-
   }
 }
 
@@ -200,17 +184,8 @@ class Continue extends Block {
     return 'continue';
   }
 
-  void buildXML(xml.XmlBuilder builder) {
-    super.element(builder,
-        attributes: {
-        },
-        nest: () {
-
-        });
-  }
 
   Continue.XML(xml.XmlElement node) : super('')  {
-
   }
 }
 
@@ -222,15 +197,6 @@ class Pass extends Block {
     return 'pass';
   }
 
-  void buildXML(xml.XmlBuilder builder) {
-    super.element(builder,
-        attributes: {
-        },
-        nest: () {
-        });
-  }
-
   Pass.XML(xml.XmlElement node)  : super('') {
-
   }
 }

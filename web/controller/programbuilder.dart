@@ -9,16 +9,28 @@ class ProgramBuilder {
   ProgramBuilder() {}
 
 
-  void addToApp(Statement s) {
+  void addToApp(Block b) {
     Application app = globalController.selectedApp;
-    if (globalController.selectedBox == null) {
-      app.statements.add(s);
-    } else if (globalController.selectedBox.model.is_container()) {
-      globalController.selectedBox.model.statements.add(s);
-    } else {
-      app.statements.add(s);
+    var s = new Statement(b);
+    if (b is Condition) {
+      if (globalController.selectedBox == null) {
+        return;
+      }
+
+      if(globalController.selectedBox.model.parent is ConditionalFlowControl) {
+        globalController.selectedBox.model.parent.condition = b;
+      }
     }
 
+    else {
+      if (globalController.selectedBox == null) {
+        app.statements.add(s);
+      } else if (globalController.selectedBox.model.is_container()) {
+        globalController.selectedBox.model.statements.add(s);
+      } else {
+        app.statements.add(s);
+      }
+    }
   }
 
   void build(String command) {
@@ -26,28 +38,32 @@ class ProgramBuilder {
     Application onInit = globalController.onInitializeApp;
 //  rtm_menu
     if(command == 'AddInPort') {
-      addToApp(new Statement(new AddInPort.fromAppDefault(onInit)));
+      addToApp((new AddInPort.fromAppDefault(onInit)));
     }
 
     if(command == 'AddOutPort') {
-      addToApp(new Statement(new AddOutPort.fromAppDefault(onInit)));
+      addToApp((new AddOutPort.fromAppDefault(onInit)));
     }
 
     if (command == 'DeclareVariable') {
-      addToApp(new Statement(new DeclareVariable.fromAppDefault(onInit)));
+      addToApp((new DeclareVariable.fromAppDefault(onInit)));
     }
 
     if (command == 'Assign') {
-      addToApp(new Statement(new Assign.fromAppDefault(onInit)));
+      addToApp((new Assign.fromAppDefault(onInit)));
 
     }
 
     if (command == 'ReadInPort') {
-      addToApp(new Statement(new ReadInPort.fromAppDefault(onInit)));
+      addToApp((new ReadInPort.fromAppDefault(onInit)));
+    }
+
+    if (command == 'IsNewInPort') {
+      addToApp((new IsNewInPort.fromAppDefault(onInit)));
     }
 
     if (command == 'If') {
-      addToApp(new Statement(new If.fromAppDefault(onInit)));
+      addToApp((new If.fromAppDefault(onInit)));
     }
 
   }

@@ -16,6 +16,7 @@ import 'integer_literal_box.dart';
 import 'true_literal_box.dart';
 
 import 'dataports/read_inport_box.dart';
+import 'dataports/is_new_inport_box.dart';
 
 import 'flow_control/if_box.dart';
 
@@ -85,6 +86,8 @@ class BoxFactoryImpl {
       return ReadInPortBox.createBox(block);
     } else if (block is program.If) {
       return IfBox.createBox(block);
+    } else if (block is program.IsNewInPort) {
+      return IsNewInPortBox.createBox(block);
     }
 
     /*

@@ -8,6 +8,7 @@ import 'statement.dart';
 import 'datatype.dart';
 import 'block_loader.dart';
 import 'port.dart';
+import 'condition.dart';
 
 class AddInPort extends AddPort {
 
@@ -112,12 +113,13 @@ class InPortBuffer extends Block {
 
 */
 
-class IsNewInPort extends Block {
+
+/// Is New Method
+class IsNewInPort extends Condition {
   DataType dataType;
 
-  //StatementList statements = new StatementList([]);
-
-  IsNewInPort(String name, this.dataType) : super(name)  {
+  IsNewInPort(String name, this.dataType) : super()  {
+    this.name = name;
   }
 
   String toPython(int indentLevel) {
@@ -136,11 +138,17 @@ class IsNewInPort extends Block {
         });
   }
 
-  IsNewInPort.XML(xml.XmlElement node) : super('') {
+  IsNewInPort.XML(xml.XmlElement node) : super() {
     name = node.getAttribute('name');
     typedChild(node, DataType, (xml.XmlElement e) {
       dataType = new DataType.XML(e);
     });
+  }
+
+  IsNewInPort.fromAppDefault(Application app) {
+    var inPortList = app.find(AddInPort);
+    name = inPortList[0].name;
+    dataType = inPortList[0].dataType;
   }
 }
 
