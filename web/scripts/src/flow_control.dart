@@ -10,7 +10,25 @@ import 'literal.dart';
 import 'block_loader.dart';
 
 
-class ConditionalFlowControl extends Block {
+abstract class ContainerBlock extends Block {
+
+  ContainerBlock(String name) : super(name) {}
+
+  @override
+  bool is_container() {
+    return true;
+  }
+
+  @override
+  void iterateBlock(var func) {
+    for (var s in statements) {
+      s.iterateBlock(func);
+    }
+  }
+}
+
+
+class ConditionalFlowControl extends ContainerBlock {
   Condition _condition;
 
   get condition => _condition;
@@ -29,14 +47,6 @@ class ConditionalFlowControl extends Block {
     return '';
   }
 
-  @override
-  void iterateBlock(var func) {
-    for (var s in statements) {
-      s.iterateBlock(func);
-    }
-  }
-
-
   void buildXML(xml.XmlBuilder builder) {
     super.element(builder, attributes: {},
         nest: () {
@@ -47,12 +57,6 @@ class ConditionalFlowControl extends Block {
           statements.buildXML(builder);
         });
   }
-
-    @override
-  bool is_container() {
-    return true;
-  }
-
 
   ConditionalFlowControl.XML(xml.XmlElement node) : super('')  {
     namedChildChildren(node, 'Condition', (xml.XmlElement e) {
@@ -70,8 +74,6 @@ class ConditionalFlowControl extends Block {
 
 
 class If extends ConditionalFlowControl {
-
-
 
   If(Condition cond) : super(cond) {
   }
@@ -96,16 +98,9 @@ class If extends ConditionalFlowControl {
 
 }
 
-class Else extends Block {
+class Else extends ContainerBlock {
 
   Else() : super('')  {
-  }
-
-  @override
-  void iterateBlock(var func) {
-    for (var s in statements) {
-      s.iterateBlock(func);
-    }
   }
 
   String toPython(int indentLevel) {
@@ -135,10 +130,6 @@ class Else extends Block {
     });
   }
 
-  @override
-  bool is_container() {
-    return true;
-  }
 }
 
 class While extends ConditionalFlowControl {

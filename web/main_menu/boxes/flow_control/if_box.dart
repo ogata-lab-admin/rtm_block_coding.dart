@@ -14,7 +14,8 @@ class IfBox extends BoxBase {
   static IfBox createBox(program.If m) {
     return new html.Element.tag('if-box') as IfBox
       ..model = m
-      ..attachCondition(BoxFactory.parseBlock(m.condition));
+      ..attachCondition(BoxFactory.parseBlock(m.condition))
+      ..attachStatements(m);
   }
 
   get consequent => $['consequent-content'];
@@ -25,6 +26,14 @@ class IfBox extends BoxBase {
     $$('#condition-content').children.clear();
     $$('#condition-content').children.add(e);
     e.parentElement = this;
+  }
+
+  void attachStatements(program.If m) {
+    for(program.Statement s in m.statements) {
+      var e = BoxFactory.parseBlock(s.block);
+      $$('#consequent-content').children.add(e);
+      e.parentElement = this;
+    }
   }
 }
 

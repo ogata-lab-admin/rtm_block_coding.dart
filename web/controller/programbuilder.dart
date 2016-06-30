@@ -20,12 +20,10 @@ class ProgramBuilder {
       if(globalController.selectedBox.model.parent is ConditionalFlowControl) {
         globalController.selectedBox.model.parent.condition = b;
       }
-    }
-
-    else {
+    } else {
       if (globalController.selectedBox == null) {
         app.statements.add(s);
-      } else if (globalController.selectedBox.model.is_container()) {
+      } else if (globalController.selectedBox.model is ContainerBlock) {
         globalController.selectedBox.model.statements.add(s);
       } else {
         app.statements.add(s);

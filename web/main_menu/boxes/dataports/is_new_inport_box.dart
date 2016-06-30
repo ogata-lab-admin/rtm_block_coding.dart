@@ -50,8 +50,8 @@ class IsNewInPortBox extends BoxBase {
       if (pl.length > 0) {
         program.AddInPort inport = pl[0];
         model.name = name_;
-        if ((model as program.ReadInPort).dataType != inport.dataType) {
-          (model as program.ReadInPort).dataType = inport.dataType;
+        if ((model as program.IsNewInPort).dataType != inport.dataType) {
+          (model as program.IsNewInPort).dataType = inport.dataType;
         }
       }
 
