@@ -50,7 +50,7 @@ class OutPortBuffer extends Block {
   }
 
   String toPython(int indentLevel) {
-    return "self._d_${name}.${accessSequence}";// = ${right.toPython(0)}";
+    return "self._d_${name}${accessSequence}";// = ${right.toPython(0)}";
   }
 
   void buildXML(xml.XmlBuilder builder) {

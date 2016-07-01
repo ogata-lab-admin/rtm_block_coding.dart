@@ -46,9 +46,28 @@ class OutPortBufferBox extends BoxBase {
 
     dataSelector.onSelectAccessor.listen((String str) {
       (model as program.OutPortBuffer).accessSequence = str;
+      dataSelector.updateIndexer((model as program.OutPortBuffer).dataType, str);
     });
 
+    dataSelector.onSelectIndex.listen((String str) {
+      if (str.trim().length > 0) {
+        var accessor = (model as program.OutPortBuffer).accessSequence;
+        if (accessor.endsWith(']')) {
+          accessor = accessor.substring(0, accessor.indexOf('['));
+        }
+        (model as program.OutPortBuffer).accessSequence = accessor + '[$str]';
+        //dataSelector.updateIndexer((model as program.OutPortBuffer).dataType, str);
+      } else {
+        var accessor = (model as program.OutPortBuffer).accessSequence;
+        if (accessor.endsWith(']')) {
+          accessor = accessor.substring(0, accessor.indexOf('['));
+        }
+        (model as program.OutPortBuffer).accessSequence = accessor;
+      }
+    });
   }
+
+  /*
 
   void updateOutPortList() {
     $['name-menu-content'].children.clear();
@@ -212,25 +231,16 @@ class OutPortBufferBox extends BoxBase {
       onInputIndex(e);
     });
   }
+  */
 
-  void onInputIndex(var e) {
-    print('index:$indexInputValue');
-    if (_model.accessSequence.endsWith(']')) {
-      _model.accessSequence =
-          _model.accessSequence.substring(
-              0, _model.accessSequence.indexOf('['));
-    }
-    String accessTypeName = program.DataType.access_alternative_type(_model.dataType.typename, _model.accessSequence);
-    if(program.DataType.isSeqType(accessTypeName)) {
-      if (indexInputValue.trim().length > 0) {
-        _model.accessSequence = _model.accessSequence + '[' + indexInputValue + ']';
-      }
-    }
-  }
+
+
+  /*
 
   void attachTarget(var element) {
     $['target'].children.clear();
     $['target'].children.add(element);
   }
+  */
 
 }

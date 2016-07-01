@@ -45,6 +45,10 @@
                 height: 50px;
             }
 
+            :host #index-input {
+                width: 70px;
+                min-width: 70px;
+            }
         </style>
 
         <div id="typed-container" class="horizontal layout center">
@@ -55,7 +59,7 @@
             </paper-dropdown-menu>
             <div id="indexer" class="horizontal layout center">
                 <div id="index-left">[</div>
-                <paper-input id="index-input" value="{{indexInputValue}}"></paper-input>
+                <paper-input id="index-input" value="{{indexInputValue}}" on-input="onInputIndex" label="配列添字"></paper-input>
                 <div id="index-right">]</div>
             </div>
         </div>

@@ -175,9 +175,9 @@ class DataType {
     var types = access_alternatives(typename);
     types.forEach((List type) {
       var altName = type[0];
-      if (type[0].startsWith('.')) {
-        altName = altName.substring(1);
-      }
+      //if (type[0].startsWith('.')) {
+      //  altName = altName.substring(1);
+      //}
       if (altName == accessName.trim()) {
         t = type[1];
       }
