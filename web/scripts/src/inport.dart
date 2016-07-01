@@ -48,14 +48,9 @@ class InPortBuffer extends Block {
 
   InPortBuffer(String name, this.dataType, this.accessSequence) : super(name) {
   }
-/*  AccessInPort(String inName_, DataType dataType_, String accessSequence_) : super(inName_, dataType_, accessSequence_) {
-  }*/
 
   String toPython(int indentLevel) {
-    if (accessSequence.trim().length == 0) {
-      return 'self._d_${name}';
-    }
-    return 'self._d_${name}.${accessSequence}';
+    return 'self._d_${name}${accessSequence}';
   }
 
   void buildXML(xml.XmlBuilder builder) {
@@ -73,6 +68,13 @@ class InPortBuffer extends Block {
     child(node, (xml.XmlElement e) {
       dataType = new DataType.XML(e);
     });
+  }
+
+  InPortBuffer.fromAppDefault(Application app) : super('') {
+    var portList = app.find(AddInPort);
+    name = portList[0].name;
+    dataType = portList[0].dataType;
+    accessSequence = '';
   }
 }
 

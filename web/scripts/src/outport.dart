@@ -88,44 +88,9 @@ class OutPortBuffer extends Block {
     var portList = app.find(AddOutPort);
     name = portList[0].name;
     dataType = portList[0].dataType;
+    accessSequence = '';
   }
 }
-
-
-/*
-class OutPortBuffer extends Block {
-  DataType dataType;
-  String accessSequence;
-
-  OutPortBuffer(String name,  this.dataType, this.accessSequence) : super(name) {
-  }
-
-  String toPython(int indentLevel) {
-    if (accessSequence.trim().length == 0) {
-      return "self._d_${name}";
-    }
-    return "self._d_${name}.${accessSequence}";
-  }
-
-  void buildXML(xml.XmlBuilder builder) {
-    super.element(builder,
-        attributes: {
-          'name' : name,
-          'accessSequence' :accessSequence,
-        },
-        nest: () {
-          dataType.buildXML(builder);
-        });
-  }
-
-  OutPortBuffer.XML(xml.XmlElement node) : super('') {
-    name = node.getAttribute('name');
-    accessSequence = node.getAttribute('accessSequence');
-    child(node, (xml.XmlElement e) {
-      dataType = new DataType.XML(e);
-    });
-  }
-}*/
 
 class WriteOutPort extends Block {
   DataType dataType;

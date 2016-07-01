@@ -57,6 +57,8 @@ class ProgramBuilder {
       addToApp((new If.fromAppDefault(onInit)));
     } else if (command == 'OutPortBuffer') {
       addToApp((new OutPortBuffer.fromAppDefault(onInit)));
+    } else if (command == 'InPortBuffer') {
+      addToApp((new InPortBuffer.fromAppDefault(onInit)));
     } else if (command == 'WriteOutPort') {
       addToApp((new WriteOutPort.fromAppDefault(onInit)));
     }

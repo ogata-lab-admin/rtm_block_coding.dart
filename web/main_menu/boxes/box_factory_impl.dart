@@ -19,6 +19,7 @@ import 'dataports/read_inport_box.dart';
 import 'dataports/is_new_inport_box.dart';
 import 'dataports/outport_buffer_box.dart';
 import 'dataports/write_outport_box.dart';
+import 'dataports/inport_buffer_box.dart';
 
 import 'flow_control/if_box.dart';
 
@@ -76,24 +77,34 @@ class BoxFactoryImpl {
       return AddOutPortBox.createBox(block);
     } else if (block is program.DeclareVariable) {
       return DeclareVariableBox.createBox(block);
-    } else if (block is program.Assign) {
+    }
+
+    else if (block is program.Assign) {
       return AssignBox.createBox(block);
     } else if (block is program.ReferVariable) {
       return ReferVariableBox.createBox(block);
-    } else if (block is program.IntegerLiteral) {
+    }
+
+    else if (block is program.IntegerLiteral) {
       return IntegerLiteralBox.createBox(block);
     } else if (block is program.TrueLiteral) {
       return TrueLiteralBox.createBox(block);
-    } else if (block is program.ReadInPort) {
+    }
+
+    else if (block is program.ReadInPort) {
       return ReadInPortBox.createBox(block);
-    } else if (block is program.If) {
-      return IfBox.createBox(block);
     } else if (block is program.IsNewInPort) {
       return IsNewInPortBox.createBox(block);
     } else if (block is program.OutPortBuffer) {
       return OutPortBufferBox.createBox(block);
+    } else if (block is program.InPortBuffer) {
+      return InPortBufferBox.createBox(block);
     } else if (block is program.WriteOutPort) {
       return WriteOutPortBox.createBox(block);
+    }
+
+    else if (block is program.If) {
+      return IfBox.createBox(block);
     }
 
     /*
