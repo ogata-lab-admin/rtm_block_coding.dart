@@ -7,6 +7,18 @@
 
         <style type='text/css'>
             :host {
+                --paper-input-container-color: black;
+                --paper-input-container-input-color: black;
+            }
+
+            :host #container {
+              padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            #name-dropdown-menu {
+                width: 140px;
+                min-width: 140px;
             }
 
             paper-input {
@@ -17,15 +29,9 @@
 
         <!--Japanese ver.-->
         <div id="container" class="horizontal layout center" on-tap="onClicked">
-            <div end>変数: </div>
-            <paper-dropdown-menu id="name-dropdown-menu" label="Name">
+            <paper-dropdown-menu id="name-dropdown-menu" label="変数">
                 <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
                 </iron-selector>
-                <!--
-                <paper-dropdown id="name-dropdown" class="dropdown">
-                    <core-menu class="menu" id="name-menu-content"></core-menu>
-                </paper-dropdown>
-                -->
             </paper-dropdown-menu>
         </div>
 

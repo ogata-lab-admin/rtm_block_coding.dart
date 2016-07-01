@@ -13,13 +13,8 @@ class ReadInPortBox extends BoxBase {
 
   static ReadInPortBox createBox(program.ReadInPort m) {
     return new html.Element.tag('read-inport-box') as ReadInPortBox
-      ..model = m
-      ..set('port_name', m.name)
-      ..set('port_type', m.dataType.typename);
+      ..model = m;
   }
-
-  @property String port_name = "defaultName";
-  @property String port_type = "defaultType";
 
   ReadInPortBox.created() : super.created();
 

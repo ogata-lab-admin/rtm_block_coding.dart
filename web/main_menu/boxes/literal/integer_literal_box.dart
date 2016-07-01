@@ -5,8 +5,8 @@ import 'dart:html' as html;
 import 'dart:async' as async;
 import 'package:polymer/polymer.dart';
 import 'package:web_components/web_components.dart' show HtmlImport;
-import '../../scripts/application.dart' as program;
-import 'box_base.dart';
+import '../../../scripts/application.dart' as program;
+import '../box_base.dart';
 
 @PolymerRegister('integer-literal-box')
 class IntegerLiteralBox extends BoxBase {
@@ -16,7 +16,6 @@ class IntegerLiteralBox extends BoxBase {
       ..model = m
       ..intvalue = m.value
       ..set('intvarstr', m.value.toString());
-//      ..intvarstr = m.value.toString();
   }
 
   int intvalue = 1;

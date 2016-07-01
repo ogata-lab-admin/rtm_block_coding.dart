@@ -1,8 +1,8 @@
-<link rel="import" href="packages/polymer/polymer.html" />
-<link rel="import" href="packages/core_elements/core_style.html" />
-<link rel="import" href="packages/paper_elements/paper_input.html" />
+<link rel="import" href="packages/polymer_elements/paper_input.html" />
 
-<polymer-element name="write-outport-box">
+<link rel="import" href="data_port_box.html" />
+
+<dom-module id="write-outport-box">
     <template>
 
         <style>
@@ -11,7 +11,7 @@
                 border-color: #FFFFFF;
                 border-style: none;
             }
-            :host #target {
+            :host #container {
                 margin-top: 2px;
                 margin-left: 7px;
                 margin-right: 7px;
@@ -35,17 +35,11 @@
         </style>
 
         <!--Japanese ver.-->
-        <div id="target" horizontal layout center on-tap="{{onClicked}}">
-            <div end>出力ポート (</div>
-            <!-- <paper-input id="name-input" flex one value="{{port_name}}"></paper-input> -->
-            <paper-dropdown-menu id="dropdown-menu" label="Your favorite pastry">
-                <paper-dropdown id="dropdown" class="dropdown">
-                    <core-menu class="menu" id="menu-content"></core-menu>
-                </paper-dropdown>
-            </paper-dropdown-menu>
-            <div end>) にデータを書き込む</div>
+        <div id="container" class="horizontal layout center" on-tap="onClicked">
+            <port-selector id="port-selector" label="出力ポート"></port-selector>
+            <div end> にデータを書き込む</div>
         </div>
 
     </template>
     <script type="application/dart" src="write_outport_box.dart"></script>
-</polymer-element>
+</dom-module>

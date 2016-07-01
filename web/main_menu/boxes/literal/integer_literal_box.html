@@ -30,6 +30,9 @@
             paper-input {
                 margin-left : 10px;
                 margin-right: 10px;
+
+                --paper-input-container-color: black;
+                --paper-input-container-input-color: black;
             }
             paper-input#int-literal-input {
                 width: 30px;
@@ -38,8 +41,7 @@
 
         <!--Japanese ver.-->
         <div id="container" class="horizontal layout center" on-tap="onClicked">
-            <div>整数:</div>
-            <paper-input id="int-literal-input" value="{{intvarstr}}" on-input="onInputValue"></paper-input>
+            <paper-input id="int-literal-input" value="{{intvarstr}}" on-input="onInputValue" label="整数"></paper-input>
         </div>
 
     </template>

@@ -11,13 +11,14 @@ import 'variables/declare_variable_box.dart';
 import 'variables/assign_box.dart';
 import 'variables/refer_variable_box.dart';
 
-import 'integer_literal_box.dart';
+import 'literal/integer_literal_box.dart';
 
-import 'true_literal_box.dart';
+import 'literal/true_literal_box.dart';
 
 import 'dataports/read_inport_box.dart';
 import 'dataports/is_new_inport_box.dart';
 import 'dataports/outport_buffer_box.dart';
+import 'dataports/write_outport_box.dart';
 
 import 'flow_control/if_box.dart';
 
@@ -91,6 +92,8 @@ class BoxFactoryImpl {
       return IsNewInPortBox.createBox(block);
     } else if (block is program.OutPortBuffer) {
       return OutPortBufferBox.createBox(block);
+    } else if (block is program.WriteOutPort) {
+      return WriteOutPortBox.createBox(block);
     }
 
     /*

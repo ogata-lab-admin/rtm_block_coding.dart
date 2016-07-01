@@ -16,20 +16,20 @@
 
       </style>
       <paper-toolbar id="left-toolbar" class=""></paper-toolbar>
-      <collapse-menu id="rtm_menu" class="default-primary-color" label="RTミドルウェア" state="closed">
+      <collapse-menu id="rtm_menu" class="default-primary-color" label="データ・構造宣言" state="closed">
           <add-element-button id="rtm1" label="入力ポート追加" command="AddInPort"></add-element-button>
           <add-element-button id="rtm2" label="出力ポート追加" command="AddOutPort"></add-element-button>
-      </collapse-menu>
-      <collapse-menu id="variables_menu" label="変数" state="closed">
           <add-element-button id="var0" label="値の宣言" command="DeclareVariable"></add-element-button>
+      </collapse-menu>
+      <collapse-menu id="variables_menu" label="リテラル・変数の参照" state="closed">
           <add-element-button id="var1" label="値の代入" command="Assign"></add-element-button>
           <add-element-button id="var2" label="値の参照" command="ReferVariable"></add-element-button>
-      </collapse-menu>
-      <collapse-menu id="port_data_menu" label="ポート / データ" state="closed">
-          <add-element-button id="data0" label="入力ポートの受信確認" command="IsNewInPort"></add-element-button>
-          <add-element-button id="data1" label="入力ポートから読み込み" command="ReadInPort"></add-element-button>
           <add-element-button id="data2" label="入力ポートのデータ" command="InPortBuffer"></add-element-button>
           <add-element-button id="data3" label="出力ポートのデータ" command="OutPortBuffer"></add-element-button>
+      </collapse-menu>
+      <collapse-menu id="port_data_menu" label="データポートの制御" state="closed">
+          <add-element-button id="data0" label="入力ポートの受信確認" command="IsNewInPort"></add-element-button>
+          <add-element-button id="data1" label="入力ポートから読み込み" command="ReadInPort"></add-element-button>
           <add-element-button id="data4" label="出力ポートに書き込み" command="WriteOutPort"></add-element-button>
       </collapse-menu>
       <collapse-menu id="if_switch_loop_menu" label="制御文" state="closed">

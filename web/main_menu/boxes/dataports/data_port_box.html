@@ -4,7 +4,7 @@
 <link rel="import" href="packages/polymer_elements/paper_input.html" />
 <link rel="import" href="packages/polymer_elements/iron_selector.html" />
 
-<dom-module id="port-selector">
+<dom-module id="port-selector" attributes="label">
     <template>
 
         <style>
@@ -17,7 +17,7 @@
             }
 
         </style>
-        <paper-dropdown-menu id="dropdown-menu" class="horizontal layout center" label="ポート名">
+        <paper-dropdown-menu id="dropdown-menu" class="horizontal layout center" label="{{label}}">
             <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
             </iron-selector>
         </paper-dropdown-menu>
@@ -27,7 +27,7 @@
 </dom-module>
 
 
-<dom-module id="typed-data-selector">
+<dom-module id="typed-data-selector" attributes="label">
     <template>
 
         <style>
@@ -52,8 +52,8 @@
         </style>
 
         <div id="typed-container" class="horizontal layout center">
-            <port-selector id="port-selector"></port-selector>
-            <paper-dropdown-menu id="access-dropdown-menu" label="アクセス子を指定してください" alwaysFloatLabel="true">
+            <port-selector id="port-selector" label="{{label}}"></port-selector>
+            <paper-dropdown-menu id="access-dropdown-menu" label="アクセス子" alwaysFloatLabel="true">
                 <iron-selector attr-for-selected="value" id="access-dropdown" class="dropdown-content">
                 </iron-selector>
             </paper-dropdown-menu>

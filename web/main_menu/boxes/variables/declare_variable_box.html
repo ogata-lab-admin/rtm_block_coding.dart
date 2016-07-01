@@ -9,6 +9,8 @@
 
         <style type='text/css'>
             :host {
+                --paper-input-container-input-color: black;
+                --paper-input-container-color: black;
             }
             #container {
                 margin-top: 2px;
@@ -38,11 +40,11 @@
 
         <!--Japanese ver.-->
         <div id="container" class="horizontal layout center" on-tap="onClicked">
-            <div end>変数 (名称: </div>
-            <paper-input id="name-input" one value="{{varname}}" on-input="onInputName"></paper-input>
-            <div end>, データタイプ: </div>
+            <div end>変数(</div>
+            <paper-input id="name-input" one value="{{varname}}" on-input="onInputName" label="変数名"></paper-input>
+            <div end>:</div>
             <!-- <paper-input id="type-input" flex one value="{{port_type}}"></paper-input> -->
-            <paper-dropdown-menu id="dropdown-menu" label="Primitive Data Type">
+            <paper-dropdown-menu id="dropdown-menu" label="データ型">
                 <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
                 </iron-selector>
             </paper-dropdown-menu>

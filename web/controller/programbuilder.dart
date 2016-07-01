@@ -25,6 +25,12 @@ class ProgramBuilder {
         app.statements.add(s);
       } else if (globalController.selectedBox.model is ContainerBlock) {
         globalController.selectedBox.model.statements.add(s);
+      } else if (globalController.selectedBox.model.parent is BasicOperator) {
+        if (globalController.selectedBox.model.parent.isLeft(globalController.selectedBox.model)) {
+          globalController.selectedBox.model.parent.left = b;
+        } else {
+          globalController.selectedBox.model.parent.right = b;
+        }
       } else {
         app.statements.add(s);
       }
@@ -51,6 +57,8 @@ class ProgramBuilder {
       addToApp((new If.fromAppDefault(onInit)));
     } else if (command == 'OutPortBuffer') {
       addToApp((new OutPortBuffer.fromAppDefault(onInit)));
+    } else if (command == 'WriteOutPort') {
+      addToApp((new WriteOutPort.fromAppDefault(onInit)));
     }
 
     print ('Invalid Name $command');

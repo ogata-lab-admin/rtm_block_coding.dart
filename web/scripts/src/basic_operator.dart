@@ -62,12 +62,23 @@ class BasicOperator extends Block {
   get left => _a;
   get right => _b;
 
-  set left(Block l) => _a = l;
-  set right(Block r) => _b = r;
+  set left(Block l) => _a = l ..parent = this;
+  set right(Block r) => _b = r ..parent = this;
+
+  bool isLeft(Block l) {
+    return _a == l;
+  }
+
+  bool isRight(Block r) {
+    return _b == r;
+  }
 
   String _operatorString = 'foo';
 
-  BasicOperator(this._a, this._b, this._operatorString)  : super('') {}
+  BasicOperator(this._a, this._b, this._operatorString)  : super('') {
+    _a.parent = this;
+    _b.parent = this;
+  }
 
   String toPython(int indentLevel) {
     return "${a.toPython(0)} ${_operatorString} ${b.toPython(0)}";
@@ -86,10 +97,10 @@ class BasicOperator extends Block {
 
   void loadXML(xml.XmlElement node) {
     namedChildChildren(node, 'a', (xml.XmlElement e) {
-      _a = BlockLoader.parseBlock(e);
+      left = BlockLoader.parseBlock(e);
     });
     namedChildChildren(node, 'b', (xml.XmlElement e) {
-      _b = BlockLoader.parseBlock(e);
+      right = BlockLoader.parseBlock(e);
     });
   }
 }

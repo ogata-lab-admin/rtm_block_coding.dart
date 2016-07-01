@@ -24,6 +24,7 @@ class PortSelector extends PolymerElement {
   async.StreamController<program.AddPort> _onSelect = new async.StreamController<program.AddPort>();
   async.Stream get onSelect => _onSelect.stream.asBroadcastStream();
 
+  @property String label='defaultLabel';
 
   void attached() {
     $$('#dropdown-menu').addEventListener('iron-select', onIronSelected);
@@ -87,6 +88,8 @@ class TypedDataSelector extends PolymerElement {
 
   String _selectedName;
   Type _type;
+
+  @property String label = 'defautLabel';
 
   async.StreamController<program.AddPort> _onSelectPort = new async.StreamController<program.AddPort>();
   async.Stream get onSelectPort => _onSelectPort.stream.asBroadcastStream();

@@ -155,4 +155,10 @@ class WriteOutPort extends Block {
       dataType = new DataType.XML(e);
     });
   }
+
+  WriteOutPort.fromAppDefault(Application app) : super('') {
+    var portList = app.find(AddOutPort);
+    name = portList[0].name;
+    dataType = portList[0].dataType;
+  }
 }
