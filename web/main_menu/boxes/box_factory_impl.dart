@@ -17,6 +17,7 @@ import 'true_literal_box.dart';
 
 import 'dataports/read_inport_box.dart';
 import 'dataports/is_new_inport_box.dart';
+import 'dataports/outport_buffer_box.dart';
 
 import 'flow_control/if_box.dart';
 
@@ -88,6 +89,8 @@ class BoxFactoryImpl {
       return IfBox.createBox(block);
     } else if (block is program.IsNewInPort) {
       return IsNewInPortBox.createBox(block);
+    } else if (block is program.OutPortBuffer) {
+      return OutPortBufferBox.createBox(block);
     }
 
     /*

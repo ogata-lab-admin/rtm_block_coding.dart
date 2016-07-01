@@ -1,0 +1,65 @@
+<link rel="import" href="packages/polymer_elements/paper_styles.html" />
+<link rel="import" href="packages/polymer_elements/paper_dropdown_menu.html" />
+<link rel="import" href="packages/polymer_elements/paper_item.html" />
+<link rel="import" href="packages/polymer_elements/paper_input.html" />
+<link rel="import" href="packages/polymer_elements/iron_selector.html" />
+
+<dom-module id="port-selector">
+    <template>
+
+        <style>
+
+            :host {
+                --paper-input-container-color: black;
+                --paper-input-container-input-color: black;
+                width: 70px;
+                min-width: 70px;;
+            }
+
+        </style>
+        <paper-dropdown-menu id="dropdown-menu" class="horizontal layout center" label="ポート名">
+            <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
+            </iron-selector>
+        </paper-dropdown-menu>
+
+    </template>
+    <script type="application/dart" src="data_port_box.dart"></script>
+</dom-module>
+
+
+<dom-module id="typed-data-selector">
+    <template>
+
+        <style>
+            :host {
+                --paper-input-container-color: black;
+                --paper-input-container-input-color: black;
+                --paper-input-container-label-floating: true;
+            }
+
+            :host > div > paper-dropdown-menu {
+                min-width: 200px;
+            }
+
+            :host #typed-container {
+                height: 50px;
+            }
+
+        </style>
+
+        <div id="typed-container" class="horizontal layout center">
+            <port-selector id="port-selector"></port-selector>
+            <paper-dropdown-menu id="access-dropdown-menu" label="アクセス子を指定してください" alwaysFloatLabel="true">
+                <iron-selector attr-for-selected="value" id="access-dropdown" class="dropdown-content">
+                </iron-selector>
+            </paper-dropdown-menu>
+            <div id="indexer" class="horizontal layout center">
+                <div id="index-left">[</div>
+                <paper-input id="index-input" value="{{indexInputValue}}"></paper-input>
+                <div id="index-right">]</div>
+            </div>
+        </div>
+
+    </template>
+    <script type="application/dart" src="data_port_box.dart"></script>
+</dom-module>

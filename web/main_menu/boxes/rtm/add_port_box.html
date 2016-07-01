@@ -8,13 +8,16 @@
 
         <style>
             :host {
+                --paper-input-container-color: black;
+                --paper-input-container-input-color: black;
             }
 
-            :host > div > paper-dropdown-menu {
-                min-width: 200px;
+            :host #dropdown {
+                width: 100px;
+                min-width: 100px;
             }
         </style>
-        <paper-dropdown-menu id="dropdown-menu" label="InPort Data Types">
+        <paper-dropdown-menu id="dropdown-menu" label="データ型">
             <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
             </iron-selector>
         </paper-dropdown-menu>

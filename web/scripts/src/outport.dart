@@ -42,7 +42,7 @@ class AddOutPort extends AddPort {
 
 
 class OutPortBuffer extends Block {
-  Block right;
+  //Block right;
   DataType dataType;
   String accessSequence;
 
@@ -50,7 +50,7 @@ class OutPortBuffer extends Block {
   }
 
   String toPython(int indentLevel) {
-    return "self._d_${name}.${accessSequence} = ${right.toPython(0)}";
+    return "self._d_${name}.${accessSequence}";// = ${right.toPython(0)}";
   }
 
   void buildXML(xml.XmlBuilder builder) {
@@ -61,11 +61,13 @@ class OutPortBuffer extends Block {
         },
         nest: () {
           dataType.buildXML(builder);
+          /*
           builder.element('Right',
             nest: () {
               right.buildXML(builder);
             }
           );
+          */
         });
   }
 
@@ -75,11 +77,20 @@ class OutPortBuffer extends Block {
     child(node, (xml.XmlElement e) {
       dataType = new DataType.XML(e);
     });
+    /*
     namedChildChildren(node, 'Right', (xml.XmlElement e) {
       right = BlockLoader.parseBlock(e);
     });
+    */
+  }
+
+  OutPortBuffer.fromAppDefault(Application app) : super('') {
+    var portList = app.find(AddOutPort);
+    name = portList[0].name;
+    dataType = portList[0].dataType;
   }
 }
+
 
 /*
 class OutPortBuffer extends Block {

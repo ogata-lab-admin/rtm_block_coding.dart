@@ -30,17 +30,19 @@
                 height: 50px;
             }
             :host > div > paper-input#name-input {
-                width: 50px;
-                min-width: 50px;
+                width: 70px;
+                min-width: 70px;
+                --paper-input-container-color: black;
+                --paper-input-container-input-color: black;
             }
 
         </style>
 
         <!--Japanese ver.-->
         <div id="container" class="horizontal layout center" on-tap="onClicked">
-            <div end>出力ポート (名称: </div>
-            <paper-input id="name-input" one value="{{port_name}}" on-input="onNameChanged"></paper-input>
-            <div end>, データタイプ: </div>
+            <div end>出力ポート (</div>
+            <paper-input id="name-input" one value="{{port_name}}" label="ポート名" on-input="onNameChanged"></paper-input>
+            <div end>:</div>
             <data-type-dropdown id="datatype-dropdown"></data-type-dropdown>
             <div end>)</div>
         </div>

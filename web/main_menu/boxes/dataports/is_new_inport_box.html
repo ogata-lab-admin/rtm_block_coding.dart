@@ -1,5 +1,7 @@
 <link rel="import" href="packages/polymer_elements/paper_input.html" />
 <link rel="import" href="packages/polymer_elements/iron_selector.html" />
+<link rel="import" href="data_port_box.html" />
+
 <dom-module id="is-new-inport-box">
     <template>
 
@@ -50,10 +52,7 @@
         <!--Japanese ver.-->
         <div id="container" class="horizontal layout center" on-tap="onClicked">
             <div end>入力ポート (</div>
-            <paper-dropdown-menu id="dropdown-menu" label="Your favorite pastry">
-                <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
-                </iron-selector>
-            </paper-dropdown-menu>
+            <port-selector id="port-selector"></port-selector>
             <div end>) の受信データがある</div>
         </div>
     </template>

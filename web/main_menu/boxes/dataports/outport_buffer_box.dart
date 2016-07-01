@@ -1,39 +1,54 @@
 library outport_buffer_box;
 
+@HtmlImport('outport_buffer_box.html')
 import 'dart:html' as html;
-import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
-import 'package:paper_elements/paper_item.dart';
-import 'package:paper_elements/paper_dropdown_menu.dart';
-import '../../controller/controller.dart';
-import 'port_box.dart';
+import 'package:web_components/web_components.dart' show HtmlImport;
 
-@CustomTag('outport-buffer-box')
-class OutPortBufferBox extends PortBox {
+import '../../../scripts/application.dart' as program;
+import 'package:polymer_elements/paper_item.dart';
+import 'package:polymer_elements/paper_dropdown_menu.dart';
+import 'package:polymer_elements/iron_selector.dart';
+import '../../../controller/controller.dart';
+import '../box_base.dart';
+import 'data_port_box.dart';
 
-  program.OutPortBuffer _model;
+
+@PolymerRegister('outport-buffer-box')
+class OutPortBufferBox extends BoxBase {
 
   static OutPortBufferBox createBox(program.OutPortBuffer m) {
     return new html.Element.tag('outport-buffer-box') as OutPortBufferBox
     ..model = m;
   }
 
-  set model(program.OutPortBuffer m) {
-    _model = m;
-    //port_name = _model.name;
-    //port_type = _model.dataType.typename;
-    //data_member = _model.accessSequence;
-  }
-
-  get model => _model;
-
-  //@published String port_name = "defaultName";
-  //@published String port_type = "defaultType";
-  //@published String data_member = "data";
-  @observable String indexInputValue = '0';
+  @property String indexInputValue = '0';
 
   OutPortBufferBox.created() : super.created();
 
+  TypedDataSelector dataSelector;
+
+  void attached() {
+    dataSelector = $$('#data-selector');
+    dataSelector.updatePortList(program.AddOutPort);
+    dataSelector.selectPort(model.name);
+    dataSelector.selectAccess((model as program.OutPortBuffer).dataType, (model as program.OutPortBuffer).accessSequence);
+
+    dataSelector.onSelectPort.listen((program.AddOutPort p) {
+      model.name = p.name;
+      if ((model as program.OutPortBuffer).dataType.typename != p.dataType.typename) {
+        (model as program.OutPortBuffer).dataType = p.dataType;
+        dataSelector.updateAccessAlternatives(p.dataType);
+        (model as program.OutPortBuffer).accessSequence = '';
+        dataSelector.selectAccess((model as program.OutPortBuffer).dataType, (model as program.OutPortBuffer).accessSequence);
+      }
+    });
+
+    dataSelector.onSelectAccessor.listen((String str) {
+      (model as program.OutPortBuffer).accessSequence = str;
+    });
+
+  }
 
   void updateOutPortList() {
     $['name-menu-content'].children.clear();
@@ -138,7 +153,7 @@ class OutPortBufferBox extends PortBox {
   }
 
 
-  void attached() {
+  void attached_() {
     updateOutPortList();
     selectOutPort(_model.name);
 

@@ -32,37 +32,28 @@ class ProgramBuilder {
   }
 
   void build(String command) {
-
+    print('ProgramBuilder.build($command)');
     Application onInit = globalController.onInitializeApp;
 //  rtm_menu
     if(command == 'AddInPort') {
       addToApp((new AddInPort.fromAppDefault(onInit)));
-    }
-
-    if(command == 'AddOutPort') {
+    } else if(command == 'AddOutPort') {
       addToApp((new AddOutPort.fromAppDefault(onInit)));
-    }
-
-    if (command == 'DeclareVariable') {
+    } else if (command == 'DeclareVariable') {
       addToApp((new DeclareVariable.fromAppDefault(onInit)));
-    }
-
-    if (command == 'Assign') {
+    } else if (command == 'Assign') {
       addToApp((new Assign.fromAppDefault(onInit)));
-
-    }
-
-    if (command == 'ReadInPort') {
+    } else if (command == 'ReadInPort') {
       addToApp((new ReadInPort.fromAppDefault(onInit)));
-    }
-
-    if (command == 'IsNewInPort') {
+    } else if (command == 'IsNewInPort') {
       addToApp((new IsNewInPort.fromAppDefault(onInit)));
+    } else if (command == 'If') {
+      addToApp((new If.fromAppDefault(onInit)));
+    } else if (command == 'OutPortBuffer') {
+      addToApp((new OutPortBuffer.fromAppDefault(onInit)));
     }
 
-    if (command == 'If') {
-      addToApp((new If.fromAppDefault(onInit)));
-    }
+    print ('Invalid Name $command');
 
   }
 
