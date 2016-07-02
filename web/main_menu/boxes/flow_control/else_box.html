@@ -1,7 +1,6 @@
-<link rel="import" href="packages/polymer/polymer.html" />
-<link rel="import" href="packages/core_elements/core_style.html" />
 
-<polymer-element name="else-box">
+
+<dom-module id="else-box">
     <template>
 
         <style type='text/css'>
@@ -28,15 +27,15 @@
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" vertical layout on-tap="{{onClicked}}">
-            <div id="condition-block" horizontal layout center>
+        <div id="container" class="vertical layout" on-tap="onClicked">
+            <div id="condition-block" class="horizontal layout center">
                 <div end>そうでないなら</div>
             </div>
             <div id="content-block">
-                <div id="alternative-content"></div>
+                <div id="body-content"></div>
             </div>
         </div>
 
     </template>
     <script type="application/dart" src="else_box.dart"></script>
-</polymer-element>
+</dom-module>

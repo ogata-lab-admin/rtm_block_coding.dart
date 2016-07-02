@@ -43,6 +43,8 @@ class BlockLoader {
 
   /// XMLのノード (node) からBlockクラスの子クラスを適切に選択して生成するメソッド
   static Block parseBlock(xml.XmlElement node) {
+
+    /// TODO: この部分は，programbuilderのコードを参考にしたらもっと綺麗になる．
     var elem = null;
     blockTypes.forEach((Type T) {
       if(isClassXmlNode(node, T)) {

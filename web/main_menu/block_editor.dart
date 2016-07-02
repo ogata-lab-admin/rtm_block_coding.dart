@@ -3,8 +3,6 @@ library block_editor;
 @HtmlImport('block_editor.html')
 import 'dart:html' as html;
 import 'package:web_components/web_components.dart' show HtmlImport;
-
-//import 'dart:html' as html;
 import 'package:polymer/polymer.dart';
 import '../scripts/application.dart' as program;
 import '../controller/controller.dart';

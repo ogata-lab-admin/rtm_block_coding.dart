@@ -5,13 +5,18 @@ class BoxFactoryImpl {
   BoxFactoryImpl() {}
 
   BoxBase parseBlock(program.Block block) {
-    /*
-    creatorMap.forEach((Type t, var func) {
-      if (block is reflectClass(t)) {
-        reflectClass(t);
-      }
-    });
-    */
+    MirrorSystem mirrors = currentMirrorSystem();
+
+    LibraryMirror appMirror = mirrors.findLibrary(new Symbol('boxes'));
+    ClassMirror cm = appMirror.declarations[new Symbol(
+        block.runtimeType.toString() + 'Box')];
+    return cm.invoke(new Symbol('createBox'), [block])
+        .reflectee;
+  }
+
+  /*
+  BoxBase parseBlock_old(program.Block block) {
+
     //  rtm_menu
     if (block is program.AddInPort) {
       return AddInPortBox.createBox(block);
@@ -49,6 +54,8 @@ class BoxFactoryImpl {
       return IfBox.createBox(block);
     } else if (block is program.While) {
       return WhileBox.createBox(block);
+    } else if (block is program.Else) {
+      return ElseBox.createBox(block);
     }
 
     /*
@@ -132,6 +139,8 @@ class BoxFactoryImpl {
     return null;
   }
 
+*/
+
   BoxBase parseStatement(var children, program.Statement s) {
     BoxBase elem = parseBlock(s.block);
     if (globalController.selectedBox != null) {
@@ -142,5 +151,4 @@ class BoxFactoryImpl {
     children.add(elem);
     return elem;
   }
-
 }

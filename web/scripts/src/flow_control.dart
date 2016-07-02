@@ -136,7 +136,7 @@ class Else extends ContainerBlock {
     });
   }
 
-  Else.fromAppDefault(Application app) : super('') {
+  Else.fromAppDefault(Model app) : super('') {
 
   }
 }
@@ -161,7 +161,7 @@ class While extends ConditionalFlowControl {
   While.XML(xml.XmlElement node) : super.XML(node) {
   }
 
-  While.fromAppDefault(Model app) : super.fromAppDefault(app) {}
+  While.fromAppDefault( app) : super.fromAppDefault(app) {}
 }
 
 class Break extends Block {

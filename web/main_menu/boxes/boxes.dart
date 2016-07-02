@@ -24,6 +24,7 @@ part 'box_factory_impl.dart';
 
 part 'flow_control/if_box.dart';
 part 'flow_control/while_box.dart';
+part 'flow_control/else_box.dart';
 
 part 'literal/integer_literal_box.dart';
 part 'literal/bool_literal_box.dart';
