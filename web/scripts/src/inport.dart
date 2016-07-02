@@ -41,7 +41,7 @@ class AddInPort extends AddPort {
   AddInPort.XML(xml.XmlElement node) : super.XML(node){
   }
 
-  AddInPort.fromAppDefault(Application app) : super(app.getDefaultInPortName(), new DataType.TimedLong()){
+  AddInPort.fromAppDefault(Model app) : super(app.onInitializeApp.getDefaultInPortName(), new DataType.TimedLong()){
   }
 }
 
@@ -74,8 +74,8 @@ class InPortBuffer extends Block {
     });
   }
 
-  InPortBuffer.fromAppDefault(Application app) : super('') {
-    var portList = app.find(AddInPort);
+  InPortBuffer.fromAppDefault(Model app) : super('') {
+    var portList = app.onInitializeApp.find(AddInPort);
     name = portList[0].name;
     dataType = portList[0].dataType;
     accessSequence = '';
@@ -151,8 +151,8 @@ class IsNewInPort extends Condition {
     });
   }
 
-  IsNewInPort.fromAppDefault(Application app) {
-    var inPortList = app.find(AddInPort);
+  IsNewInPort.fromAppDefault(Model app) {
+    var inPortList = app.onInitializeApp.find(AddInPort);
     name = inPortList[0].name;
     dataType = inPortList[0].dataType;
   }
@@ -190,8 +190,8 @@ class ReadInPort extends Block {
     });
   }
 
-  ReadInPort.fromAppDefault(Application app) : super(app.find(AddInPort)[0].name) {
-    dataType = app.find(AddInPort)[0].dataType;
+  ReadInPort.fromAppDefault(Model app) : super(app.onInitializeApp.find(AddInPort)[0].name) {
+    dataType = app.onInitializeApp.find(AddInPort)[0].dataType;
   }
 
 }

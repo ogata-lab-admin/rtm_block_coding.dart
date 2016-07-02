@@ -49,8 +49,8 @@ class ReferVariable extends Block {
     _dataType = new DataType.fromTypeName(node.getAttribute('dataType'));
   }
 
-  ReferVariable.fromAppDefault(Application app) : super('') {
-    var vs = app.find(DeclareVariable);
+  ReferVariable.fromAppDefault(Model app) : super('') {
+    var vs = app.onInitializeApp.find(DeclareVariable);
     name = vs[0].name;
     _dataType = vs[0].dataType;
   }
@@ -105,7 +105,7 @@ class  DeclareVariable extends Block {
     _dataType = new DataType.fromTypeName(node.getAttribute('dataType'));
   }
 
-  DeclareVariable.fromAppDefault(Application app) : super(app.getDefaultVariableName()) {
+  DeclareVariable.fromAppDefault(Model app) : super(app.onInitializeApp.getDefaultVariableName()) {
     this._dataType = new DataType.fromTypeName('long');
   }
 }

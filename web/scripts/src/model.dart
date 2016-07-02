@@ -22,8 +22,6 @@ class Model {
     return ps;
   }
 
-
-
   String pythonCode({bool pure: false}) {
 
     var dec = onInitializeApp.toDeclarePython(2);

@@ -16,9 +16,8 @@ import 'programbuilder.dart';
 
 class Controller {
 
-  ProgramBuilder programBuilder = new ProgramBuilder();
-
-  program.Model model = new program.Model();
+  ProgramBuilder programBuilder;
+  program.Model model;
 
   EditorPanel _editorPanel;
   PythonPanel _pythonPanel;
@@ -37,6 +36,8 @@ class Controller {
   BoxBase get selectedBox => _selectedBox;
 
   Controller() {
+    model = new program.Model();
+    programBuilder = new ProgramBuilder();
   }
 
   void setMode(String mode) {
@@ -106,13 +107,13 @@ class Controller {
     _pythonPanel.onUpdateSelection();
   }
 
-
-
-
-
   void addElement(String command) {
     print('controller.addElement($command) called');
-    programBuilder.build(command);
+    program.Block selectedBlock = null;
+    if (selectedBox != null) {
+      selectedBlock = selectedBox.model;
+    }
+    programBuilder.build(model, selectedApp, selectedBlock, command);
     /*
 //  variables_menu
     if (command == 'declare_variable') {

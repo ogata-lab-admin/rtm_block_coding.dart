@@ -51,7 +51,7 @@ class IntegerLiteral extends BasicLiteral<int> {
     loadXML(node);
   }
 
-  IntegerLiteral.fromAppDefault(Application app) : super(0) {
+  IntegerLiteral.fromAppDefault(Model app) : super(0) {
 
   }
 }
@@ -131,7 +131,7 @@ class BoolLiteral extends Condition {
     _value = parse(node.getAttribute('value'));
   }
 
-  BoolLiteral.fromAppDefault(Application app) : super() {
+  BoolLiteral.fromAppDefault(Model app) : super() {
     _value = true;
   }
 }

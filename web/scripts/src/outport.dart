@@ -40,7 +40,7 @@ class AddOutPort extends AddPort {
   AddOutPort.XML(xml.XmlElement node) : super.XML(node) {
   }
 
-  AddOutPort.fromAppDefault(Application app) : super(app.getDefaultOutPortName(), new DataType.TimedLong()){
+  AddOutPort.fromAppDefault(Model app) : super(app.onInitializeApp.getDefaultOutPortName(), new DataType.TimedLong()){
   }
 }
 
@@ -88,8 +88,8 @@ class OutPortBuffer extends Block {
     */
   }
 
-  OutPortBuffer.fromAppDefault(Application app) : super('') {
-    var portList = app.find(AddOutPort);
+  OutPortBuffer.fromAppDefault(Model app) : super('') {
+    var portList = app.onInitializeApp.find(AddOutPort);
     name = portList[0].name;
     dataType = portList[0].dataType;
     accessSequence = '';
@@ -125,8 +125,8 @@ class WriteOutPort extends Block {
     });
   }
 
-  WriteOutPort.fromAppDefault(Application app) : super('') {
-    var portList = app.find(AddOutPort);
+  WriteOutPort.fromAppDefault(Model app) : super('') {
+    var portList = app.onInitializeApp.find(AddOutPort);
     name = portList[0].name;
     dataType = portList[0].dataType;
   }

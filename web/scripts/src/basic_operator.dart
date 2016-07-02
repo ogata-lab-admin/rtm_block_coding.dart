@@ -115,7 +115,7 @@ class Assign extends BasicOperator {
   }
 
   // TODO:
-  Assign.fromAppDefault(Application app) : super(app.findFirstForLeftHand(), new IntegerLiteral(0), '=') {
+  Assign.fromAppDefault(Model app) : super(app.onInitializeApp.findFirstForLeftHand(), new IntegerLiteral(0), '=') {
   }
 }
 

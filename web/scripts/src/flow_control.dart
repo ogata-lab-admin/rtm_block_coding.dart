@@ -73,7 +73,7 @@ class ConditionalFlowControl extends ContainerBlock {
     });
   }
 
-  ConditionalFlowControl.fromAppDefault(Application app) : super('') {
+  ConditionalFlowControl.fromAppDefault(Model app) : super('') {
     condition = new BoolLiteral(true);
   }
 }
@@ -98,7 +98,7 @@ class If extends ConditionalFlowControl {
   If.XML(xml.XmlElement node) : super.XML(node) {
   }
 
-  If.fromAppDefault(Application app) : super.fromAppDefault(app) {
+  If.fromAppDefault(Model app) : super.fromAppDefault(app) {
 
   }
 
@@ -161,7 +161,7 @@ class While extends ConditionalFlowControl {
   While.XML(xml.XmlElement node) : super.XML(node) {
   }
 
-  While.fromAppDefault(Application app) : super.fromAppDefault(app) {}
+  While.fromAppDefault(Model app) : super.fromAppDefault(app) {}
 }
 
 class Break extends Block {
