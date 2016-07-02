@@ -22,6 +22,7 @@ import 'dataports/write_outport_box.dart';
 import 'dataports/inport_buffer_box.dart';
 
 import 'flow_control/if_box.dart';
+import 'flow_control/while_box.dart';
 
 import 'box_base.dart';
 
@@ -105,6 +106,8 @@ class BoxFactoryImpl {
 
     else if (block is program.If) {
       return IfBox.createBox(block);
+    } else if (block is program.While) {
+      return WhileBox.createBox(block);
     }
 
     /*

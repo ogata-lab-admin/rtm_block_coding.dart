@@ -130,6 +130,9 @@ class Else extends ContainerBlock {
     });
   }
 
+  Else.fromAppDefault(Application app) : super('') {
+
+  }
 }
 
 class While extends ConditionalFlowControl {

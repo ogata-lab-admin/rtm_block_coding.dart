@@ -1,7 +1,5 @@
-<link rel="import" href="packages/polymer/polymer.html" />
-<link rel="import" href="packages/core_elements/core_style.html" />
 
-<polymer-element name="while-box">
+<dom-module id="while-box">
     <template>
 
         <style type='text/css'>
@@ -28,18 +26,18 @@
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" vertical layout on-tap="{{onClicked}}">
-            <div id="condition-block" horizontal layout center>
-                <div end>「</div>
+        <div id="container" class="vertical layout" on-tap="onClicked">
+            <div id="condition-block" class="horizontal layout center">
+                <div end></div>
                 <div id="condition-content"></div>
-                <div end>」が成り立つ時</div>
+                <div end>が成り立つ間</div>
             </div>
-            <div id="content-block" horizontal layout center>
+            <div id="content-block" class="horizontal layout center">
                 <div end>ずっと</div>
-                <div id="loop-content"></div>
+                <div id="body-content"></div>
             </div>
         </div>
 
     </template>
     <script type="application/dart" src="while_box.dart"></script>
-</polymer-element>
+</dom-module>
