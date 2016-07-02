@@ -47,6 +47,8 @@ class ProgramBuilder {
       addToApp((new AddOutPort.fromAppDefault(onInit)));
     } else if (command == 'DeclareVariable') {
       addToApp((new DeclareVariable.fromAppDefault(onInit)));
+    } else if (command == 'ReferVariable') {
+      addToApp((new ReferVariable.fromAppDefault(onInit)));
     } else if (command == 'Assign') {
       addToApp((new Assign.fromAppDefault(onInit)));
     } else if (command == 'ReadInPort') {
@@ -63,8 +65,10 @@ class ProgramBuilder {
       addToApp((new WriteOutPort.fromAppDefault(onInit)));
     }
 
-    print ('Invalid Name $command');
 
+    else {
+      print('Invalid Name $command');
+    }
   }
 
 

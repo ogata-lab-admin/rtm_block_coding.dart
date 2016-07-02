@@ -44,6 +44,12 @@ class ReferVariable extends Block {
     name = (node.getAttribute('name'));
     _dataType = new DataType.fromTypeName(node.getAttribute('dataType'));
   }
+
+  ReferVariable.fromAppDefault(Application app) : super('') {
+    var vs = app.find(DeclareVariable);
+    name = vs[0].name;
+    _dataType = vs[0].dataType;
+  }
 }
 
 

@@ -62,7 +62,12 @@ class DataTypeDropDown extends PolymerElement {
       counter++;
     });
 
-    print('Invalid InPort is selected in inport_data');
+    print('DataTypeDropdown.selectType($name) failed.');
+    print('- Iterating Data');
+    $$('#dropdown').children.forEach((PaperItem p) {
+      print('-- ${p.innerHtml}');
+    });
+    print('-');
   }
 
   @reflectable

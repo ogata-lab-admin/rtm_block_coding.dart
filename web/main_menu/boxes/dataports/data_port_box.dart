@@ -74,7 +74,7 @@ class PortSelector extends PolymerElement {
       counter++;
     });
 
-    print('Invalid InPort is selected in inport_data');
+    print('PortSelector.selectPort($name) failed');
   }
 
 
@@ -249,7 +249,7 @@ class TypedDataSelector extends PolymerElement {
       }
       counter++;
     });
-    print('Invalid OutPort Access is selected in outport_data');
+    print('TypedDataSelector.selectAccess($dataType, $accessName) failed.');
   }
 
   get selectedName => _portSelector.selectedName;
