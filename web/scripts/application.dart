@@ -4,6 +4,9 @@ library application;
 import 'package:xml/xml.dart' as xml;
 import 'dart:core';
 import 'dart:collection';
+@MirrorsUsed(targets: const [AddInPort, AddOutPort, InPortBuffer, OutPortBuffer, IsNewInPort, ReadInPort, WriteOutPort, DeclareVariable,
+ReferVariable, Assign, BoolLiteral, IntegerLiteral, StringLiteral, RealLiteral, If, While, Else, Add, Subtract, Multiply, Divide,
+Equals, NotEquals, LargerThan, LargerThanOrEquals, SmallerThan, SmallerThanOrEquals, Not], override: '*')
 import 'dart:mirrors';
 
 import 'package:rtcprofile/rtcprofile.dart';

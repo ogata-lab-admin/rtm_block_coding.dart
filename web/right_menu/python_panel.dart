@@ -1,10 +1,6 @@
 library python_panel;
-// import 'dart:html' as html;
 
 @HtmlImport('python_panel.html')
-
-
-import 'dart:html' as html;
 import 'package:web_components/web_components.dart' show HtmlImport;
 import 'package:polymer/polymer.dart';
 import '../controller/controller.dart';

@@ -2,7 +2,6 @@ library editor_panel;
 import 'package:polymer/polymer.dart';
 
 @HtmlImport('editor_panel.html')
-import 'dart:html' as html;
 import 'package:web_components/web_components.dart' show HtmlImport;
 import 'package:polymer_elements/paper_tabs.dart';
 
@@ -94,13 +93,13 @@ class EditorPanel extends PolymerElement {
 
   void onUpdateSelection() {
     if (globalController.selectedBox == null) {
-      ($$('#up-button') as html.HtmlElement).style.backgroundColor = '#CACACA';
-      ($$('#down-button') as html.HtmlElement).style.backgroundColor = '#CACACA';
-      ($$('#remove-button') as html.HtmlElement).style.backgroundColor = '#CACACA';
+      ($$('#up-button')).style.backgroundColor = '#CACACA';
+      ($$('#down-button')).style.backgroundColor = '#CACACA';
+      ($$('#remove-button')).style.backgroundColor = '#CACACA';
     } else {
-      ($$('#up-button') as html.HtmlElement).style.backgroundColor = '#A1CF6B';
-      ($$('#down-button') as html.HtmlElement).style.backgroundColor = '#A1CF6B';
-      ($$('#remove-button') as html.HtmlElement).style.backgroundColor = '#A1CF6B';
+      ($$('#up-button')).style.backgroundColor = '#A1CF6B';
+      ($$('#down-button')).style.backgroundColor = '#A1CF6B';
+      ($$('#remove-button')).style.backgroundColor = '#A1CF6B';
     }
   }
 

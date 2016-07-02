@@ -1,7 +1,6 @@
 library add_element_button;
 
 @HtmlImport('add_element_button.html')
-import 'dart:html' as html;
 import 'package:polymer/polymer.dart';
 import 'package:web_components/web_components.dart' show HtmlImport;
 import '../controller/controller.dart';

@@ -2,7 +2,6 @@ library main_menu;
 
 
 @HtmlImport('main_menu.html')
-import 'dart:html' as html;
 import 'package:web_components/web_components.dart' show HtmlImport;
 import 'package:polymer/polymer.dart';
 

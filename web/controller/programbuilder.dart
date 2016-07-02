@@ -1,9 +1,6 @@
 library programbuilder;
 
 import '../scripts/application.dart';
-import 'controller.dart';
-import 'dart:mirrors';
-import '../main_menu/boxes/boxes.dart';
 
 class ProgramBuilder {
 
@@ -43,14 +40,7 @@ class ProgramBuilder {
   void build(Model model, Application selectedApp, Block selectedBlock, String command) {
     print('ProgramBuilder.build($command)');
 
-    MirrorSystem mirrors = currentMirrorSystem();
-    mirrors.libraries.forEach((var uri, var lib) {
-      print ('$uri, $lib');
-    });
-    LibraryMirror appMirror = mirrors.findLibrary(new Symbol('application'));
-    ClassMirror cm = appMirror.declarations[new Symbol(command)];
-    addToApp(selectedApp, selectedBlock, cm.newInstance(new Symbol('fromAppDefault'), [model]).reflectee);
-
+    addToApp(selectedApp, selectedBlock, model.createBlock(command));
   }
 
 

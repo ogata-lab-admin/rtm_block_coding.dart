@@ -2,9 +2,6 @@ library controller;
 
 import '../main_menu/editor_panel.dart';
 import '../scripts/application.dart' as program;
-import 'package:xml/xml.dart' as xml;
-import 'package:polymer/polymer.dart';
-import 'dart:html' as html;
 
 
 import '../main_menu/boxes/boxes.dart';

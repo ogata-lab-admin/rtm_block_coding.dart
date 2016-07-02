@@ -2,7 +2,6 @@
 @HtmlImport('main_frame.html')
 
 library main_frame;
-import 'dart:html' as html;
 import 'package:web_components/web_components.dart' show HtmlImport;
 
 import 'package:polymer_elements/paper_drawer_panel.dart';

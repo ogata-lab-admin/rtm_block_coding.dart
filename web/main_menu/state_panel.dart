@@ -8,7 +8,6 @@ import 'dart:html' as html;
 import 'package:web_components/web_components.dart' show HtmlImport;
 
 import 'package:polymer/polymer.dart';
-import 'dart:html' as html;
 
 import '../scripts/rtmtools.dart' as rtmtools;
 import 'package:rtcprofile/rtcprofile.dart';

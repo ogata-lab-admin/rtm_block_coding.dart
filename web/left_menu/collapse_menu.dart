@@ -2,7 +2,6 @@ library collapse_menu;
 @HtmlImport('collapse_menu.html')
 
 import 'package:polymer/polymer.dart';
-import 'dart:html' as html;
 import 'package:web_components/web_components.dart' show HtmlImport;
 import 'package:polymer_elements/iron_collapse.dart';
 

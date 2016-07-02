@@ -4,6 +4,9 @@ library boxes;
 @HtmlImport('boxes.html')
 import 'dart:html' as html;
 import 'dart:async' as async;
+@MirrorsUsed(targets: const [AddInPortBox, AddOutPortBox, InPortBufferBox, OutPortBufferBox, IsNewInPortBox, ReadInPortBox, WriteOutPortBox, DeclareVariableBox,
+ReferVariableBox, AssignBox, BoolLiteralBox, IntegerLiteralBox, RealLiteralBox, IfBox, WhileBox, ElseBox, AddBox, SubtractBox, MultiplyBox, DivideBox,
+EqualsBox, NotEqualsBox, LargerThanBox, LargerThanOrEqualsBox, SmallerThanBox, SmallerThanOrEqualsBox, NotBox], override: '*')
 import 'dart:mirrors';
 
 import 'package:polymer/polymer.dart';
