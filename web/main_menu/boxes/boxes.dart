@@ -59,3 +59,5 @@ part 'comparison/smaller_than_or_equals_box.dart';
 part 'comparison/smaller_than_box.dart';
 part 'comparison/larger_than_or_equals_box.dart';
 part 'comparison/larger_than_box.dart';
+
+part 'logic/not_box.dart';
