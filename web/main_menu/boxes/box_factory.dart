@@ -1,9 +1,4 @@
-library block_parser;
-
-
-import '../../scripts/application.dart' as program;
-import 'box_factory_impl.dart';
-import 'boxes.dart';
+part of boxes;
 
 abstract class BoxFactory {
 

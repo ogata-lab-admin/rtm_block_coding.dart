@@ -1,16 +1,4 @@
-library block_parser_impl;
-
-import 'dart:html' as html;
-import 'package:polymer/polymer.dart';
-import '../../scripts/application.dart' as program;
-import '../../controller/controller.dart';
-
-import 'boxes.dart';
-
-
-
-import 'box_factory.dart';
-import 'dart:mirrors';
+part of boxes;
 
 class BoxFactoryImpl {
 

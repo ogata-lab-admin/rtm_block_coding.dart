@@ -8,7 +8,7 @@ import 'package:web_components/web_components.dart' show HtmlImport;
 import 'package:polymer/polymer.dart';
 import '../scripts/application.dart' as program;
 import '../controller/controller.dart';
-import 'boxes/box_factory_impl.dart';
+import 'boxes/boxes.dart';
 
 @PolymerRegister('block-editor')
 class BlockEditor extends PolymerElement {
