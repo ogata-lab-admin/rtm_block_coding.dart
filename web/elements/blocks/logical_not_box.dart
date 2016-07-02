@@ -6,7 +6,7 @@ import 'package:polymer/polymer.dart';
 //import '../block_editor.dart';
 import '../../main_menu/boxes/box_factory.dart';
 //import '../../controller/controller.dart';
-import 'conditions_box.dart';
+import '../../main_menu/boxes/comparison/comparison_box.dart';
 
 @CustomTag('logical-not-box')
 class LogicalNotBox extends ConditionsBox {

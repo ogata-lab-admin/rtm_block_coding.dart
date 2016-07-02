@@ -14,39 +14,59 @@
 
           }
 
+          :host #container {
+              overflow: auto;
+          }
+
+          :host #menu {
+              overflow: scroll;
+              height: 100px;
+          }
       </style>
       <paper-toolbar id="left-toolbar" class=""></paper-toolbar>
-      <collapse-menu id="rtm_menu" class="default-primary-color" label="データ・構造宣言" state="closed">
-          <add-element-button id="rtm1" label="入力ポート追加" command="AddInPort"></add-element-button>
-          <add-element-button id="rtm2" label="出力ポート追加" command="AddOutPort"></add-element-button>
-          <add-element-button id="var0" label="値の宣言" command="DeclareVariable"></add-element-button>
-      </collapse-menu>
-      <collapse-menu id="variables_menu" label="リテラル・変数の参照" state="closed">
-          <add-element-button id="var1" label="値の代入" command="Assign"></add-element-button>
-          <add-element-button id="var2" label="値の参照" command="ReferVariable"></add-element-button>
-          <add-element-button id="data2" label="入力ポートのデータ" command="InPortBuffer"></add-element-button>
-          <add-element-button id="data3" label="出力ポートのデータ" command="OutPortBuffer"></add-element-button>
-          <add-element-button id="data4" label="整数値" command="IntegerLiteral"></add-element-button>
-          <add-element-button id="data5" label="実数値" command="RealLiteral"></add-element-button>
-          <add-element-button id="data6" label="真偽値" command="BoolLiteral"></add-element-button>
-      </collapse-menu>
-      <collapse-menu id="port_data_menu" label="データポートの制御" state="closed">
-          <add-element-button id="data0" label="入力ポートの受信確認" command="IsNewInPort"></add-element-button>
-          <add-element-button id="data1" label="入力ポートから読み込み" command="ReadInPort"></add-element-button>
-          <add-element-button id="data4" label="出力ポートに書き込み" command="WriteOutPort"></add-element-button>
-      </collapse-menu>
-      <collapse-menu id="if_switch_loop_menu" label="制御文" state="closed">
-          <add-element-button id="loop1" label="もし---なら" command="If"></add-element-button>
-          <add-element-button id="loop2" label="そうでないなら" command="Else"></add-element-button>
-          <add-element-button id="loop3" label="---の間、ずっと" command="While"></add-element-button>
-      </collapse-menu>
-      <collapse-menu id="calculate_menu" label="計算" state="closed">
-          <add-element-button id="calc3" label="足し算" command="Add"></add-element-button>
-          <add-element-button id="calc4" label="引き算" command="Subtract"></add-element-button>
-          <add-element-button id="calc5" label="掛け算" command="Multiply"></add-element-button>
-          <add-element-button id="calc6" label="割り算" command="Divide"></add-element-button>
-      </collapse-menu>
-
+      <div id="container" class="flex vertical layout" >
+          <div id="menu" class="flex layout">
+          <collapse-menu id="rtm_menu" class="default-primary-color" label="データ・構造宣言" state="closed">
+              <add-element-button id="rtm1" label="入力ポート追加" command="AddInPort"></add-element-button>
+              <add-element-button id="rtm2" label="出力ポート追加" command="AddOutPort"></add-element-button>
+              <add-element-button id="var0" label="値の宣言" command="DeclareVariable"></add-element-button>
+          </collapse-menu>
+          <collapse-menu id="variables_menu" label="リテラル・変数の参照" state="closed">
+              <add-element-button id="var1" label="値の代入" command="Assign"></add-element-button>
+              <add-element-button id="var2" label="値の参照" command="ReferVariable"></add-element-button>
+              <add-element-button id="data2" label="入力ポートのデータ" command="InPortBuffer"></add-element-button>
+              <add-element-button id="data3" label="出力ポートのデータ" command="OutPortBuffer"></add-element-button>
+              <add-element-button id="data4" label="整数値" command="IntegerLiteral"></add-element-button>
+              <add-element-button id="data5" label="実数値" command="RealLiteral"></add-element-button>
+              <add-element-button id="data6" label="真偽値" command="BoolLiteral"></add-element-button>
+          </collapse-menu>
+          <collapse-menu id="port_data_menu" label="データポートの制御" state="closed">
+              <add-element-button id="data0" label="入力ポートの受信確認" command="IsNewInPort"></add-element-button>
+              <add-element-button id="data1" label="入力ポートから読み込み" command="ReadInPort"></add-element-button>
+              <add-element-button id="data7" label="出力ポートに書き込み" command="WriteOutPort"></add-element-button>
+          </collapse-menu>
+          <collapse-menu id="if_switch_loop_menu" label="制御文" state="closed">
+              <add-element-button id="loop1" label="もし---なら" command="If"></add-element-button>
+              <add-element-button id="loop2" label="そうでないなら" command="Else"></add-element-button>
+              <add-element-button id="loop3" label="---の間、ずっと" command="While"></add-element-button>
+          </collapse-menu>
+          <collapse-menu id="calculate_menu" label="計算" state="closed">
+              <add-element-button id="calc3" label="足し算" command="Add"></add-element-button>
+              <add-element-button id="calc4" label="引き算" command="Subtract"></add-element-button>
+              <add-element-button id="calc5" label="掛け算" command="Multiply"></add-element-button>
+              <add-element-button id="calc6" label="割り算" command="Divide"></add-element-button>
+          </collapse-menu>
+          <collapse-menu id="condition_menu" label="比較演算" state="closed">
+              <add-element-button id="cond1" label="等しい" command="Equals"></add-element-button>
+              <add-element-button id="cond2" label="等しくない" command="NotEquals"></add-element-button>
+              <add-element-button id="cond3" label="より大きい" command="LargerThan"></add-element-button>
+              <add-element-button id="cond4" label="以上" command="LargerThanOrEquals"></add-element-button>
+              <add-element-button id="cond5" label="より小さい" command="SmallerThan"></add-element-button>
+              <add-element-button id="cond6" label="以下" command="SmallerThanOrEquals"></add-element-button>
+              <add-element-button id="cond7" label="ではない" command="logical_not"></add-element-button>
+          </collapse-menu>
+          </div>
+      </div>
       <!--
                 <core-toolbar class="dark-primary-color text-primary-color"></core-toolbar>
 
@@ -76,15 +96,7 @@
                     <add-element-button id="loop3" label="---の間、ずっと" command="while"></add-element-button>
                 </collapse-menu>
 
-                <collapse-menu id="condition_menu" label="条件演算" state="closed">
-                    <add-element-button id="cond1" label="等しい" command="equals"></add-element-button>
-                    <add-element-button id="cond2" label="等しくない" command="not_equals"></add-element-button>
-                    <add-element-button id="cond3" label="より大きい" command="larger"></add-element-button>
-                    <add-element-button id="cond4" label="以上" command="larger_equals"></add-element-button>
-                    <add-element-button id="cond5" label="より小さい" command="smaller"></add-element-button>
-                    <add-element-button id="cond6" label="以下" command="smaller_equals"></add-element-button>
-                    <add-element-button id="cond7" label="ではない" command="logical_not"></add-element-button>
-                </collapse-menu>
+
 
                 <div flex>Copyright: Yuki Suga, Yumi Nishimura, Tetsuya Ogata @Ogata Lab. Waseda Univ.</div>
 

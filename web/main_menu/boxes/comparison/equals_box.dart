@@ -1,15 +1,7 @@
-library equals_box;
+part of boxes;
 
-import 'dart:html' as html;
-import 'package:rtm_block_coding/application.dart' as program;
-import 'package:polymer/polymer.dart';
-//import '../block_editor.dart';
-import '../../main_menu/boxes/box_factory.dart';
-//import '../../controller/controller.dart';
-import 'conditions_box.dart';
-
-@CustomTag('equals-box')
-class EqualsBox extends ConditionsBox {
+@PolymerRegister('equals-box')
+class EqualsBox extends ComparisonBox {
 
   program.Equals _model;
 

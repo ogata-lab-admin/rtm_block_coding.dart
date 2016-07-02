@@ -68,6 +68,8 @@ class Equals extends BasicComparison {
   Equals.XML(xml.XmlElement node) : super(null, null, '==') {
     super.loadXML(node);
   }
+
+  Equals.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '==') {}
 }
 
 
@@ -79,7 +81,10 @@ class NotEquals extends BasicComparison {
   NotEquals.XML(xml.XmlElement node) : super(null, null, '!=') {
     super.loadXML(node);
   }
+
+  NotEquals.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '!=') {}
 }
+
 
 
 class SmallerThan extends BasicComparison {
@@ -89,6 +94,9 @@ class SmallerThan extends BasicComparison {
   SmallerThan.XML(xml.XmlElement node) : super(null, null, '<') {
     super.loadXML(node);
   }
+
+  SmallerThan.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '<') {}
+
 }
 
 
@@ -99,6 +107,9 @@ class SmallerThanOrEquals extends BasicComparison {
   SmallerThanOrEquals.XML(xml.XmlElement node) : super(null, null, '<=') {
     super.loadXML(node);
   }
+
+  SmallerThanOrEquals.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '<=') {}
+
 }
 
 class LargerThan extends BasicComparison {
@@ -107,6 +118,9 @@ class LargerThan extends BasicComparison {
   LargerThan.XML(xml.XmlElement node) : super(null, null, '>')  {
     super.loadXML(node);
   }
+
+  LargerThan.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '>') {}
+
 }
 
 
@@ -116,6 +130,8 @@ class LargerThanOrEquals extends BasicComparison {
   LargerThanOrEquals.XML(xml.XmlElement node) : super(null, null, '>=') {
     super.loadXML(node);
   }
+  LargerThanOrEquals.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '>=') {}
+
 }
 
 
@@ -143,4 +159,9 @@ class Not extends Condition {
       condition = BlockLoader.parseBlock(e);
     });
   }
+
+  Not.fromAppDefault(Model app) : super() {
+    this.condition = new BoolLiteral(true);
+  }
+
 }

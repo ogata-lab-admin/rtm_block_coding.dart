@@ -121,7 +121,7 @@ class Assign extends BasicOperator {
 
 
 /// 加算
-class Add extends BasicOperator {
+class Add extends BasicOperator with VariableBlock {
   Add(Block a_, Block b_) : super(a_, b_, '+') {}
 
   Add.XML(xml.XmlElement node) : super(null, null, '+') {
@@ -133,7 +133,7 @@ class Add extends BasicOperator {
 }
 
 /// 減算
-class Subtract extends BasicOperator {
+class Subtract extends BasicOperator with VariableBlock {
   Subtract(Block a_, Block b_) : super(a_, b_, '-') {}
 
   Subtract.XML(xml.XmlElement node) : super(null, null, '-') {
@@ -145,7 +145,7 @@ class Subtract extends BasicOperator {
 }
 
 /// 乗算
-class Multiply extends BasicOperator {
+class Multiply extends BasicOperator with VariableBlock {
   Multiply(Block a_, Block b_) : super(a_, b_, '*') {}
 
   Multiply.XML(xml.XmlElement node) : super(null, null, '*') {
@@ -157,7 +157,7 @@ class Multiply extends BasicOperator {
 }
 
 /// 除算
-class Divide extends BasicOperator {
+class Divide extends BasicOperator with VariableBlock {
   Divide(Block a_, Block b_) : super(a_, b_, '/') {}
 
   Divide.XML(xml.XmlElement node) : super(null, null, '/') {

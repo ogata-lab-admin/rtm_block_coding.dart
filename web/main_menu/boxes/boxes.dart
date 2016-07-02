@@ -50,3 +50,12 @@ part 'calculation/add_box.dart';
 part 'calculation/subtract_box.dart';
 part 'calculation/multiply_box.dart';
 part 'calculation/divide_box.dart';
+
+
+part 'comparison/comparison_box.dart';
+part 'comparison/equals_box.dart';
+part 'comparison/notequals_box.dart';
+part 'comparison/smaller_than_or_equals_box.dart';
+part 'comparison/smaller_than_box.dart';
+part 'comparison/larger_than_or_equals_box.dart';
+part 'comparison/larger_than_box.dart';
