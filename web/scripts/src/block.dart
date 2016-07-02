@@ -1,13 +1,13 @@
-library application.block;
+part of application;//library application.block;
 
 /// ブロックコーディング用の基本クラス Block を定義s
-
+/*
 import 'dart:core';
 import 'package:xml/xml.dart' as xml;
 import 'dart:collection';
 import 'statement.dart';
 import 'block_loader.dart';
-
+*/
 /// ブロックコーディングの基礎クラス．
 /// ブロックに共通のコードをここで定義
 abstract class Block {

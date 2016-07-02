@@ -1,7 +1,9 @@
 
-<link rel="import" href="packages/polymer_elements/paper_input.html" />
+<link rel="import" href="packages/polymer_elements/paper_item.html" />
+<link rel="import" href="packages/polymer_elements/iron_selector.html" />
+<link rel="import" href="packages/polymer_elements/paper_dropdown_menu.html" />
 
-<dom-module id="true-literal-box">
+<dom-module id="bool-literal-box">
     <template>
 
         <style type='text/css'>
@@ -38,9 +40,14 @@
 
         <!--Japanese ver.-->
         <div id="container" class="horizontal layout center" on-tap="onClicked">
-            <div>True</div>
+            <paper-dropdown-menu id="dropdown-menu" class="horizontal layout center" label="真偽値">
+                <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
+                    <paper-item value="0">True</paper-item>
+                    <paper-item value="1">False</paper-item>
+                </iron-selector>
+            </paper-dropdown-menu>
         </div>
 
     </template>
-    <script type="application/dart" src="true_literal_box.dart"></script>
+    <script type="application/dart" src="bool_literal_box.dart"></script>
 </dom-module>

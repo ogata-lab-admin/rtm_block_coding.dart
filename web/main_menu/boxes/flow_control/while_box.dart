@@ -1,12 +1,4 @@
-library while_box;
-
-@HtmlImport('while_box.html')
-import 'dart:html' as html;
-import 'package:polymer/polymer.dart';
-import 'package:web_components/web_components.dart' show HtmlImport;
-import '../../../scripts/application.dart' as program;
-import '../box_factory.dart';
-import '../box_base.dart';
+part of boxes;
 
 @PolymerRegister('while-box')
 class WhileBox extends BoxBase {

@@ -2,6 +2,8 @@ library programbuilder;
 
 import '../scripts/application.dart';
 import 'controller.dart';
+import 'dart:mirrors';
+
 
 class ProgramBuilder {
 
@@ -40,6 +42,19 @@ class ProgramBuilder {
   void build(String command) {
     print('ProgramBuilder.build($command)');
     Application onInit = globalController.onInitializeApp;
+
+
+    MirrorSystem mirrors = currentMirrorSystem();
+    mirrors.libraries.forEach((var uri, var lib) {
+      print ('$uri, $lib');
+    });
+    LibraryMirror appMirror = mirrors.findLibrary(new Symbol('application'));
+//    LibraryMirror appMirror = mirrors.libraries['application'];
+    ClassMirror cm = appMirror.declarations[new Symbol(command)];//classes[command];
+    addToApp(cm.newInstance(new Symbol('fromAppDefault'), [onInit]).reflectee);
+
+    /*
+
 //  rtm_menu
     if(command == 'AddInPort') {
       addToApp((new AddInPort.fromAppDefault(onInit)));
@@ -71,6 +86,7 @@ class ProgramBuilder {
     else {
       print('Invalid Name $command');
     }
+    */
   }
 
 

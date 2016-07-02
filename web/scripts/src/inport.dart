@@ -1,3 +1,7 @@
+part of application;
+/*
+
+
 library application.inport;
 
 import 'package:xml/xml.dart' as xml;
@@ -9,7 +13,7 @@ import 'datatype.dart';
 import 'block_loader.dart';
 import 'port.dart';
 import 'condition.dart';
-
+*/
 class AddInPort extends AddPort {
 
   AddInPort(String inName_, DataType inDataType_) : super(inName_, inDataType_) {

@@ -1,9 +1,8 @@
-library block_loader;
+part of application; //library block_loader;
 
-
+/*
 import 'package:xml/xml.dart' as xml;
 import 'dart:core';
-import 'dart:mirrors';
 
 import 'block.dart';
 import 'literal.dart';
@@ -15,7 +14,7 @@ import 'inport.dart';
 import 'io.dart';
 import 'outport.dart';
 import 'variable.dart';
-
+*/
 /// ブロックをXMLから生成するためのクラス
 /// Blockクラスは複数の子クラスを持ち，それぞれが別個にXMLを生成しているため
 /// いろいろなフォーマットになっている
@@ -29,9 +28,9 @@ class BlockLoader {
   static List<Type> blockTypes = [
     IntegerLiteral, StringLiteral, RealLiteral,
     SetVariable, ReferVariable, Assign, Add, Subtract, Multiply, Divide,
-    Equals, SmallerThan, SmallerThanOrEquals, LargerThan, LargerThanOrEquals, Not, TrueLiteral, FalseLiteral,
+    Equals, SmallerThan, SmallerThanOrEquals, LargerThan, LargerThanOrEquals, Not, BoolLiteral,
     DataType,
-    If, While, Break, Pass, Continue, 
+    If, Else, While, Break, Pass, Continue,
     Print,
     IsNewInPort, InPortBuffer, AddInPort, ReadInPort,
     OutPortBuffer, AddOutPort, WriteOutPort,

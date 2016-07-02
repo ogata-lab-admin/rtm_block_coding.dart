@@ -1,13 +1,13 @@
+part of application;
+/*
 library application.datatype;
-
-
 
 import 'package:xml/xml.dart' as xml;
 import 'dart:core';
 import 'block.dart';
 import 'condition.dart';
 import 'statement.dart';
-
+*/
 class DataType {
 
   String typename;

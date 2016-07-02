@@ -1,14 +1,4 @@
-library write_outport_box;
-
-@HtmlImport('write_outport_box.html')
-import 'dart:html' as html;
-import 'package:polymer/polymer.dart';
-import 'package:web_components/web_components.dart' show HtmlImport;
-
-import '../../../scripts/application.dart' as program;
-import '../../../controller/controller.dart';
-import '../box_base.dart';
-import 'data_port_box.dart';
+part of boxes;
 
 @PolymerRegister('write-outport-box')
 class WriteOutPortBox extends BoxBase {

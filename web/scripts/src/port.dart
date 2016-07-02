@@ -1,3 +1,6 @@
+part of application;
+/*
+
 library application.addport;
 
 import 'package:xml/xml.dart' as xml;
@@ -5,6 +8,8 @@ import 'dart:core';
 import 'block.dart';
 import 'datatype.dart';
 import 'block_loader.dart';
+*/
+
 
 abstract class AddPort extends Block {
 

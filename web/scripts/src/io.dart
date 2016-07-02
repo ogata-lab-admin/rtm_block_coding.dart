@@ -1,3 +1,5 @@
+part of application;
+/*
 
 
 library application.io;
@@ -6,7 +8,7 @@ library application.io;
 import 'package:xml/xml.dart' as xml;
 import 'block.dart';
 import 'block_loader.dart';
-
+*/
 class Print extends Block {
 
   Block _block;

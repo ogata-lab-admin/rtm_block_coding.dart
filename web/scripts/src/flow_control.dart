@@ -1,3 +1,8 @@
+
+
+part of application;
+/*
+
 library application.flow_control;
 
 import 'package:xml/xml.dart' as xml;
@@ -8,6 +13,7 @@ import 'condition.dart';
 import 'statement.dart';
 import 'literal.dart';
 import 'block_loader.dart';
+ */
 
 
 abstract class ContainerBlock extends Block {
@@ -68,7 +74,7 @@ class ConditionalFlowControl extends ContainerBlock {
   }
 
   ConditionalFlowControl.fromAppDefault(Application app) : super('') {
-    condition = new TrueLiteral();
+    condition = new BoolLiteral(true);
   }
 }
 

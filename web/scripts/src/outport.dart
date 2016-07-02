@@ -1,3 +1,7 @@
+part of application;
+/*
+
+
 library application.outport;
 
 import 'package:xml/xml.dart' as xml;
@@ -8,7 +12,7 @@ import 'statement.dart';
 import 'datatype.dart';
 import 'block_loader.dart';
 import 'port.dart';
-
+*/
 class AddOutPort extends AddPort {
 
   AddOutPort(String outName_, DataType outDataType_) : super(outName_, outDataType_) {

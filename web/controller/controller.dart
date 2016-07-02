@@ -20,7 +20,7 @@ import '../elements/blocks/addition_box.dart';
 import '../elements/blocks/subtraction_box.dart';
 import '../elements/blocks/multiplication_box.dart';
 import '../elements/blocks/division_box.dart';
-import '../elements/blocks/true_literal_box.dart';
+import '../elements/blocks/bool_literal_box.dart';
 import '../elements/blocks/real_literal_box.dart';
 import '../elements/blocks/if_box.dart';
 import '../elements/blocks/else_box.dart';

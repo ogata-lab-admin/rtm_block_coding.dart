@@ -12,42 +12,11 @@ import 'variables/assign_box.dart';
 import 'variables/refer_variable_box.dart';
 
 import 'literal/integer_literal_box.dart';
+import 'literal/bool_literal_box.dart';
 
-import 'literal/true_literal_box.dart';
-
-import 'dataports/read_inport_box.dart';
-import 'dataports/is_new_inport_box.dart';
-import 'dataports/outport_buffer_box.dart';
-import 'dataports/write_outport_box.dart';
-import 'dataports/inport_buffer_box.dart';
-
-import 'flow_control/if_box.dart';
-import 'flow_control/while_box.dart';
+import 'boxes.dart';
 
 import 'box_base.dart';
-
-/*
-import 'blocks/assign_variable_box.dart';
-import 'blocks/read_inport_box.dart';
-import 'blocks/inport_buffer_box.dart';
-import 'blocks/outport_buffer_box.dart';
-import 'blocks/write_outport_box.dart';
-import 'blocks/real_literal_box.dart';
-import 'blocks/addition_box.dart';
-import 'blocks/subtraction_box.dart';
-import 'blocks/multiplication_box.dart';
-import 'blocks/division_box.dart';
-import 'blocks/if_box.dart';
-import 'blocks/else_box.dart';
-import 'blocks/while_box.dart';
-import 'blocks/equals_box.dart';
-import 'blocks/notequals_box.dart';
-import 'blocks/larger_than_box.dart';
-import 'blocks/larger_than_or_equals_box.dart';
-import 'blocks/smaller_than_box.dart';
-import 'blocks/smaller_than_or_equals_box.dart';
-import 'blocks/logical_not_box.dart';
-*/
 
 import 'box_factory.dart';
 import 'dart:mirrors';
@@ -88,8 +57,8 @@ class BoxFactoryImpl {
 
     else if (block is program.IntegerLiteral) {
       return IntegerLiteralBox.createBox(block);
-    } else if (block is program.TrueLiteral) {
-      return TrueLiteralBox.createBox(block);
+    } else if (block is program.BoolLiteral) {
+      return BoolLiteralBox.createBox(block);
     }
 
     else if (block is program.ReadInPort) {

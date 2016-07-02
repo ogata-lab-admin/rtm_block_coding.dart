@@ -1,11 +1,12 @@
-
+part of application;
+/*
 library application.condition;
 import 'block.dart';
 
 
 import 'package:xml/xml.dart' as xml;
 import 'block_loader.dart';
-
+*/
 
 /// 条件部のためのクラス
 /// 条件部はbool型になるため，

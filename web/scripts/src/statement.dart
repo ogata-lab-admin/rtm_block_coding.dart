@@ -1,15 +1,12 @@
 
-library application.statement;
+part of application;//.statement;
 
 /// ステートメント (プログラムにおける文）を定義する
 
-
-import 'package:xml/xml.dart' as xml;
-import 'dart:core';
-import 'dart:collection';
+/*
 import 'block.dart';
 import 'block_loader.dart';
-
+*/
 /// ステートメント (プログラムにおける文）
 class Statement {
 

@@ -1,10 +1,12 @@
-library application.base;
+part of application; //library application.base;
 
 /// ブロックコーディングの大元の要素「アプリケーション」を定義するファイル
 /// ブロックコーディングは，複数の文（ステートメント）から成り立っている
 /// 文はブロックの要素の組み合わせで成り立っており，
 /// 複数の文を管理するクラスをアプリケーションと呼ぶことにする
 
+//
+/*
 import 'dart:core';
 import 'package:xml/xml.dart' as xml;
 import 'statement.dart';
@@ -14,7 +16,7 @@ import 'inport.dart';
 import 'outport.dart';
 import 'variable.dart';
 import 'dart:mirrors';
-
+*/
 
 
 /// ブロックコーディングの大元の要素

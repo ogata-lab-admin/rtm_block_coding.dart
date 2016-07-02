@@ -1,3 +1,7 @@
+part of application;
+/*
+
+
 library application.variable;
 
 /// 変数に関する基本クラス
@@ -10,7 +14,7 @@ import 'base.dart';
 import 'datatype.dart';
 import 'block.dart';
 import 'block_loader.dart';
-
+*/
 
 /// 変数を定義するブロック
 /// 変数名のみを格納する

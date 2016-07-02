@@ -1,3 +1,5 @@
+part of application;
+/*
 
 library application.literal;
 
@@ -5,7 +7,7 @@ import 'package:xml/xml.dart' as xml;
 import 'dart:core';
 import 'block.dart';
 import 'condition.dart';
-
+*/
 
 abstract class BasicLiteral<T> extends Block {
   T _value;
@@ -48,6 +50,10 @@ class IntegerLiteral extends BasicLiteral<int> {
   IntegerLiteral.XML(xml.XmlElement node) : super(0) {
     loadXML(node);
   }
+
+  IntegerLiteral.fromAppDefault(Application app) : super(0) {
+
+  }
 }
 
 
@@ -80,6 +86,57 @@ class StringLiteral extends BasicLiteral<String> {
 }
 
 
+
+class BoolLiteral extends Condition {
+
+  bool _value;
+
+  get value => _value;
+
+  get valueStr {
+    if (value) {
+      return "True";
+    } else {
+      return "False";
+    }
+  }
+
+  set value(bool v) => _value = v;
+
+  BoolLiteral(this._value) {}
+
+  String toPython(int indentLevel) {
+    return valueStr;
+  }
+
+  void buildXML(xml.XmlBuilder builder) {
+    super.element(builder,
+        attributes: {
+          'value' :  valueStr,
+        },
+        nest: () {
+        });
+  }
+
+  parse(String str) {
+    if (str == 'True') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  BoolLiteral.XML(xml.XmlElement node) {
+    _value = parse(node.getAttribute('value'));
+  }
+
+  BoolLiteral.fromAppDefault(Application app) : super() {
+    _value = true;
+  }
+}
+
+/*
 class TrueLiteral extends Condition {
 
   TrueLiteral() {}
@@ -121,3 +178,4 @@ class FalseLiteral extends Condition {
   FalseLiteral.XML(xml.XmlElement node) {
   }
 }
+*/
