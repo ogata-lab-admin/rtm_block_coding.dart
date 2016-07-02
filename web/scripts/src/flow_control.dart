@@ -40,8 +40,14 @@ class ConditionalFlowControl extends ContainerBlock {
   get condition => _condition;
 
   set condition(Condition cond) {
-    _condition = cond;
-    condition.parent = this;
+    if (cond is Condition) {
+      _condition = cond;
+      condition.parent = this;
+    }
+  }
+
+  bool isCondition(Block b) {
+    return this.condition == b;
   }
 
   ConditionalFlowControl(this._condition) : super('') {
@@ -83,6 +89,7 @@ class If extends ConditionalFlowControl {
 
   If(Condition cond) : super(cond) {
   }
+
 
   String toPython(int indentLevel) {
     String sb = "";

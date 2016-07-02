@@ -127,6 +127,9 @@ class Add extends BasicOperator {
   Add.XML(xml.XmlElement node) : super(null, null, '+') {
     loadXML(node);
   }
+
+  Add.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '+') {
+  }
 }
 
 /// 減算

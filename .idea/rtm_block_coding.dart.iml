@@ -10,8 +10,10 @@
       <excludeFolder url="file://$MODULE_DIR$/web/elements/blocks/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/elements/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/left_menu/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/calculation/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/dataports/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/flow_control/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/literal/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/rtm/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/main_menu/boxes/variables/packages" />

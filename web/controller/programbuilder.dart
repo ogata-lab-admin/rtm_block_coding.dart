@@ -12,30 +12,31 @@ class ProgramBuilder {
 
 
   void addToApp(Application selectedApp, Block selectedBlock, Block b) {
-
     var s = new Statement(b);
-    if (b is Condition) {
-      if (selectedBlock == null) {
+
+
+    if (selectedBlock == null) {
+      if (!(b is BasicLiteral) && !(b is VariableBlock)) {
+        selectedApp.statements.add(s);
+      }
+      return;
+    } else if (selectedBlock.parent is ConditionalFlowControl) {
+      if (selectedBlock.parent.isCondition(selectedBlock)) {
+        selectedBlock.parent.condition = b;
         return;
       }
+    }
 
-      if(selectedBlock.parent is ConditionalFlowControl) {
-        selectedBlock.parent.condition = b;
+    if (selectedBlock is ContainerBlock) {
+      selectedBlock.statements.add(s);
+    } else if (selectedBlock.parent is BasicOperator) {
+      if (selectedBlock.parent.isLeft(selectedBlock)) {
+        selectedBlock.parent.left = b;
+      } else {
+        selectedBlock.parent.right = b;
       }
     } else {
-      if (selectedBlock == null) {
-        selectedApp.statements.add(s);
-      } else if (selectedBlock is ContainerBlock) {
-        selectedBlock.statements.add(s);
-      } else if (selectedBlock.parent is BasicOperator) {
-        if (selectedBlock.parent.isLeft(selectedBlock)) {
-          selectedBlock.parent.left = b;
-        } else {
-          selectedBlock.parent.right = b;
-        }
-      } else {
-        selectedApp.statements.add(s);
-      }
+      selectedApp.statements.add(s);
     }
   }
 

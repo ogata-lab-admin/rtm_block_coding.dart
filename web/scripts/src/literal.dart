@@ -67,6 +67,10 @@ class RealLiteral extends BasicLiteral<double> {
   RealLiteral.XML(xml.XmlElement node) : super(0.0) {
     loadXML(node);
   }
+
+  RealLiteral.fromAppDefault(Model app) : super(0.0) {
+    _value = 0.0;
+  }
 }
 
 
@@ -82,6 +86,11 @@ class StringLiteral extends BasicLiteral<String> {
 
   String toPython(int indentLevel) {
     return "'${_value.toString()}'";
+  }
+
+
+  StringLiteral.fromAppDefault(Model app) : super('') {
+    _value = '';
   }
 }
 

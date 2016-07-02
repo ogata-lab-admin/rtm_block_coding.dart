@@ -45,7 +45,7 @@ class AddOutPort extends AddPort {
 }
 
 
-class OutPortBuffer extends Block {
+class OutPortBuffer extends Block with VariableBlock {
   //Block right;
   DataType dataType;
   String accessSequence;

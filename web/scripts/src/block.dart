@@ -101,6 +101,10 @@ abstract class Block {
 }
 
 
+abstract class VariableBlock {
+
+}
+
 
 
 class BlockList extends ListMixin<Block> {

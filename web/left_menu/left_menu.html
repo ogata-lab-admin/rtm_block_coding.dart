@@ -26,6 +26,9 @@
           <add-element-button id="var2" label="値の参照" command="ReferVariable"></add-element-button>
           <add-element-button id="data2" label="入力ポートのデータ" command="InPortBuffer"></add-element-button>
           <add-element-button id="data3" label="出力ポートのデータ" command="OutPortBuffer"></add-element-button>
+          <add-element-button id="data4" label="整数値" command="IntegerLiteral"></add-element-button>
+          <add-element-button id="data5" label="実数値" command="RealLiteral"></add-element-button>
+          <add-element-button id="data6" label="真偽値" command="BoolLiteral"></add-element-button>
       </collapse-menu>
       <collapse-menu id="port_data_menu" label="データポートの制御" state="closed">
           <add-element-button id="data0" label="入力ポートの受信確認" command="IsNewInPort"></add-element-button>
@@ -37,6 +40,13 @@
           <add-element-button id="loop2" label="そうでないなら" command="Else"></add-element-button>
           <add-element-button id="loop3" label="---の間、ずっと" command="While"></add-element-button>
       </collapse-menu>
+      <collapse-menu id="calculate_menu" label="計算" state="closed">
+          <add-element-button id="calc3" label="足し算" command="Add"></add-element-button>
+          <add-element-button id="calc4" label="引き算" command="subtraction"></add-element-button>
+          <add-element-button id="calc5" label="掛け算" command="multiplication"></add-element-button>
+          <add-element-button id="calc6" label="割り算" command="division"></add-element-button>
+      </collapse-menu>
+
       <!--
                 <core-toolbar class="dark-primary-color text-primary-color"></core-toolbar>
 
@@ -58,14 +68,7 @@
                     <add-element-button id="data4" label="出力ポートに書き込み" command="write_outport"></add-element-button>
                 </collapse-menu>
 
-                <collapse-menu id="calculate_menu" label="計算" state="closed">
-                    <add-element-button id="calc1" label="整数の追加" command="int_literal"></add-element-button>
-                    <add-element-button id="calc2" label="小数の追加" command="real_literal"></add-element-button>
-                    <add-element-button id="calc3" label="足し算" command="addition"></add-element-button>
-                    <add-element-button id="calc4" label="引き算" command="subtraction"></add-element-button>
-                    <add-element-button id="calc5" label="掛け算" command="multiplication"></add-element-button>
-                    <add-element-button id="calc6" label="割り算" command="division"></add-element-button>
-                </collapse-menu>
+
 
                 <collapse-menu id="if_switch_loop_menu" label="くりかえし処理" state="closed">
                     <add-element-button id="loop1" label="もし---なら" command="if"></add-element-button>

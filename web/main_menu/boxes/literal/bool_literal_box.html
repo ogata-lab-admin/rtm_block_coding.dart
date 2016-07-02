@@ -8,6 +8,8 @@
 
         <style type='text/css'>
             :host {
+                --paper-input-container-color: black;
+                --paper-input-container-input-color: black;
             }
             :host > #container {
                 margin-top: 2px;
@@ -26,15 +28,11 @@
 
                 height: 40px;
             }
-            #body {
-                position: relative;
-            }
-            paper-input {
+
+            :host paper-dropdown-menu#dropdown-menu {
                 margin-left : 10px;
                 margin-right: 10px;
-            }
-            paper-input#int-literal-input {
-                width: 30px;
+                width: 70px;
             }
         </style>
 

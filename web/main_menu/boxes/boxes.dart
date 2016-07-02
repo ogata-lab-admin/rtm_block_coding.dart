@@ -28,6 +28,7 @@ part 'flow_control/else_box.dart';
 
 part 'literal/integer_literal_box.dart';
 part 'literal/bool_literal_box.dart';
+part 'literal/real_literal_box.dart';
 
 part 'dataports/data_port_box.dart';
 part 'dataports/inport_buffer_box.dart';
@@ -43,3 +44,6 @@ part 'rtm/add_outport_box.dart';
 part 'variables/declare_variable_box.dart';
 part 'variables/assign_box.dart';
 part 'variables/refer_variable_box.dart';
+
+part 'calculation/calculation_box.dart';
+part 'calculation/add_box.dart';

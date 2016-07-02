@@ -5,7 +5,6 @@ class BoxBase extends PolymerElement {
   PolymerElement parentElement;
 
   program.Block _model;
-//とりあえずvar型にしてあるけどあまりよくない
 
   set model(program.Block m) {
     _model = m;

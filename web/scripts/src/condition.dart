@@ -13,10 +13,8 @@ import 'block_loader.dart';
 /// 単なるBlockを受けるようにしていると
 /// 構文チェックが難しい
 /// そこでBool型はConditionクラスを継承することにする．
-abstract class Condition extends Block {
-
+abstract class Condition extends Block with VariableBlock {
   Condition() : super('')  {}
-
 }
 
 

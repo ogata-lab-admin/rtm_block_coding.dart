@@ -5,7 +5,8 @@ class BoolLiteralBox extends BoxBase {
 
   static BoolLiteralBox createBox(program.BoolLiteral m) {
     return new html.Element.tag('bool-literal-box') as BoolLiteralBox
-      ..model = m;
+      ..model = m;//
+       // ..selectBool(m.value);
   }
 
   BoolLiteralBox.created() : super.created();
@@ -13,7 +14,7 @@ class BoolLiteralBox extends BoxBase {
   void attached() {
     selectBool((model as program.BoolLiteral).value);
     $$('#dropdown').addEventListener('iron-select', (var e) {
-      (model as program.BoolLiteral).value = e.detail['item'].innerHtml == 'True';
+      (model as program.BoolLiteral).value = e.detail['item'].innerHtml.toString().indexOf('True') > 0;
     });
   }
 

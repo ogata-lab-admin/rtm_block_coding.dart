@@ -3,7 +3,7 @@ library subtraction_box;
 import 'dart:html' as html;
 import 'package:rtm_block_coding/application.dart' as program;
 import 'package:polymer/polymer.dart';
-import 'calculation_box.dart';
+import '../../main_menu/boxes/calculation/calculation_box.dart';
 import '../../main_menu/boxes/box_factory.dart';
 
 @CustomTag('subtraction-box')
