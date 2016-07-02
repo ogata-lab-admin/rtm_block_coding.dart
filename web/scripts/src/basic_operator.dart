@@ -139,6 +139,9 @@ class Subtract extends BasicOperator {
   Subtract.XML(xml.XmlElement node) : super(null, null, '-') {
     loadXML(node);
   }
+
+  Subtract.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '-') {
+  }
 }
 
 /// 乗算
@@ -148,6 +151,9 @@ class Multiply extends BasicOperator {
   Multiply.XML(xml.XmlElement node) : super(null, null, '*') {
     loadXML(node);
   }
+
+  Multiply.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(0), '*') {
+  }
 }
 
 /// 除算
@@ -156,5 +162,8 @@ class Divide extends BasicOperator {
 
   Divide.XML(xml.XmlElement node) : super(null, null, '/') {
     loadXML(node);
+  }
+
+  Divide.fromAppDefault(Model app) : super(new IntegerLiteral(0), new IntegerLiteral(1), '/') {
   }
 }

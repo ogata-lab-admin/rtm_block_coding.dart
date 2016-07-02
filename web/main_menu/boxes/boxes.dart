@@ -47,3 +47,6 @@ part 'variables/refer_variable_box.dart';
 
 part 'calculation/calculation_box.dart';
 part 'calculation/add_box.dart';
+part 'calculation/subtract_box.dart';
+part 'calculation/multiply_box.dart';
+part 'calculation/divide_box.dart';
