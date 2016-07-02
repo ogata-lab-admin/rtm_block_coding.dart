@@ -1,12 +1,4 @@
-library integer_literal_box;
-
-@HtmlImport('integer_listeral_box.html')
-import 'dart:html' as html;
-import 'dart:async' as async;
-import 'package:polymer/polymer.dart';
-import 'package:web_components/web_components.dart' show HtmlImport;
-import '../../../scripts/application.dart' as program;
-import '../box_base.dart';
+part of boxes;
 
 @PolymerRegister('integer-literal-box')
 class IntegerLiteralBox extends BoxBase {

@@ -1,19 +1,5 @@
-library refer_variable_box;
+part of boxes;
 
-
-@HtmlImport('refer_variable_box.html')
-import 'dart:html' as html;
-import 'dart:async' as async;
-import 'package:polymer/polymer.dart';
-import 'package:web_components/web_components.dart' show HtmlImport;
-
-import '../../../scripts/application.dart' as program;
-import 'package:polymer_elements/paper_item.dart';
-import 'package:polymer_elements/paper_dropdown_menu.dart';
-import 'package:polymer_elements/iron_selector.dart';
-
-import '../../../controller/controller.dart';
-import '../box_base.dart';
 
 @PolymerRegister('refer-variable-box')
 class ReferVariableBox extends BoxBase {

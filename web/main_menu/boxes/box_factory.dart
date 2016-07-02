@@ -3,7 +3,7 @@ library block_parser;
 
 import '../../scripts/application.dart' as program;
 import 'box_factory_impl.dart';
-import 'box_base.dart';
+import 'boxes.dart';
 
 abstract class BoxFactory {
 

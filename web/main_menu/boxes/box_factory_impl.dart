@@ -5,32 +5,16 @@ import 'package:polymer/polymer.dart';
 import '../../scripts/application.dart' as program;
 import '../../controller/controller.dart';
 
-import 'rtm/add_inport_box.dart';
-import 'rtm/add_outport_box.dart';
-import 'variables/declare_variable_box.dart';
-import 'variables/assign_box.dart';
-import 'variables/refer_variable_box.dart';
-
-import 'literal/integer_literal_box.dart';
-import 'literal/bool_literal_box.dart';
-
 import 'boxes.dart';
 
-import 'box_base.dart';
+
 
 import 'box_factory.dart';
 import 'dart:mirrors';
 
 class BoxFactoryImpl {
 
-  Map<Type, dynamic> creatorMap = {};
-  BoxFactoryImpl() {
-    creatorMap = {
-      program.AddInPort : AddInPortBox.createBox,
-      program.AddOutPort : AddOutPortBox.createBox,
-      program.DeclareVariable : DeclareVariableBox.createBox,
-    };
-  }
+  BoxFactoryImpl() {}
 
   BoxBase parseBlock(program.Block block) {
     /*

@@ -1,26 +1,17 @@
-library box_base;
-
-
-// @HtmlImport('box_base.html')
-import 'dart:html' as html;
-import 'package:polymer/polymer.dart';
-import 'package:web_components/web_components.dart' show HtmlImport;
-import 'package:polymer/polymer.dart';
-import '../../controller/controller.dart';
-import '../../scripts/application.dart';
+part of boxes;
 
 // @PolymerRegister('box-base')
 class BoxBase extends PolymerElement {
   PolymerElement parentElement;
 
-  Block _model;
+  program.Block _model;
 //とりあえずvar型にしてあるけどあまりよくない
 
-  set model(Block m) {
+  set model(program.Block m) {
     _model = m;
   }
 
-  Block get model => _model;
+  program.Block get model => _model;
 
   BoxBase.created() : super.created();
 

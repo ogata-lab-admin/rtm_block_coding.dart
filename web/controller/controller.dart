@@ -7,29 +7,8 @@ import 'package:polymer/polymer.dart';
 import 'dart:html' as html;
 
 import 'package:rtcprofile/rtcprofile.dart';
-import '../main_menu/boxes/rtm/add_inport_box.dart';
-import '../main_menu/boxes/rtm/add_outport_box.dart';
-/*
-import '../elements/blocks/inport_buffer_box.dart';
-import '../elements/blocks/outport_buffer_box.dart';
-import '../elements/blocks/write_outport_box.dart';
-import '../elements/blocks/set_variable.dart';
-import '../elements/blocks/assign_box.dart';
-import '../elements/blocks/refer_variable_box.dart';
-import '../elements/blocks/addition_box.dart';
-import '../elements/blocks/subtraction_box.dart';
-import '../elements/blocks/multiplication_box.dart';
-import '../elements/blocks/division_box.dart';
-import '../elements/blocks/bool_literal_box.dart';
-import '../elements/blocks/real_literal_box.dart';
-import '../elements/blocks/if_box.dart';
-import '../elements/blocks/else_box.dart';
-import '../elements/blocks/while_box.dart';
-import '../main_menu/state_panel.dart';
-import '../elements/python_panel.dart';
-import '../elements/blocks/box_base.dart';
-*/
-import '../main_menu/boxes/box_base.dart';
+
+import '../main_menu/boxes/boxes.dart';
 import '../main_menu/state_panel.dart';
 import '../right_menu/python_panel.dart';
 

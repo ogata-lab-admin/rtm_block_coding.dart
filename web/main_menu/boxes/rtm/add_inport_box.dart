@@ -1,15 +1,4 @@
-library add_inport_box;
-
-@HtmlImport('add_inport_box.html')
-import 'dart:html' as html;
-import 'package:polymer/polymer.dart';
-import 'package:web_components/web_components.dart' show HtmlImport;
-
-import 'dart:html' as html;
-import '../../../scripts/application.dart' as program;
-import 'add_port_box.dart';
-import '../../../controller/controller.dart';
-import 'add_port_box.dart';
+part of boxes;
 
 @PolymerRegister('add-inport-box')
 class AddInPortBox extends AddPortBox {

@@ -1,19 +1,4 @@
-library add_port_box;
-
-
-// @HtmlImport('add_port_box.html')
-import 'dart:html' as html;
-import 'dart:async' as async;
-import 'package:polymer/polymer.dart';
-import 'package:web_components/web_components.dart' show HtmlImport;
-import '../../../scripts/application.dart' as program;
-import '../../../controller/controller.dart';
-import 'package:polymer_elements/paper_item.dart';
-import 'package:polymer_elements/iron_selector.dart';
-import '../box_base.dart';
-//import 'package:paper_elements/paper_item.dart';
-//import 'package:paper_elements/paper_dropdown_menu.dart';
-
+part of boxes;
 
 
 @PolymerRegister('data-type-dropdown')
