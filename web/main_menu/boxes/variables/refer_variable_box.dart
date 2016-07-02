@@ -23,7 +23,7 @@ class ReferVariableBox extends BoxBase {
   void onSelected(var e) {
     if (e.detail != null) {
       String name_ = e.detail['item'].innerHtml;
-      var pl = globalController.onInitializeApp.find(
+      var pl = globalController.model.onInitializeApp.find(
           program.DeclareVariable, name: name_);
       if (pl.length > 0) {
         program.DeclareVariable v = pl[0];
@@ -38,7 +38,7 @@ class ReferVariableBox extends BoxBase {
   void updateNameList() {
     $$('#dropdown').children.clear();
     int counter = 0;
-    var variables = globalController.onInitializeApp.find(program.DeclareVariable);
+    var variables = globalController.model.onInitializeApp.find(program.DeclareVariable);
     if(variables == null)variables = [];
     variables.forEach((program.DeclareVariable p) {
       $$('#dropdown').children.add(new html.Element.tag('paper-item')

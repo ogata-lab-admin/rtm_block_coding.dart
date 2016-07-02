@@ -62,12 +62,12 @@ class DeclareVariableBox extends BoxBase {
 
   void onNameChange(String new_name) {
     String old_name = model.name;
-    globalController.findFromAllApp(program.DeclareVariable, old_name).forEach((
+    globalController.model.findFromAllApp(program.DeclareVariable, old_name).forEach((
         program.DeclareVariable v) {
       v.name = new_name;
     });
 
-    globalController.findFromAllApp(program.ReferVariable, old_name).forEach((
+    globalController.model.findFromAllApp(program.ReferVariable, old_name).forEach((
         program.ReferVariable v) {
       v.name = new_name;
     });
@@ -80,12 +80,12 @@ class DeclareVariableBox extends BoxBase {
     (model as program.DeclareVariable).dataType = new program.DataType.fromTypeName(typename);
 
     String old_name = model.name;
-    globalController.findFromAllApp(program.DeclareVariable, old_name).forEach((
+    globalController.model.findFromAllApp(program.DeclareVariable, old_name).forEach((
         program.DeclareVariable v) {
       v.dataType = (model as program.DeclareVariable).dataType;
     });
 
-    globalController.findFromAllApp(program.ReferVariable, old_name).forEach((
+    globalController.model.findFromAllApp(program.ReferVariable, old_name).forEach((
         program.ReferVariable v) {
       v.dataType = (model as program.DeclareVariable).dataType;
     });

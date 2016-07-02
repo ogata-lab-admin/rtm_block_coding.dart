@@ -35,11 +35,11 @@ class AddOutPortBox extends AddPortBox {
   void onNameChange(String new_name) {
     String old_name = model.name;
 
-    globalController.findFromAllApp(program.OutPortBuffer, old_name).forEach((program.OutPortBuffer port) {
+    globalController.model.findFromAllApp(program.OutPortBuffer, old_name).forEach((program.OutPortBuffer port) {
       port.name = new_name;
     });
 
-    globalController.findFromAllApp(program.WriteOutPort, old_name).forEach((program.WriteOutPort port) {
+    globalController.model.findFromAllApp(program.WriteOutPort, old_name).forEach((program.WriteOutPort port) {
       port.name = new_name;
     });
 
@@ -52,11 +52,11 @@ class AddOutPortBox extends AddPortBox {
 
     String name_ = model.name;
 
-    globalController.findFromAllApp(program.OutPortBuffer, name_).forEach((program.OutPortBuffer port) {
+    globalController.model.findFromAllApp(program.OutPortBuffer, name_).forEach((program.OutPortBuffer port) {
       port.dataType = (model as program.AddOutPort).dataType;
     });
 
-    globalController.findFromAllApp(program.WriteOutPort, name_).forEach((program.WriteOutPort port) {
+    globalController.model.findFromAllApp(program.WriteOutPort, name_).forEach((program.WriteOutPort port) {
       port.dataType = (model as program.AddOutPort).dataType;
       //port.accessSequence = '';
     });

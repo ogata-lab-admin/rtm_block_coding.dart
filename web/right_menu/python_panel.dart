@@ -32,7 +32,7 @@ class PythonPanel extends PolymerElement {
     if (globalController.selectedBox != null) {
 
       var pattern = globalController.selectedBox.model.toPython(0);
-      String html = globalController.pythonCode();
+      String html = globalController.model.pythonCode();
 
       if (pattern.length == 0) { // onAct, onDeact, onExeには該当コードがない
         pattern = globalController.selectedBox.model.toDeclarePython(0);
@@ -66,7 +66,7 @@ class PythonPanel extends PolymerElement {
 
       innerHtml = html;
     } else { // 選択要素が何もない時
-      innerHtml = globalController.pythonCode();
+      innerHtml = globalController.model.pythonCode();
     }
 
     innerHtml = applyMode(innerHtml);
@@ -88,7 +88,7 @@ class PythonPanel extends PolymerElement {
 
   @reflectable
   void onRefresh(var e, var d) {
-    String text = globalController.pythonCode();
+    String text = globalController.model.pythonCode();
     /*
     String html = '';
     RegExp reg = new RegExp(r'\r\n|\r|\n', multiLine : true);

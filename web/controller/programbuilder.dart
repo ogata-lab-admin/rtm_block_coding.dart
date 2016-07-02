@@ -41,7 +41,7 @@ class ProgramBuilder {
 
   void build(String command) {
     print('ProgramBuilder.build($command)');
-    Application onInit = globalController.onInitializeApp;
+    Application onInit = globalController.model.onInitializeApp;
 
 
     MirrorSystem mirrors = currentMirrorSystem();

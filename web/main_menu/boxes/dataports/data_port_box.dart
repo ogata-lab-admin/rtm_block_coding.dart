@@ -24,7 +24,7 @@ class PortSelector extends PolymerElement {
   void onIronSelected(var e) {
     if (e.detail != null) {
       String name_ = e.detail['item'].innerHtml;
-      var pl = globalController.onInitializeApp.find(
+      var pl = globalController.model.onInitializeApp.find(
           dataType, name: name_);
       if (pl.length > 0) {
         var port = pl[0];
@@ -38,7 +38,7 @@ class PortSelector extends PolymerElement {
     $$('#dropdown').children.clear();
 
     int counter = 0;
-    var ports = globalController.onInitializeApp.find(type);
+    var ports = globalController.model.onInitializeApp.find(type);
     ports.forEach((var p) {
       $$('#dropdown').children.add(
           new html.Element.tag('paper-item')
@@ -175,7 +175,7 @@ class TypedDataSelector extends PolymerElement {
     if (_portSelector != null) {
       _portSelector.selectPort(name);
 
-      var pl = globalController.onInitializeApp.find(
+      var pl = globalController.model.onInitializeApp.find(
           _type, name: name);
       if (pl.length > 0) {
         updateAccessAlternatives(pl[0].dataType, access: access);
@@ -247,7 +247,7 @@ class TypedDataSelector extends PolymerElement {
   @reflectable
   void onInputIndex(var e, var d) {
 
-    var pl = globalController.onInitializeApp.find(
+    var pl = globalController.model.onInitializeApp.find(
         _type, name: selectedName);
 
     if (pl.length > 0) {

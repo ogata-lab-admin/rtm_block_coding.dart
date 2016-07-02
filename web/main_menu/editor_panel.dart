@@ -48,13 +48,13 @@ class EditorPanel extends PolymerElement {
   get selectedApplication {
     switch (selected) {
       case 0:
-        return globalController.onInitializeApp;
+        return globalController.model.onInitializeApp;
       case 1:
-        return globalController.onActivatedApp;
+        return globalController.model.onActivatedApp;
       case 2:
-        return globalController.onExecuteApp;
+        return globalController.model.onExecuteApp;
       case 3:
-        return globalController.onDeactivatedApp;
+        return globalController.model.onDeactivatedApp;
     }
     return null;
   }
