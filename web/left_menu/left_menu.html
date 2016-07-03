@@ -31,8 +31,14 @@
               <add-element-button id="rtm2" label="出力ポート追加" command="AddOutPort"></add-element-button>
               <add-element-button id="var0" label="値の宣言" command="DeclareVariable"></add-element-button>
           </collapse-menu>
-          <collapse-menu id="variables_menu" label="リテラル・変数の参照" state="closed">
+          <collapse-menu id="calculate_menu" label="計算" state="closed">
               <add-element-button id="var1" label="値の代入" command="Assign"></add-element-button>
+              <add-element-button id="calc3" label="足し算" command="Add"></add-element-button>
+              <add-element-button id="calc4" label="引き算" command="Subtract"></add-element-button>
+              <add-element-button id="calc5" label="掛け算" command="Multiply"></add-element-button>
+              <add-element-button id="calc6" label="割り算" command="Divide"></add-element-button>
+          </collapse-menu>
+          <collapse-menu id="variables_menu" label="リテラル・変数の参照" state="closed">
               <add-element-button id="var2" label="値の参照" command="ReferVariable"></add-element-button>
               <add-element-button id="data2" label="入力ポートのデータ" command="InPortBuffer"></add-element-button>
               <add-element-button id="data3" label="出力ポートのデータ" command="OutPortBuffer"></add-element-button>
@@ -50,12 +56,7 @@
               <add-element-button id="loop2" label="そうでないなら" command="Else"></add-element-button>
               <add-element-button id="loop3" label="---の間、ずっと" command="While"></add-element-button>
           </collapse-menu>
-          <collapse-menu id="calculate_menu" label="計算" state="closed">
-              <add-element-button id="calc3" label="足し算" command="Add"></add-element-button>
-              <add-element-button id="calc4" label="引き算" command="Subtract"></add-element-button>
-              <add-element-button id="calc5" label="掛け算" command="Multiply"></add-element-button>
-              <add-element-button id="calc6" label="割り算" command="Divide"></add-element-button>
-          </collapse-menu>
+
           <collapse-menu id="condition_menu" label="比較演算" state="closed">
               <add-element-button id="cond1" label="等しい" command="Equals"></add-element-button>
               <add-element-button id="cond2" label="等しくない" command="NotEquals"></add-element-button>

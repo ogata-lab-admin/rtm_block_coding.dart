@@ -46,7 +46,7 @@ part 'rtm/add_inport_box.dart';
 part 'rtm/add_outport_box.dart';
 
 part 'variables/declare_variable_box.dart';
-part 'variables/assign_box.dart';
+part 'calculation/assign_box.dart';
 part 'variables/refer_variable_box.dart';
 
 part 'calculation/calculation_box.dart';
