@@ -1,40 +1,20 @@
-<link rel="import" href="packages/polymer_elements/paper_input.html" />
-
 <dom-module id="assign-box">
     <template>
 
         <style type='text/css'>
-            :host {
-            }
-
-            #container {
-                margin-top: 2px;
-                margin-left: 7px;
-                margin-right: 7px;
-                margin-bottom: 1px;
-
-                padding-left: 4px;
-                padding-right: 3px;
-
-                background-color: #DCEDC8;
-                border: 1px solid #B6B6B6;
-                border-radius: 0.3em;
-            }
-            #body-area {
-                padding-left: 15px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-                padding-right: 5px;
+            :host > box-container {
+                /* --box-container-background-color: #DCEDC8; */
+                --box-container-background-color: #ffb822;
             }
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" class="horizontal layout center wrap" on-tap="onClicked">
+        <box-container>
             <div id="left-content" class="horizontal layout center"></div>
             <div class="self-center layout" end>に、</div>
             <div id="right-content" class="horizontal layout center"></div>
             <div class="self-center layout" end>を代入する</div>
-        </div>
+        </box-container>
 
     </template>
     <script type="application/dart" src="assign_box.dart"></script>

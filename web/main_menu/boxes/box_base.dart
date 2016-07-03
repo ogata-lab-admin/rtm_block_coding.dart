@@ -16,17 +16,25 @@ class BoxBase extends PolymerElement {
 
   @reflectable
   void onClicked(var e, var d) {
-    print('AddPortBox.onClicked($e, $d)');
+    print('BoxBase.onClicked($e, $d)');
     globalController.setSelectedBox(this);
     e.stopPropagation();
   }
 
   void select() {
-    $$('#container').style.border = 'ridge';
-    $$('#container').style.borderColor = '#FF9F1C';
+    if ($$('box-container') != null) {
+      ($$('box-container') as BoxContainer).select();
+    } else {
+      ($$('container-box-container') as ContainerBoxContainer).select();
+    }
+
   }
 
   void deselect() {
-    $$('#container').style.border = '1px solid #B6B6B6';
+    if ($$('box-container') != null) {
+      ($$('box-container') as BoxContainer).deselect();
+    } else {
+      ($$('container-box-container') as ContainerBoxContainer).deselect();
+    }
   }
 }

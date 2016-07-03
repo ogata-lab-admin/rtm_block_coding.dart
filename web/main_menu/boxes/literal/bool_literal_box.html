@@ -1,32 +1,16 @@
 
-<link rel="import" href="packages/polymer_elements/paper_item.html" />
-<link rel="import" href="packages/polymer_elements/iron_selector.html" />
-<link rel="import" href="packages/polymer_elements/paper_dropdown_menu.html" />
 
 <dom-module id="bool-literal-box">
     <template>
 
         <style type='text/css'>
+            :host > box-container{
+                --box-container-background-color: #BDE1F0;
+            }
+
             :host {
                 --paper-input-container-color: black;
                 --paper-input-container-input-color: black;
-            }
-            :host > #container {
-                margin-top: 2px;
-                margin-left: 7px;
-                margin-right: 7px;
-                margin-bottom: 1px;
-
-                padding-left: 4px;
-                padding-right: 3px;
-
-                position: relative;
-
-                background-color: #BDE1F0;
-                border: 1px solid #B6B6B6;
-                border-radius: 0.3em;
-
-                height: 40px;
             }
 
             :host paper-dropdown-menu#dropdown-menu {
@@ -37,14 +21,14 @@
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" class="horizontal layout center" on-tap="onClicked">
+        <box-container>
             <paper-dropdown-menu id="dropdown-menu" class="horizontal layout center" label="真偽値">
                 <iron-selector attr-for-selected="value" id="dropdown" class="dropdown-content">
                     <paper-item value="0">True</paper-item>
                     <paper-item value="1">False</paper-item>
                 </iron-selector>
             </paper-dropdown-menu>
-        </div>
+        </box-container>
 
     </template>
     <script type="application/dart" src="bool_literal_box.dart"></script>

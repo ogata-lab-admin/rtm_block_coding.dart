@@ -4,32 +4,16 @@
 
         <style type='text/css'>
             :host {
-            }
-            #container {
-                margin-top: 2px;
-                margin-left: 7px;
-                margin-right: 7px;
-                margin-bottom: 1px;
-
-                padding-left: 4px;
-                padding-right: 3px;
-
-                position: relative;
-
-                background-color: #B2DFDB;
-                border: 1px solid #B6B6B6;
-                border-radius: 0.3em;
-
-                height: 50px;
+                --box-container-background-color: #B2DFDB;
             }
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" horizontal layout center on-tap="{{onClicked}}">
+        <box-container>
             <div self-center layout end>「</div>
             <div id="condition-content"></div>
             <div self-center layout end>」が正しくない</div>
-        </div>
+        </box-container>
 
     </template>
     <script type="application/dart" src="not_box.dart"></script>

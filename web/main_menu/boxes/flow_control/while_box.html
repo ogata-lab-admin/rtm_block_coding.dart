@@ -5,28 +5,19 @@
         <style type='text/css'>
             :host {
             }
-            #container {
-                margin-top: 2px;
-                margin-left: 7px;
-                margin-right: 7px;
-                margin-bottom: 1px;
 
-                padding-left: 4px;
-                padding-right: 3px;
 
-                position: relative;
-
-                background-color: #D7CCC8;
-                border: 1px solid #B6B6B6;
-                border-radius: 0.3em;
+            :host > container-box-container{
+                --box-container-background-color: #D7CCC8;
             }
+
             #condition-block {
                 min-height: 30px;
             }
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" class="vertical layout" on-tap="onClicked">
+        <container-box-container>
             <div id="condition-block" class="horizontal layout center">
                 <div end></div>
                 <div id="condition-content"></div>
@@ -36,7 +27,7 @@
                 <div end>ずっと</div>
                 <div id="body-content"></div>
             </div>
-        </div>
+        </container-box-container>
 
     </template>
     <script type="application/dart" src="while_box.dart"></script>

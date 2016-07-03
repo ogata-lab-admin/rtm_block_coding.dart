@@ -6,9 +6,11 @@ class Model {
   Block createBlock(String command) {
 
     MirrorSystem mirrors = currentMirrorSystem();
+    /*
     mirrors.libraries.forEach((var uri, var lib) {
       print ('$uri, $lib');
     });
+    */
     LibraryMirror appMirror = mirrors.findLibrary(new Symbol('application'));
     ClassMirror cm = appMirror.declarations[new Symbol(command)];
     return cm.newInstance(new Symbol('fromAppDefault'), [this]).reflectee;

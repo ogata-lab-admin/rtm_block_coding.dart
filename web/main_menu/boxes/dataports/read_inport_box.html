@@ -1,61 +1,28 @@
-<link rel="import" href="packages/polymer_elements/paper_input.html" />
-<link rel="import" href="packages/polymer_elements/iron_selector.html" />
-<link rel="import" href="data_port_box.html" />
-
-
-
+<
 <dom-module id="read-inport-box">
     <template>
 
         <style>
             :host {
             }
-            :host #container {
-                margin-top: 2px;
-                margin-left: 7px;
-                margin-right: 7px;
-                margin-bottom: 0;
-                /* margin-bottom: 1px; */
 
-                padding-top: 3px;
-                padding-left: 4px;
-                padding-right: 3px;
-
-                position: relative;
-
-                background-color: #FFE0B2;
-                border: 1px solid #B6B6B6;
-                border-bottom: none;
-                border-radius: 0.3em 0.3em 0 0;
-
-                height: 45px;
+            :host > box-container {
+                /* --box-container-background-color: #DCEDC8; */
+                --box-container-background-color: #FFE0B2;
             }
+
             paper-input {
                 margin-left : 20px;
                 margin-right: 20px;
             }
-            :host #body-area {
-                margin-top : -2px;
-                margin-left: 7px;
-                margin-right: 7px;
-                margin-bottom: 2px;
 
-                padding-left: 10px;
-
-                background-color: #FFE0B2;
-                border: 1px solid #B6B6B6;
-                border-top: none;
-                border-radius: 0 0 0.3em 0.3em;
-
-                min-height: 5px;
-            }
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" class="horizontal layout center" on-tap="onClicked">
+        <box-container>
             <port-selector id="port-selector" label="入力ポート"></port-selector>
             <div end> のデータを読み込む</div>
-        </div>
+        </box-container>
     </template>
     <script type="application/dart" src="read_inport_box.dart"></script>
 </dom-module>

@@ -1,0 +1,60 @@
+<link rel="import" href="boxes.html" />
+
+<dom-module id="box-container">
+    <template>
+        <style>
+
+            :host #container {
+                margin-top: 2px;
+                margin-left: 7px;
+                margin-right: 7px;
+                margin-bottom: 1px;
+
+                padding-left: 4px;
+                padding-right: 3px;
+
+                position: relative;
+
+
+                background-color: var(--box-container-background-color, #FFFF8d);
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+                height: 50px;
+            }
+        </style>
+        <div id="container" class="horizontal layout center" on-tap="onClicked" >
+            <content></content>
+        </div>
+    </template>
+    <script type="application/dart" src="box_container.dart"></script>
+</dom-module>
+
+<dom-module id="container-box-container">
+    <template>
+        <style>
+
+            :host #container {
+                margin-top: 2px;
+                margin-left: 7px;
+                margin-right: 7px;
+                margin-bottom: 1px;
+
+                padding-left: 4px;
+                padding-right: 3px;
+
+                position: relative;
+
+
+                background-color: var(--box-container-background-color, #FFFF8d);
+                border: 1px solid #B6B6B6;
+                border-radius: 0.3em;
+
+            }
+        </style>
+        <div id="container" class="vertical layout" on-tap="onClicked" >
+            <content></content>
+        </div>
+    </template>
+    <script type="application/dart" src="box_container.dart"></script>
+</dom-module>

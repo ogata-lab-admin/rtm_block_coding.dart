@@ -20,6 +20,7 @@ import 'package:polymer_elements/iron_selector.dart';
 import '../../scripts/application.dart' as program;
 import '../../controller/controller.dart';
 
+part 'box_container.dart';
 part 'box_base.dart';
 
 part 'box_factory.dart';

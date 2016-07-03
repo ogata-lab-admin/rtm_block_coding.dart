@@ -1,4 +1,3 @@
-<link rel="import" href="data_port_box.html" />
 
 <dom-module id="inport-buffer-box">
 
@@ -6,31 +5,18 @@
         <style type='text/css'>
             :host {
             }
-            #container {
-                margin-top: 2px;
-                margin-left: 7px;
-                margin-right: 7px;
-                margin-bottom: 2px;
 
-                padding-left: 4px;
-                padding-right: 3px;
-
-                position: relative;
-
-                background-color: #FFE0B2;
-                border: 1px solid #B6B6B6;
-                border-radius: 0.3em;
-
-                height: 45px;
+            :host > box-container {
+                /* --box-container-background-color: #DCEDC8; */
+                --box-container-background-color: #FFE0B2;
             }
-
 
         </style>
 
         <!--Japanese ver.-->
-        <div id="container" class="horizontal layout center" on-tap="onClicked">
+        <box-container>
             <typed-data-selector id="data-selector" label="入力ポート"></typed-data-selector>
-        </div>
+        </box-container>
     </template>
     <script type="application/dart" src="inport_buffer_box.dart"></script>
 </dom-module>
